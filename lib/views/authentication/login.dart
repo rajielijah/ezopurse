@@ -1,7 +1,8 @@
 import 'package:ezopurse/constant/color.dart';
 import 'package:ezopurse/constant/textfield.dart';
-import 'package:ezopurse/views/forgotPassword.dart';
-import 'package:ezopurse/views/signup.dart';
+import 'package:ezopurse/homepage/nav.dart';
+import 'package:ezopurse/views/authentication/forgotPassword.dart';
+import 'package:ezopurse/views/authentication/signup.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
@@ -81,7 +82,7 @@ class Login extends StatelessWidget {
                   )
                 ],),
               FlatButton(minWidth: 330, height: 50, onPressed: (){
-                     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Login()));
+                     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => MyStatefulWidget()));
                   }, 
                   child: Text('Login', style: TextStyle(color: Colors.white),), color: kPrimaryColor,),
             ],),

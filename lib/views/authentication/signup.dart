@@ -1,6 +1,6 @@
 import 'package:ezopurse/constant/color.dart';
 import 'package:ezopurse/constant/textfield.dart';
-import 'package:ezopurse/views/login.dart';
+import 'package:ezopurse/views/authentication/login.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 

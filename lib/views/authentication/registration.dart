@@ -1,6 +1,6 @@
 import 'package:ezopurse/constant/color.dart';
-import 'package:ezopurse/views/login.dart';
-import 'package:ezopurse/views/signup.dart';
+import 'package:ezopurse/views/authentication/login.dart';
+import 'package:ezopurse/views/authentication/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

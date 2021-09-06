@@ -1,4 +1,4 @@
-import 'package:ezopurse/views/onboarding.dart';
+import 'package:ezopurse/views/authentication/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 

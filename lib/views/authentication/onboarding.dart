@@ -1,5 +1,5 @@
 import 'package:ezopurse/constant/color.dart';
-import 'package:ezopurse/views/registration.dart';
+import 'package:ezopurse/views/authentication/registration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -42,10 +42,10 @@ class Onboarding extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(),
-                child: Center(child: SvgPicture.asset('images/group.svg', height: height/2,)),
+                child: Center(child: SvgPicture.asset('images/group1.svg', height: height/2,)),
               ),
               Padding(
-                padding: const EdgeInsets.all(9.0),
+                padding: const EdgeInsets.all(19.0),
                 child: FlatButton(
                   minWidth: 330,
                   onPressed: (){
