@@ -1,6 +1,7 @@
 import 'package:ezopurse/constant/color.dart';
 import 'package:ezopurse/homepage/home.dart';
 import 'package:ezopurse/homepage/portfolio.dart';
+import 'package:ezopurse/homepage/profiile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -21,7 +22,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     HomePage(),
     PortFolio(),
     HomePage(),
-    HomePage(),
+    Profile(),
   ];
 
   void _onItemTapped(int index) {
