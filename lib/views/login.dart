@@ -1,6 +1,7 @@
 import 'package:ezopurse/constant/color.dart';
 import 'package:ezopurse/constant/textfield.dart';
 import 'package:ezopurse/views/forgotPassword.dart';
+import 'package:ezopurse/views/signup.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
@@ -19,9 +20,13 @@ class Login extends StatelessWidget {
       validator: (value) => value.isEmpty ? "Please enter password" : null,
       decoration: buildInputDecoration("Password", ),
     );
+     var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         body: Container(
+          height: height,
+          width: width,
           child: Padding(
             padding: const EdgeInsets.all(14.0),
             child: Column(
@@ -34,13 +39,17 @@ class Login extends StatelessWidget {
                   onTap: (){
                     Navigator.pop(context);
                   },
-                  child: Icon(Icons.arrow_back, )), 
+                  child: Icon(Icons.arrow_back_ios, )), 
                 SizedBox(width: 10,),
-                Text('Let me sign you in', style: TextStyle(color: kPrimaryColor),)
+                Text('Let me sign you in', style: TextStyle(color: kPrimaryColor, fontSize: 18),)
               ],),
               Container(
                 height: 220,
                 width: 343,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8)
+                ),
                 child: Image(image: AssetImage('images/61.png'),),
               ),
                Container(
@@ -54,16 +63,24 @@ class Login extends StatelessWidget {
                   child: passwordField,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                   GestureDetector(
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => ForgotPassword()));
                     },
                     child: Text('Forget Password?', style: TextStyle(color: kPrimaryColor),)),
-                  Text("Don't have an account? Sign Up ")
+                    SizedBox(width: width/20,),
+                  Text("Don't Have an account?", style: TextStyle(color: kPrimaryColor),),
+                  SizedBox(width: width/100,),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => SignUp()));
+                    },
+                    child: Text('Sign Up'),
+                  )
                 ],),
-              FlatButton(minWidth: 330, onPressed: (){
+              FlatButton(minWidth: 330, height: 50, onPressed: (){
                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Login()));
                   }, 
                   child: Text('Login', style: TextStyle(color: Colors.white),), color: kPrimaryColor,),

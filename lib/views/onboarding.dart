@@ -1,15 +1,20 @@
 import 'package:ezopurse/constant/color.dart';
 import 'package:ezopurse/views/registration.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Onboarding extends StatelessWidget {
   // const Onboarding({ Key? key }) : super(key: key);
 // 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         body: Container(
+          height: height,
+          width: width,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -22,7 +27,7 @@ class Onboarding extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Container(
-                  height: 99,
+                  height: 90,
                   width: 343,
                   color: Colors.white,
                   // decoration: BoxDecoration(),
@@ -36,11 +41,11 @@ class Onboarding extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left:120.0),
-                child: Image(image: AssetImage('images/changes.png'),),
+                padding: const EdgeInsets.only(),
+                child: Center(child: SvgPicture.asset('images/group.svg', height: height/2,)),
               ),
               Padding(
-                padding: const EdgeInsets.all(19.0),
+                padding: const EdgeInsets.all(9.0),
                 child: FlatButton(
                   minWidth: 330,
                   onPressed: (){

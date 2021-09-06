@@ -29,16 +29,19 @@ class ForgotPassword extends StatelessWidget {
                   },
                   child: Icon(Icons.arrow_back, )),
                     SizedBox(width: 10,),
-                    Text('Forgot Password?', style: TextStyle(color: kPrimaryColor),)
+                    Text('Forgot Password?', style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold, fontSize: 17),)
                   ],),
-                  Text('Password retrieval link will be sent to your \n                        Email address'),
+                  Text('Password retrieval link will be sent to your \n                        Email address', style: TextStyle(color: Colors.grey[400], fontSize: 15),),
                    Container(
                       color: Colors.white,
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.only(left:10),
                       child: EmailField,
                     ),
-                    Text("Didn't get the email?", style: TextStyle(color: kPrimaryColor),),
-                     FlatButton(minWidth: 330, onPressed: (){}, 
+                    Padding(
+                      padding: const EdgeInsets.only(bottom:18.0),
+                      child: Text("Didn't get the email?", style: TextStyle(color: kPrimaryColor),),
+                    ),
+                     FlatButton(minWidth: 330, onPressed: (){}, height: 50,
                       child: Text('Continue', style: TextStyle(color: Colors.white),), color: kPrimaryColor,),
                 ],
             ),
