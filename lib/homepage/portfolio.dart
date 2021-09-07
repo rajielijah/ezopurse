@@ -1,5 +1,7 @@
 import 'package:ezopurse/constant/color.dart';
 import 'package:ezopurse/homepage/nav.dart';
+import 'package:ezopurse/transaction/deposit.dart';
+import 'package:ezopurse/transaction/withdraw.dart';
 import 'package:ezopurse/views/authentication/login.dart';
 import 'package:ezopurse/views/authentication/signup.dart';
 import 'package:ezopurse/widget/coin_widget.dart';
@@ -73,12 +75,12 @@ class PortFolio extends StatelessWidget {
                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                    children: [
                      FlatButton(minWidth: 150, height: 50, onPressed: (){
-                           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Login()));
+                           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Deposit()));
                         }, 
                         child: Text('Deposit', style: TextStyle(color: Colors.white, letterSpacing: 0.7, fontSize: 18),), color: kPrimaryColor
                         ,),
                         FlatButton(onPressed: (){
-                   Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => SignUp()));
+                   Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Withdraw()));
                 }, 
                       height: 50,
                       child: Text('Withdraw', style: TextStyle(fontSize: 18, letterSpacing: 0.7),), textColor: kPrimaryColor, 

@@ -1,5 +1,6 @@
 import 'package:ezopurse/constant/color.dart';
 import 'package:ezopurse/homepage/home.dart';
+import 'package:ezopurse/homepage/market.dart';
 import 'package:ezopurse/homepage/portfolio.dart';
 import 'package:ezopurse/homepage/profiile.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     PortFolio(),
-    HomePage(),
+    Market(),
     Profile(),
   ];
 

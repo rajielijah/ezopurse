@@ -1,4 +1,6 @@
 
+import 'package:ezopurse/homepage/bank_details.dart';
+import 'package:ezopurse/homepage/profile_details.dart';
 import 'package:ezopurse/widget/profile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -22,7 +24,6 @@ class Profile extends StatelessWidget {
                 Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
-                  
                   decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         gradient: LinearGradient(
@@ -60,8 +61,16 @@ class Profile extends StatelessWidget {
                   ),
                 ),
               ),
-              profile(context, SvgPicture.asset('images/vector18.svg'), Text('Profile details', style: TextStyle(fontSize:19, fontWeight: FontWeight.w500),), Icon(Icons.arrow_forward_ios_sharp)),
-              profile(context, SvgPicture.asset('images/vector17.svg'), Text('Bank details', style: TextStyle(fontSize:19, fontWeight: FontWeight.w500),), Icon(Icons.arrow_forward_ios_sharp)),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => ProfileDetails()));
+                },
+                child: profile(context, SvgPicture.asset('images/vector18.svg'), Text('Profile details', style: TextStyle(fontSize:19, fontWeight: FontWeight.w500),), Icon(Icons.arrow_forward_ios_sharp))),
+              GestureDetector(
+                 onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => BankDetails()));
+                },
+                child: profile(context, SvgPicture.asset('images/vector17.svg'), Text('Bank details', style: TextStyle(fontSize:19, fontWeight: FontWeight.w500),), Icon(Icons.arrow_forward_ios_sharp))),
               profile(context, SvgPicture.asset('images/vector15.svg'), Text('Notifications', style: TextStyle(fontSize:19, fontWeight: FontWeight.w500),), Icon(Icons.arrow_forward_ios_sharp)),
               profile(context, SvgPicture.asset('images/vector16.svg'), Text('Security', style: TextStyle(fontSize:19, fontWeight: FontWeight.w500),), Icon(Icons.arrow_forward_ios_sharp)),
               profile(context, SvgPicture.asset('images/vector14.svg'), Text('Help and Support', style: TextStyle(fontSize:19, fontWeight: FontWeight.w500),), Icon(Icons.arrow_forward_ios_sharp)),

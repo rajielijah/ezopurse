@@ -24,25 +24,63 @@ class Onboarding extends StatelessWidget {
                     Navigator.pop(context);
                   },
                   child: Icon(Icons.arrow_back, )),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Container(
-                  height: 90,
-                  width: 343,
-                  color: Colors.white,
-                  // decoration: BoxDecoration(),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text('Trade BTC conveniently', style: TextStyle(color: kPrimaryColor, fontSize: 20),),
-                      Text('Buy and Sell Bitcoin with the \n           click of a button')
-                    ],
-                  ),
+              Container(
+                height: height/7,
+                width: width,
+                color: Colors.white,
+                // decoration: BoxDecoration(),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text('Trade BTC conveniently', style: TextStyle(color: kPrimaryColor, fontSize: 20),),
+                    Text('Buy and Sell Bitcoin with the \n           click of a button')
+                  ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(),
-                child: Center(child: SvgPicture.asset('images/group1.svg', height: height/2,)),
+                padding: const EdgeInsets.all(24),
+                child: Container(
+                  height: height/2,
+                  child: Center(
+                    child: Stack(
+                      alignment: Alignment.topCenter,
+                      children: [
+
+                          Positioned(
+                          //  top: 30,
+                          bottom: 120,
+                           child: SvgPicture.asset('images/mock.svg', height: height/3,)),
+                        SvgPicture.asset('images/ellipse16.svg', height: height,),
+                         
+                          Positioned(
+                            // top: 10,
+                            bottom: 70,
+                            // left: 70,
+                            right: 1,
+                            child: SvgPicture.asset('images/group9.svg', height: height/10,)),
+                          Positioned(
+                            top: 10,
+                            bottom: 140,
+                            // left: 70,
+                            right: 0,
+                            child: SvgPicture.asset('images/group9.svg', height: height/10,)),
+                            Positioned(
+                            // top: 10,
+                            bottom: 170,
+                            // left: 70,
+                            left: 1,
+                            child: SvgPicture.asset('images/group9.svg', height: height/10,)),
+
+                            Positioned(
+                            // top: 10,
+                            bottom: 70,
+                            // left: 70,
+                            left: 1,
+                            child: SvgPicture.asset('images/group9.svg', height: height/10,)),
+                      ],
+                    ),
+                  ),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(19.0),
