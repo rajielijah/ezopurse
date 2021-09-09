@@ -183,7 +183,7 @@ class Market extends StatelessWidget {
                               TrendingCoin(),
                               TrendingCoin(),
                               TrendingCoin(),
-                              TrendingCoin(),
+                              Favourite(),
                             ],
                           ))
                         ],

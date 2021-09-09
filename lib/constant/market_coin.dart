@@ -27,3 +27,27 @@ class TrendingCoin extends StatelessWidget {
     );
   }
 }
+
+
+class Favourite extends StatelessWidget {
+  // const Favourite({ Key? key }) : super(key: key);
+// 
+  @override
+  Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Divider(),
+          SizedBox(height: height/35,),
+          Text('Special place for Favorite coins', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                    SizedBox(height: height/35,),
+          Text('Add you favorite coins and check here easily ')
+        ],
+      ),
+    );
+  }
+}
