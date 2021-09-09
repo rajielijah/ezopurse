@@ -1,4 +1,6 @@
+import 'package:ezopurse/coin/buy_coin.dart';
 import 'package:ezopurse/coin/receive_coin.dart';
+import 'package:ezopurse/coin/sell_coin.dart';
 import 'package:ezopurse/coin/send_coin.dart';
 import 'package:ezopurse/coin/transactions.dart';
 import 'package:ezopurse/constant/color.dart';
@@ -223,7 +225,7 @@ class CoinPage extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      Deposit()));
+                                      BuyCoin()));
                         },
                         child: Text(
                           'BUY',
@@ -240,7 +242,7 @@ class CoinPage extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      Withdraw()));
+                                      SellCoin()));
                         },
                         height: 50,
                         child: Text(

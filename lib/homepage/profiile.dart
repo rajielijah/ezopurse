@@ -47,7 +47,7 @@ class Profile extends StatelessWidget {
                        Stack(
                          alignment: Alignment.bottomRight,
                          children: [
-                           CircleAvatar(child: SvgPicture.asset('images/ellipse6.svg'), radius: 40,),
+                           CircleAvatar(child: Image.asset('images/ellips6.png'), radius: 40,),
                            Positioned(
                             //  top: 22,
                              child: Icon(Icons.camera_alt_outlined, color: Colors.white,))

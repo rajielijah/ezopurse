@@ -1,4 +1,5 @@
 import 'package:ezopurse/constant/color.dart';
+import 'package:ezopurse/constant/market_coin.dart';
 import 'package:ezopurse/homepage/search.dart';
 import 'package:ezopurse/views/authentication/login.dart';
 import 'package:flutter/material.dart';
@@ -62,16 +63,17 @@ class Market extends StatelessWidget {
                     ElevatedButton(
                         onPressed: () {
                           showModalBottomSheet(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18)
-                            ),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18)),
                               context: context,
                               builder: (context) {
                                 return Padding(
                                   padding: const EdgeInsets.all(18.0),
                                   child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         'Markets',
@@ -80,41 +82,44 @@ class Market extends StatelessWidget {
                                             fontSize: 20),
                                       ),
                                       Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
                                             'Bitcoin - BTC',
-                                            style:
-                                                TextStyle(color: kPrimaryColor, fontSize: 17),
+                                            style: TextStyle(
+                                                color: kPrimaryColor,
+                                                fontSize: 17),
                                           ),
-                                          SvgPicture.asset('images/group17.svg'),
-                                                                               ],
+                                          SvgPicture.asset(
+                                              'images/group17.svg'),
+                                        ],
                                       ),
-                                       Divider(
-                                            thickness: 1.4,
-                                          ),
-                                          Center(
-                                            child: Text('No new market'),
-                                          ),
-                                          FlatButton(
-                                            minWidth: 330,
-                                            height: height/10,
-                                            onPressed: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (BuildContext
-                                                              context) =>
+                                      Divider(
+                                        thickness: 1.4,
+                                      ),
+                                      Center(
+                                        child: Text('No new market'),
+                                      ),
+                                      FlatButton(
+                                        minWidth: 330,
+                                        height: height / 10,
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder:
+                                                      (BuildContext context) =>
                                                           Login()));
-                                            },
-                                            child: Text(
-                                              'Update Market',
-                                              style:
-                                                  TextStyle(color: Colors.white, fontSize: 17),
-                                            ),
-                                            color: kPrimaryColor,
-                                          ),
-
+                                        },
+                                        child: Text(
+                                          'Update Market',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 17),
+                                        ),
+                                        color: kPrimaryColor,
+                                      ),
                                     ],
                                   ),
                                 );
@@ -136,7 +141,49 @@ class Market extends StatelessWidget {
                         ))
                   ],
                 ),
-              )
+              ),
+              Expanded(
+                  child: DefaultTabController(
+                      length: 4,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            color: Colors.blue,
+                            constraints: BoxConstraints.expand(height: 50),
+                            child: TabBar(tabs: [
+                              Tab(
+                                child: Text(
+                                  'All',
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                              ),
+                              Tab(
+                                  child: Text('Gainer',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                      ))),
+                              Tab(
+                                  child: Text(
+                                'Loser',
+                                style: TextStyle(color: Colors.black),
+                              )),
+                              Tab(
+                                  child: Text('Favourites',
+                                      style: TextStyle(color: Colors.black)))
+                            ]),
+                          ),
+                          Expanded(
+                              child: TabBarView(
+                            children: [
+                              TrendingCoin(),
+                              TrendingCoin(),
+                              TrendingCoin(),
+                              TrendingCoin(),
+                            ],
+                          ))
+                        ],
+                      )))
             ],
           ),
         ),
