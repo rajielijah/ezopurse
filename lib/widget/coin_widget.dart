@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 
-Widget coin(BuildContext context, SvgPicture image, Text title, Text subtitle, SvgPicture chart,  Text price, Text percent){
+Widget coin(BuildContext context, Widget image, Text title, Text subtitle, SvgPicture chart,  Text price, Text percent){
    var height = MediaQuery.of(context).size.height;
     var width  = MediaQuery.of(context).size.width;
   return Padding(

@@ -76,10 +76,10 @@ class HomePage extends StatelessWidget {
                   padding: const EdgeInsets.all(20.0),
                   child: Text('Trending Coins', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                 ),
-                coin(context, SvgPicture.asset('images/logoo.svg'), Text('Bitcoin', style: TextStyle(fontSize: 18),), Text('BTC'), SvgPicture.asset('images/chart.svg'), Text('#2,309.43'), Text('+9.77%', style: TextStyle(color: kPrimaryColor),)),
-                coin(context, SvgPicture.asset('images/logoo.svg'), Text('Bitcoin', style: TextStyle(fontSize: 18),), Text('BTC'), SvgPicture.asset('images/chart.svg'), Text('#2,309.43'), Text('+9.77%', style: TextStyle(color: kPrimaryColor),)),
-                 coin(context, SvgPicture.asset('images/logoo.svg'), Text('Bitcoin', style: TextStyle(fontSize: 18),), Text('BTC'), SvgPicture.asset('images/chart.svg'), Text('#2,309.43'), Text('+9.77%', style: TextStyle(color: kPrimaryColor),)),
-                coin(context, SvgPicture.asset('images/logoo.svg'), Text('Bitcoin', style: TextStyle(fontSize: 18),), Text('BTC'), SvgPicture.asset('images/chart.svg'), Text('#2,309.43'), Text('+9.77%', style: TextStyle(color: kPrimaryColor),))
+                coin(context,  Image.asset('images/me.png'), Text('Bitcoin', style: TextStyle(fontSize: 18),), Text('BTC'), SvgPicture.asset('images/chart.svg'), Text('#2,309.43'), Text('+9.77%', style: TextStyle(color: kPrimaryColor),)),
+                coin(context,  Image.asset('images/me.png'), Text('Bitcoin', style: TextStyle(fontSize: 18),), Text('BTC'), SvgPicture.asset('images/chart.svg'), Text('#2,309.43'), Text('+9.77%', style: TextStyle(color: kPrimaryColor),)),
+                 coin(context,  Image.asset('images/me.png'), Text('Bitcoin', style: TextStyle(fontSize: 18),), Text('BTC'), SvgPicture.asset('images/chart.svg'), Text('#2,309.43'), Text('+9.77%', style: TextStyle(color: kPrimaryColor),)),
+                coin(context,  Image.asset('images/me.png'), Text('Bitcoin', style: TextStyle(fontSize: 18),), Text('BTC'), SvgPicture.asset('images/chart.svg'), Text('#2,309.43'), Text('+9.77%', style: TextStyle(color: kPrimaryColor),))
               ],
             ),
           ),
