@@ -173,7 +173,7 @@ class Market extends StatelessWidget {
                                 style: TextStyle(color: Colors.black),
                               )),
                               Tab(
-                                  child: Text('Favorite',
+                                  child: Text('Favorites',
                                       style: TextStyle(color: Colors.black)))
                             ]),
                           ),

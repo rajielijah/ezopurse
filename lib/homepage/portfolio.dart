@@ -58,7 +58,7 @@ class PortFolio extends StatelessWidget {
                               letterSpacing: 1,
                               fontSize: 20),
                         ),
-                        SizedBox(height: 5,),
+                        SizedBox(height: 20,),
                         Padding(
                           padding: const EdgeInsets.only(left:48.0),
                           child: Column(
@@ -71,7 +71,7 @@ class PortFolio extends StatelessWidget {
                                 TextStyle(color: Colors.white, fontSize: 12),
                               ),
                               SizedBox(
-                                height: height / 90,
+                                height: 1,
                               ),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -151,7 +151,7 @@ class PortFolio extends StatelessWidget {
                                   style: TextStyle(color: Colors.white),
                                 ),
                                 Text(
-                                  'N2,218,2',
+                                  'N2,218,200',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20,

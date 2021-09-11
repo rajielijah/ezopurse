@@ -119,9 +119,11 @@ class SendCoin extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(18.0),
-                    child: Text(
-                      '* Block will be calculated after transaction \n         is generated and broadcasted',
-                      style: TextStyle(),
+                    child: Center(
+                      child: Text(
+                        '* Block will be calculated after transaction \n         is generated and broadcasted',
+                        style: TextStyle(),
+                      ),
                     ),
                   ),
                   SizedBox(height: height/22,),

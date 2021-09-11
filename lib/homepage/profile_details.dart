@@ -68,7 +68,7 @@ class ProfileDetails extends StatelessWidget {
                       },
                       child: Icon(Icons.arrow_back, ))),
                       SizedBox(width: 20,),
-                      Text('Profile details', style: TextStyle(color: kPrimaryColor),)
+                      Text('Profile details', style: TextStyle(color: kPrimaryColor,  fontWeight: FontWeight.bold, fontSize: 23),)
                     ],
                   ),
                   SizedBox(

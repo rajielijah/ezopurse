@@ -27,7 +27,7 @@ class BankDetails extends StatelessWidget {
                           stops: [0.0, 0.1],
                         ),
                       ),
-                  height: MediaQuery.of(context).size.height / 3,
+                  height: MediaQuery.of(context).size.height / 4,
                       width: MediaQuery.of(context).size.width,
               child:     Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -79,7 +79,7 @@ class BankDetails extends StatelessWidget {
                 ),
               ),
             )),
-            SizedBox(height: height/5,),
+            SizedBox(height: height/4,),
               FlatButton(minWidth: 330, height: height/10,onPressed: (){
                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Login()));
                     }, 

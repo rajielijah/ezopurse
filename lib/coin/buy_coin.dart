@@ -46,7 +46,7 @@ class _BuyCoinState extends State<BuyCoin> {
                         style: TextStyle(
                             fontSize: 17, fontWeight: FontWeight.w500),
                       ),
-                                            SizedBox(width: width/8),
+                                            SizedBox(width: width/6),
                       GestureDetector(
                         onTap: (){
                           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> SellCoin()));
