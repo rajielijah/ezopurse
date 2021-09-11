@@ -33,10 +33,14 @@ class CoinPage extends StatelessWidget {
                             Navigator.pop(context);
                           },
                           child: Icon(Icons.arrow_back_ios_new)),
-                      SizedBox(
-                        width: width / 15,
-                      ),
+                      // SizedBox(
+                      //   width: width / 15,
+                      // ),
                       // SvgPicture.asset('images/btc.svg'),
+                      Image.asset('images/me.png', height: 30,),
+                      SizedBox(
+                        width: width / 45,
+                      ),
                       Text(
                         'Bitcoin',
                         style: TextStyle(
@@ -50,11 +54,11 @@ class CoinPage extends StatelessWidget {
                         style: TextStyle(),
                       ),
                       SizedBox(
-                        width: width / 23,
+                        width: width / 30,
                       ),
                       Icon(Icons.star_border_outlined),
                       SizedBox(
-                        width: width / 6,
+                        width: width / 7,
                       ),
                       GestureDetector(
                           onTap: () {
@@ -142,23 +146,78 @@ class CoinPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(14.0),
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    // crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        '#98,609.74  ',
+                        '\$98,609.74  ',
                         style: TextStyle(
                             fontSize: 27, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        '+1700.254  (9,77%)',
-                        style: TextStyle(color: kPrimaryColor, fontSize: 18),
+                        '+1700.254  (9.77%)',
+                        style: TextStyle(color: kPrimaryColor, fontSize: 18, fontWeight: FontWeight.bold),
                       )
                     ],
                   ),
                 ),
                 SvgPicture.asset('images/group45.svg'),
+                SizedBox(height: height/25,),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        width: width / 8,
+                        height: height / 20,
+                        decoration: BoxDecoration(
+                          color: kPrimaryColor,
+                            borderRadius: BorderRadius.circular(14),
+                            border: Border.all(color: Colors.grey[400])),
+                        child: Center(child: Text('1 H', style: TextStyle(color: Colors.white),)),
+                      ),
+                      Container(
+                        width: width / 8,
+                        height: height / 20,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(14),
+                            border: Border.all(color: Colors.grey[400])),
+                        child: Center(child: Text('24 H')),
+                      ),
+                      Container(
+                        width: width / 8,
+                        height: height / 20,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(14),
+                            border: Border.all(color: Colors.grey[400])),
+                        child: Center(child: Text('1 W')),
+                      ),
+                      Container(
+                        width: width / 8,
+                        height: height / 20,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(14),
+                            border: Border.all(color: Colors.grey[400])),
+                        child: Center(child: Text('1 M')),
+                      ),
+                      Container(
+                        width: width / 8,
+                        height: height / 20,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(14),
+                            border: Border.all(color: Colors.grey[400])),
+                        child: Center(child: Text('6 M')),
+                      ),
+                      Container(
+                        width: width / 8,
+                        height: height / 20,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(14),
+                            border: Border.all(color: Colors.grey[400])),
+                        child: Center(child: Text('1 Y')),
+                      )
+                    ],
+                  ),
                 Padding(
-                  padding: const EdgeInsets.all(18.0),
+                  padding: const EdgeInsets.only(left:18.0, right: 18, top: 18),
                   child: Container(
                       // color: Colors.amber,
                       decoration: BoxDecoration(
@@ -178,8 +237,8 @@ class CoinPage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  '#00.00',
-                                  style: TextStyle(fontSize: 18),
+                                  '\$00.00',
+                                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                                 ),
                                 Text('00.00%')
                               ],
@@ -252,7 +311,7 @@ class CoinPage extends StatelessWidget {
                         textColor: Colors.white,
                         shape: RoundedRectangleBorder(
                             side: BorderSide(
-                                color: kPrimaryColor,
+                                // color: kPrimaryColor,
                                 width: 1,
                                 style: BorderStyle.solid),
                             borderRadius: BorderRadius.circular(5)),

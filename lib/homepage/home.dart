@@ -45,7 +45,8 @@ class HomePage extends StatelessWidget {
                         children: [
                           Text(
                             'Welcome Ben',
-                            style: TextStyle(color: Colors.white, letterSpacing: 0.7),
+                            style: TextStyle(
+                                color: Colors.white, letterSpacing: 0.7),
                           ),
                           Text(
                             'Start Investing now',
@@ -59,7 +60,8 @@ class HomePage extends StatelessWidget {
                             onPressed: () {},
                             child: Text(
                               'Trade Now',
-                              style: TextStyle(color: Colors.black, letterSpacing: 0.7),
+                              style: TextStyle(
+                                  color: Colors.black, letterSpacing: 0.7),
                             ),
                             style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
@@ -74,12 +76,151 @@ class HomePage extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: Text('Trending Coins', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
+                  child: Text(
+                    'Trending Coins',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  ),
                 ),
-                coin(context,  Image.asset('images/me.png'), Text('Bitcoin', style: TextStyle(fontSize: 18),), Text('BTC'), SvgPicture.asset('images/chart.svg'), Text('#2,309.43'), Text('+9.77%', style: TextStyle(color: kPrimaryColor),)),
-                coin(context,  Image.asset('images/me.png'), Text('Bitcoin', style: TextStyle(fontSize: 18),), Text('BTC'), SvgPicture.asset('images/chart.svg'), Text('#2,309.43'), Text('+9.77%', style: TextStyle(color: kPrimaryColor),)),
-                 coin(context,  Image.asset('images/me.png'), Text('Bitcoin', style: TextStyle(fontSize: 18),), Text('BTC'), SvgPicture.asset('images/chart.svg'), Text('#2,309.43'), Text('+9.77%', style: TextStyle(color: kPrimaryColor),)),
-                coin(context,  Image.asset('images/me.png'), Text('Bitcoin', style: TextStyle(fontSize: 18),), Text('BTC'), SvgPicture.asset('images/chart.svg'), Text('#2,309.43'), Text('+9.77%', style: TextStyle(color: kPrimaryColor),))
+                coin(
+                    context,
+                    Image.asset('images/me.png'),
+                    Text(
+                      'Bitcoin',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    Text('BTC'),
+                    SvgPicture.asset('images/chart.svg'),
+                    Text('\$2,309.43', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.7)),
+                    Text(
+                      '+9.77%',
+                      style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold), 
+                    )),
+                coin(
+                    context,
+                    Image.asset('images/me.png'),
+                    Text(
+                      'Bitcoin',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    Text('BTC'),
+                    SvgPicture.asset('images/chart.svg'),
+                    Text('\$2,309.43', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.7)),
+                    Text(
+                      '+9.77%',
+                      style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+                    )),
+                coin(
+                    context,
+                    Image.asset('images/me.png'),
+                    Text(
+                      'Bitcoin',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    Text('BTC'),
+                    SvgPicture.asset('images/chart.svg'),
+                    Text('\$2,309.43', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.7)),
+                    Text(
+                      '+9.77%',
+                      style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+                    )),
+                coin(
+                    context,
+                    Image.asset('images/me.png'),
+                    Text(
+                      'Bitcoin',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    Text('BTC'),
+                    SvgPicture.asset('images/chart.svg'),
+                    Text('\$2,309.43', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.7)),
+                    Text(
+                      '+9.77%',
+                      style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+                    )),
+                coin(
+                    context,
+                    Image.asset('images/me.png'),
+                    Text(
+                      'Bitcoin',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    Text('BTC'),
+                    SvgPicture.asset('images/chart.svg'),
+                    Text('\$2,309.43', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.7)),
+                    Text(
+                      '+9.77%',
+                      style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+                    )),
+                coin(
+                    context,
+                    Image.asset('images/me.png'),
+                    Text(
+                      'Bitcoin',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    Text('BTC'),
+                    SvgPicture.asset('images/chart.svg'),
+                    Text('\$2,309.43', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.7)),
+                    Text(
+                      '+9.77%',
+                      style: TextStyle(color: kPrimaryColor,fontWeight: FontWeight.bold),
+                    )),
+                coin(
+                    context,
+                    Image.asset('images/me.png'),
+                    Text(
+                      'Bitcoin',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    Text('BTC'),
+                    SvgPicture.asset('images/chart.svg'),
+                    Text('\$2,309.43', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.7)),
+                    Text(
+                      '+9.77%',
+                      style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+                    )),
+                coin(
+                    context,
+                    Image.asset('images/me.png'),
+                    Text(
+                      'Bitcoin',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    Text('BTC'),
+                    SvgPicture.asset('images/chart.svg'),
+                    Text('\$2,309.43',style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.7)),
+                    Text(
+                      '+9.77%',
+                      style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+                    )),
+                coin(
+                    context,
+                    Image.asset('images/me.png'),
+                    Text(
+                      'Bitcoin',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    Text('BTC'),
+                    SvgPicture.asset('images/chart.svg'),
+                    Text('\$2,309.43', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.7)),
+                    Text(
+                      '+9.77%',
+                      style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+                    )),
+                coin(
+                    context,
+                    Image.asset('images/me.png'),
+                    Text(
+                      'Bitcoin',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    Text('BTC'),
+                    SvgPicture.asset('images/chart.svg'),
+                    Text('\$2,309.43',style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.7)),
+                    Text(
+                      '+9.77%',
+                      style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+                    ))
               ],
             ),
           ),

@@ -1,3 +1,4 @@
+import 'package:ezopurse/coin/buy_coin.dart';
 import 'package:ezopurse/constant/color.dart';
 import 'package:ezopurse/constant/custom_keyboard.dart';
 import 'package:ezopurse/homepage/home.dart';
@@ -46,17 +47,22 @@ class _SellCoinState extends State<SellCoin> {
                             fontSize: 17, fontWeight: FontWeight.w500),
                       ),
                       SizedBox(width: width/8),
-                      Container(
-                        height: height / 17,
-                        width: width / 4,
-                        decoration: BoxDecoration(
-                            color: Colors.greenAccent,
-                            borderRadius: BorderRadius.circular(19)),
-                        child: Center(
-                            child: Text(
-                          'SELL BTC',
-                          style: TextStyle(color: kPrimaryColor),
-                        )),
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => BuyCoin()));
+                        },
+                        child: Container(
+                          height: height / 17,
+                          width: width / 4,
+                          decoration: BoxDecoration(
+                              color: Colors.greenAccent,
+                              borderRadius: BorderRadius.circular(19)),
+                          child: Center(
+                              child: Text(
+                            'BULL BTC',
+                            style: TextStyle(color: kPrimaryColor),
+                          )),
+                        ),
                       )
                     ],
                   ),

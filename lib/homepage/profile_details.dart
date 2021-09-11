@@ -129,10 +129,10 @@ SizedBox(
                    SizedBox(
                     height: height/10,
                   ),
-                     FlatButton(minWidth: 330, onPressed: (){
+                     FlatButton(minWidth: 330, height: 50, onPressed: (){
                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Login()));
                     }, 
-                    child: Text('Save', style: TextStyle(color: Colors.white),), color: kPrimaryColor,),
+                    child: Text('Save', style: TextStyle(color: Colors.white, fontSize: 20),), color: kPrimaryColor,),
                     // Row(
                     //   mainAxisAlignment: MainAxisAlignment.start,
                     //   children: [

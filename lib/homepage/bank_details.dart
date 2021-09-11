@@ -65,7 +65,7 @@ class BankDetails extends StatelessWidget {
               ),
             )),
              Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.only(left:20.0, right: 20),
               child: Container(
                 height: height/7,
                 decoration: BoxDecoration(
@@ -79,7 +79,7 @@ class BankDetails extends StatelessWidget {
                 ),
               ),
             )),
-            SizedBox(height: height/9,),
+            SizedBox(height: height/5,),
               FlatButton(minWidth: 330, height: height/10,onPressed: (){
                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Login()));
                     }, 

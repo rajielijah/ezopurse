@@ -58,55 +58,59 @@ class PortFolio extends StatelessWidget {
                               letterSpacing: 1,
                               fontSize: 20),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Center(
-                                child: Text(
-                              'Holding value',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 12),
-                            )),
-                            SizedBox(
-                              height: height / 90,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Center(
-                                    child: Text(
-                                  '#2,704.78',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                      fontSize: 27),
-                                )),
-                                SizedBox(
-                                  width: width / 30,
-                                ),
-                                Text(
-                                  '+9.88%',
-                                  style: TextStyle(color: Colors.white),
-                                )
-                              ],
-                            ),
-                          ],
+                        SizedBox(height: 5,),
+                        Padding(
+                          padding: const EdgeInsets.only(left:48.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Holding value',
+                                style:
+                                TextStyle(color: Colors.white, fontSize: 12),
+                              ),
+                              SizedBox(
+                                height: height / 90,
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Center(
+                                      child: Text(
+                                    '\$2509.78',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                        fontSize: 27),
+                                  )),
+                                  SizedBox(
+                                    width: width / 30,
+                                  ),
+                                  Text(
+                                    '+9.88%',
+                                    style: TextStyle(color: Colors.white),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height / 17,
+                          height: MediaQuery.of(context).size.height / 20,
                         ),
                         Row(
                           children: [
                             Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   'Invested value',
                                   style: TextStyle(color: Colors.white),
                                 ),
                                 Text(
-                                  '#1,618.75',
+                                  '\$1,875',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20,
@@ -122,7 +126,7 @@ class PortFolio extends StatelessWidget {
                                   left: 10.0, right: 10.0),
                             ),
                             Column(
-                              //  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
@@ -130,7 +134,7 @@ class PortFolio extends StatelessWidget {
                                   style: TextStyle(color: Colors.white),
                                 ),
                                 Text(
-                                  '#1185',
+                                  '\$1321',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20,
@@ -140,17 +144,18 @@ class PortFolio extends StatelessWidget {
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Text(
                                   'Naira value',
                                   style: TextStyle(color: Colors.white),
                                 ),
                                 Text(
-                                  '#22161875',
+                                  'N2,218,2',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20,
-                                      color: Colors.white),
+                                      color: Colors.black),
                                 )
                               ],
                             ),
@@ -226,7 +231,7 @@ class PortFolio extends StatelessWidget {
                   ),
                   Text('BTC'),
                   SvgPicture.asset('images/chart.svg'),
-                  Text('#2,309.43'),
+                  Text('\$2,509.43', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.7),),
                   Text(
                     '+9.77%',
                     style: TextStyle(color: kPrimaryColor),
@@ -240,7 +245,7 @@ class PortFolio extends StatelessWidget {
                   ),
                   Text('BTC'),
                   SvgPicture.asset('images/chart.svg'),
-                  Text('#2,309.43'),
+                  Text('\$2,509.43', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.7)),
                   Text(
                     '+9.77%',
                     style: TextStyle(color: kPrimaryColor),

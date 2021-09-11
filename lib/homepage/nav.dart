@@ -50,6 +50,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           BottomNavigationBarItem(
             label: 'Portfolio',
             backgroundColor: color,
+            // icon: SvgPicture.asset('images/vector1.svg'),
             icon: ImageIcon(AssetImage('images/vector4.png'))
           ),
           BottomNavigationBarItem(

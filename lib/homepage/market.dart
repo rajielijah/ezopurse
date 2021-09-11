@@ -129,15 +129,18 @@ class Market extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30)),
                             //  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                            primary: Colors.grey[200]
-                            ),
+                            primary: Colors.grey[200]),
                         child: Row(
                           children: [
                             Text(
                               'Market-BTC',
-                              style: TextStyle(color: Colors.black, letterSpacing: 0.7),
+                              style: TextStyle(
+                                  color: Colors.black, letterSpacing: 0.7),
                             ),
-                            Icon(Icons.arrow_drop_down, color: Colors.black,)
+                            Icon(
+                              Icons.arrow_drop_down,
+                              color: Colors.black,
+                            )
                           ],
                         ))
                   ],
@@ -152,9 +155,7 @@ class Market extends StatelessWidget {
                           Container(
                             // color: Colors.blue,
                             constraints: BoxConstraints.expand(height: 50),
-                            child: TabBar(
-                              indicatorColor: kPrimaryColor,
-                              tabs: [
+                            child: TabBar(indicatorColor: kPrimaryColor, tabs: [
                               Tab(
                                 child: Text(
                                   'All',
@@ -172,11 +173,13 @@ class Market extends StatelessWidget {
                                 style: TextStyle(color: Colors.black),
                               )),
                               Tab(
-                                  child: Text('Favourites',
+                                  child: Text('Favorite',
                                       style: TextStyle(color: Colors.black)))
                             ]),
                           ),
-                          SizedBox(height: height/22,),
+                          SizedBox(
+                            height: height / 22,
+                          ),
                           Expanded(
                               child: TabBarView(
                             children: [

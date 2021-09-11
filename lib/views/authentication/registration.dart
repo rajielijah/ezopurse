@@ -43,7 +43,8 @@ class RegistrationPage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        SvgPicture.asset('images/apple.svg', height: height/15,),
+                        // SvgPicture.asset('images/apple.svg', height: height/15,),
+                       Image.asset('images/search.png', height: height/15,),
                         SizedBox(width: width/20,),
                         Text('Continue with Gmail', style: TextStyle(fontSize: 18),),
                       ],
