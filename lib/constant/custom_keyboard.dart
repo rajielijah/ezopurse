@@ -134,7 +134,7 @@ class CustomKeyboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 160,
-      color: Colors.white,
+      // color: Colors.grey[200],
       child: Column(
         children: [
           buildRowOne(),
@@ -285,11 +285,11 @@ class TextKey extends StatelessWidget {
               onTextInput?.call(text);
             },
             child: Container(
-              
               decoration: BoxDecoration(
                 color: Colors.grey[100],
-                border: Border.all(color: Colors.grey[100])),
-              child: Center(child: Text(text, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),)),
+                // border: Border.all(color: Colors.red)
+                ),
+              child: Center(child: Text(text, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 33),)),
             ),
           ),
         ),

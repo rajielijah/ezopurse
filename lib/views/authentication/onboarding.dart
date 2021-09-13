@@ -39,8 +39,8 @@ class Onboarding extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text('Trade BTC conveniently', style: TextStyle(color: kPrimaryColor, fontSize: 20, fontFamily: 'Circular Std', fontWeight: FontWeight.bold, letterSpacing: 0.7),),
-                      Text('Buy and Sell Bitcoin with the \n           click of a button', style: TextStyle(letterSpacing: 0.7, fontFamily: 'Circular Std'),)
+                      Text('Trade BTC conveniently', style: TextStyle(color: kPrimaryColor, fontSize: 20, fontWeight: FontWeight.bold, letterSpacing: 0.7),),
+                      Text('Buy and Sell Bitcoin with the \n           click of a button', style: TextStyle(letterSpacing: 0.7, fontSize: 15),)
                     ],
                   ),
                 ),
