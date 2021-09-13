@@ -48,7 +48,7 @@ class ReceiveCoin extends StatelessWidget {
                   ),
                   SizedBox(height: height/22,),
                   Container(
-                    height: height ,
+                    height: height /1.25,
                     width: width,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -57,21 +57,29 @@ class ReceiveCoin extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(18.0),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        // mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Image.asset('images/me.png'),
+                          SizedBox(height: height/20,),
                           Text(
                             'Scan the QR code to get Receive address',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold),
+                                fontWeight: FontWeight.bold, letterSpacing: 0.7),
                           ),
+
+
+                          SizedBox(height: height/25,),
                           Image.asset('images/y.png'),
-                          Divider(),
+                          // SvgPicture.asset('images/V.png'),
+                          SizedBox(height: height/50,),
+                          Text('-or-'),
+                          SizedBox(height: height/25,),
                           Text(
                             'Your Bitcoin Address',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold),
+                                fontWeight: FontWeight.bold, fontSize: 18),
                           ),
+                          SizedBox(height: height/25,),
                           TextFormField(
                             readOnly: true,
                             decoration: InputDecoration(
@@ -81,7 +89,7 @@ class ReceiveCoin extends StatelessWidget {
                               
                             ),
                           ),
-                                
+                                SizedBox(height: height/25,),
                           FlatButton(
 
                             
@@ -119,10 +127,10 @@ class ReceiveCoin extends StatelessWidget {
                       style: TextStyle(),
                     ),
                   ),
-                  // SizedBox(height: height/22,),
+                  SizedBox(height: height/22,),
                   FlatButton(
-                    minWidth: 330,
-                    height: height / 10,
+                    minWidth: width,
+                    height: height / 15,
                     onPressed: () {
                       Navigator.push(
                           context,

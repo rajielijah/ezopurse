@@ -128,8 +128,8 @@ class SendCoin extends StatelessWidget {
                   ),
                   SizedBox(height: height/22,),
                   FlatButton(
-                    minWidth: 330,
-                    height: height / 10,
+                    minWidth: width,
+                    height: height / 15,
                     onPressed: () {
                       Navigator.push(
                           context,
