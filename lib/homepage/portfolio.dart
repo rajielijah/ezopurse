@@ -42,7 +42,7 @@ class PortFolio extends StatelessWidget {
                       // stops: [0.0, 0.1],
                     ),
                   ),
-                  height: MediaQuery.of(context).size.height / 3,
+                  height: MediaQuery.of(context).size.height / 3.5,
                   width: MediaQuery.of(context).size.width,
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
@@ -142,6 +142,7 @@ class PortFolio extends StatelessWidget {
                                 )
                               ],
                             ),
+                            SizedBox(width: 15,),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -173,7 +174,7 @@ class PortFolio extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     FlatButton(
-                      minWidth: 150,
+                      minWidth: 170,
                       height: 50,
                       onPressed: () {
                         Navigator.push(
@@ -210,7 +211,7 @@ class PortFolio extends StatelessWidget {
                               style: BorderStyle.solid),
                           borderRadius: BorderRadius.circular(5)),
                       color: Colors.white,
-                      minWidth: 150,
+                      minWidth: 170,
                     ),
                   ],
                 ),
@@ -245,11 +246,67 @@ class PortFolio extends StatelessWidget {
                   ),
                   Text('BTC'),
                   SvgPicture.asset('images/chart.svg'),
-                  Text('\$2,509.43', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.7)),
+                  Text('\$2,509.43', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.7),),
                   Text(
                     '+9.77%',
                     style: TextStyle(color: kPrimaryColor),
                   )),
+                  coin(
+                  context,
+                  Image.asset('images/me.png'),
+                  Text(
+                    'Bitcoin',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  Text('BTC'),
+                  SvgPicture.asset('images/chart.svg'),
+                  Text('\$2,509.43', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.7),),
+                  Text(
+                    '+9.77%',
+                    style: TextStyle(color: kPrimaryColor),
+                  )),
+                  // coin(
+                  // context,
+                  // Image.asset('images/me.png'),
+                  // Text(
+                  //   'Bitcoin',
+                  //   style: TextStyle(fontSize: 18),
+                  // ),
+                  // Text('BTC'),
+                  // SvgPicture.asset('images/chart.svg'),
+                  // Text('\$2,509.43', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.7),),
+                  // Text(
+                  //   '+9.77%',
+                  //   style: TextStyle(color: kPrimaryColor),
+                  // )),
+                  // coin(
+                  // context,
+                  // Image.asset('images/me.png'),
+                  // Text(
+                  //   'Bitcoin',
+                  //   style: TextStyle(fontSize: 18),
+                  // ),
+                  // Text('BTC'),
+                  // SvgPicture.asset('images/chart.svg'),
+                  // Text('\$2,509.43', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.7),),
+                  // Text(
+                  //   '+9.77%',
+                  //   style: TextStyle(color: kPrimaryColor),
+                  // )),
+              // coin(
+              //     context,
+              //     Image.asset('images/me.png'),
+              //     Text(
+              //       'Bitcoin',
+              //       style: TextStyle(fontSize: 18),
+              //     ),
+              //     Text('BTC'),
+              //     SvgPicture.asset('images/chart.svg'),
+              //     Text('\$2,509.43', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.7)),
+              //     Text(
+              //       '+9.77%',
+              //       style: TextStyle(color: kPrimaryColor),
+              //     )),
             ],
           ),
         ),

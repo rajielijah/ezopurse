@@ -44,12 +44,28 @@ class ChangePassword extends StatelessWidget {
                    Container(
                   color: Colors.white,
                   padding: EdgeInsets.all(10),
-                  child: passwordField,
+                  child: Column(
+                    children: [
+                      passwordField,
+                      Padding(
+                        padding: const EdgeInsets.only(left:20.0, right:20),
+                        child: Divider(color: Colors.black),
+                      )
+                    ],
+                  ),
                 ),
                 Container(
                   color: Colors.white,
                   padding: EdgeInsets.all(10),
-                  child: repeatPasswordField,
+                  child: Column(
+                    children: [
+                      repeatPasswordField,
+                      Padding(
+                        padding: const EdgeInsets.only(left:20.0, right:20),
+                        child: Divider(color: Colors.black),
+                      )
+                    ],
+                  ),
                 ),
                 SizedBox(height: 20,),
                     

@@ -25,6 +25,7 @@ class Login extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
+                resizeToAvoidBottomInset: false,
         body: Container(
           height: height,
           width: width,
@@ -56,31 +57,50 @@ class Login extends StatelessWidget {
                Container(
                   color: Colors.white,
                   padding: EdgeInsets.all(10),
-                  child: EmailField,
+                  child: Column(
+                    children: [
+                      EmailField,
+                      Padding(
+                        padding: const EdgeInsets.only(left:20.0, right:20),
+                        child: Divider(color: Colors.black),
+                      )
+                    ],
+                  ),
                 ),
                   Container(
                   color: Colors.white,
                   padding: EdgeInsets.all(10),
-                  child: passwordField,
+                  child: Column(
+                    children: [
+                      passwordField,
+                      Padding(
+                        padding: const EdgeInsets.only(left:20.0, right:20),
+                        child: Divider(color: Colors.black),
+                      )
+                    ],
+                  ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                  GestureDetector(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => ForgotPassword()));
-                    },
-                    child: Text('Forget Password?', style: TextStyle(color: kPrimaryColor),)),
-                    SizedBox(width: width/20,),
-                  Text("Don't Have an account?", style: TextStyle(color: kPrimaryColor),),
-                  SizedBox(width: width/100,),
-                  GestureDetector(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => SignUp()));
-                    },
-                    child: Text('Sign Up'),
-                  )
-                ],),
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => ForgotPassword()));
+                      },
+                      child: Text('Forget Password?', style: TextStyle(color: kPrimaryColor),)),
+                      SizedBox(width: width/20,),
+                    Text("Don't Have an account?", style: TextStyle(color: kPrimaryColor),),
+                    SizedBox(width: width/100,),
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => SignUp()));
+                      },
+                      child: Text('Sign Up'),
+                    )
+                  ],),
+                ),
               FlatButton(minWidth: 330, height: 50, onPressed: (){
                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => MyStatefulWidget()));
                   }, 

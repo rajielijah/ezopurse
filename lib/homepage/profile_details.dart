@@ -48,6 +48,7 @@ class ProfileDetails extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
           child: Container(
             child: Padding(
@@ -72,12 +73,20 @@ class ProfileDetails extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    height: height/10,
+                    height: height/15,
                   ),
                   Container(
                     color: Colors.white,
                     padding: EdgeInsets.all(10),
-                    child: EmailField,
+                    child: Column(
+                      children: [
+                        fullNameField,
+                        Padding(
+                        padding: const EdgeInsets.only(left:20.0, right:20),
+                        child: Divider(color: Colors.black),
+                      )
+                      ],
+                    ),
                   ),
                    SizedBox(
                     height: height/40,
@@ -85,7 +94,15 @@ class ProfileDetails extends StatelessWidget {
                    Container(
                     color: Colors.white,
                     padding: EdgeInsets.all(10),
-                    child: fullNameField,
+                    child: Column(
+                      children: [
+                        EmailField,
+                         Padding(
+                        padding: const EdgeInsets.only(left:20.0, right:20),
+                        child: Divider(color: Colors.black),
+                      )
+                      ],
+                    ),
                   ),
 SizedBox(
                     height: height/40,
@@ -94,7 +111,15 @@ SizedBox(
                    Container(
                     color: Colors.white,
                     padding: EdgeInsets.all(10),
-                    child: genderField,
+                    child: Column(
+                      children: [
+                        genderField,
+                         Padding(
+                        padding: const EdgeInsets.only(left:20.0, right:20),
+                        child: Divider(color: Colors.black),
+                      )
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: height/40,
@@ -102,7 +127,15 @@ SizedBox(
                   Container(
                     color: Colors.white,
                     padding: EdgeInsets.all(10),
-                    child: dobNumber,
+                    child: Column(
+                      children: [
+                        dobNumber,
+                         Padding(
+                        padding: const EdgeInsets.only(left:20.0, right:20),
+                        child: Divider(color: Colors.black),
+                      )
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: height/40,
@@ -110,7 +143,15 @@ SizedBox(
                    Container(
                     color: Colors.white,
                     padding: EdgeInsets.all(10),
-                    child: countryField,
+                    child: Column(
+                      children: [
+                        countryField,
+                         Padding(
+                        padding: const EdgeInsets.only(left:20.0, right:20),
+                        child: Divider(color: Colors.black),
+                      )
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: height/40,
@@ -118,7 +159,15 @@ SizedBox(
                   Container(
                     color: Colors.white,
                     padding: EdgeInsets.all(10),
-                    child: passwordField,
+                    child: Column(
+                      children: [
+                        passwordField,
+                         Padding(
+                        padding: const EdgeInsets.only(left:20.0, right:20),
+                        child: Divider(color: Colors.black),
+                      )
+                      ],
+                    ),
                   ),
                   // Container(
                   //   color: Colors.white,

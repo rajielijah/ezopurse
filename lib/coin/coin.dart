@@ -277,7 +277,7 @@ class CoinPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       FlatButton(
-                        minWidth: 150,
+                        minWidth: 170,
                         height: 50,
                         onPressed: () {
                           Navigator.push(
@@ -316,7 +316,7 @@ class CoinPage extends StatelessWidget {
                                 style: BorderStyle.solid),
                             borderRadius: BorderRadius.circular(5)),
                         color: Colors.blue[900],
-                        minWidth: 150,
+                        minWidth: 170,
                       ),
                     ],
                   ),

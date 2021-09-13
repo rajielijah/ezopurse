@@ -17,23 +17,32 @@ class RegistrationPage extends StatelessWidget {
             height: height,
             width: width,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              // mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
                   color: Colors.white,
-                  child: Image.asset('images/logo1.png', height: 320, width: width,)),
-                FlatButton(minWidth: 330, height: 50, onPressed: (){
-                   Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Login()));
-                }, 
-                child: Text('Login', style: TextStyle(fontSize: 18),), color: kPrimaryColor, textColor: Colors.white,),
-                FlatButton(onPressed: (){
+                  child: Image.asset('images/logo1.png', height: height/1.5, width: width,)),
+                  SizedBox(height: height/15,),
+                Column(
+                  // // crossAxisAlignment: CrossAxisAlignment.center,
+                  // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    FlatButton(minWidth: 330, height: 40, onPressed: (){
+                       Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Login()));
+                    }, 
+                    child: Text('Login', style: TextStyle(fontSize: 18),), color: kPrimaryColor, textColor: Colors.white,),
+                     SizedBox(height: height/25,),
+                     FlatButton(onPressed: (){
                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => SignUp()));
                 }, 
-                      height: 50,
+                      height: 40,
                       child: Text('Sign Up', style: TextStyle(fontSize: 18),), textColor: kPrimaryColor, 
                       shape: RoundedRectangleBorder(side: BorderSide(color: kPrimaryColor,width: 1, style: BorderStyle.solid),borderRadius: BorderRadius.circular(5)), 
                       color: Colors.white, minWidth: 330,),
-                Divider(thickness: 2,),
+                  ],
+                ),
+               
+                // Divider(thickness: 2,),
                 // Container(
                 //   width: width/1.09,
                 //   color: Colors.white,

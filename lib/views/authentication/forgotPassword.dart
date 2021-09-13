@@ -39,7 +39,15 @@ class ForgotPassword extends StatelessWidget {
                    Container(
                       color: Colors.white,
                       padding: EdgeInsets.only(left:10),
-                      child: EmailField,
+                      child: Column(
+                        children: [
+                          EmailField,
+                          Padding(
+                        padding: const EdgeInsets.only(left:20.0, right:20),
+                        child: Divider(color: Colors.black),
+                      )
+                        ],
+                      ),
                     ),
                                       SizedBox(height: height/32,),
                     Padding(
