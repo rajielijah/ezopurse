@@ -34,43 +34,43 @@ class RegistrationPage extends StatelessWidget {
                       shape: RoundedRectangleBorder(side: BorderSide(color: kPrimaryColor,width: 1, style: BorderStyle.solid),borderRadius: BorderRadius.circular(5)), 
                       color: Colors.white, minWidth: 330,),
                 Divider(thickness: 2,),
-                Container(
-                  width: width/1.09,
-                  color: Colors.white,
-                  child: FlatButton(minWidth: 330,onPressed: (){},  height: 50,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left:18.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        // SvgPicture.asset('images/apple.svg', height: height/15,),
-                       Image.asset('images/search.png', height: height/15,),
-                        SizedBox(width: width/20,),
-                        Text('Continue with Gmail', style: TextStyle(fontSize: 18),),
-                      ],
-                    ),
-                  ),
-                        shape: RoundedRectangleBorder(side: BorderSide(color: kPrimaryColor,width: 1, style: BorderStyle.solid),borderRadius: BorderRadius.circular(5)),
-                  ),
-                ),
-                Container(
-                  width: width/1.08,
-                  color: Colors.white,
-                  child: FlatButton(minWidth: 330,onPressed: (){}, height: 50, 
-                  child: Padding(
-                    padding: const EdgeInsets.only(left:18.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                         SvgPicture.asset('images/apple.svg', height: height/15,),
-                         SizedBox(width: width/20,),
-                        Text('Continue with Apple', style: TextStyle(fontSize: 18),),
-                      ],
-                    ),
-                  ),
-                        shape: RoundedRectangleBorder(side: BorderSide(color: kPrimaryColor,width: 1, style: BorderStyle.solid),borderRadius: BorderRadius.circular(5)),
-                  ),
-                ),
+                // Container(
+                //   width: width/1.09,
+                //   color: Colors.white,
+                //   child: FlatButton(minWidth: 330,onPressed: (){},  height: 50,
+                //   child: Padding(
+                //     padding: const EdgeInsets.only(left:18.0),
+                //     child: Row(
+                //       mainAxisAlignment: MainAxisAlignment.start,
+                //       children: [
+                //         // SvgPicture.asset('images/apple.svg', height: height/15,),
+                //        Image.asset('images/search.png', height: height/15,),
+                //         SizedBox(width: width/20,),
+                //         Text('Continue with Gmail', style: TextStyle(fontSize: 18),),
+                //       ],
+                //     ),
+                //   ),
+                //         shape: RoundedRectangleBorder(side: BorderSide(color: kPrimaryColor,width: 1, style: BorderStyle.solid),borderRadius: BorderRadius.circular(5)),
+                //   ),
+                // ),
+                // Container(
+                //   width: width/1.08,
+                //   color: Colors.white,
+                //   child: FlatButton(minWidth: 330,onPressed: (){}, height: 50, 
+                //   child: Padding(
+                //     padding: const EdgeInsets.only(left:18.0),
+                //     child: Row(
+                //       mainAxisAlignment: MainAxisAlignment.start,
+                //       children: [
+                //          SvgPicture.asset('images/apple.svg', height: height/15,),
+                //          SizedBox(width: width/20,),
+                //         Text('Continue with Apple', style: TextStyle(fontSize: 18),),
+                //       ],
+                //     ),
+                //   ),
+                //         shape: RoundedRectangleBorder(side: BorderSide(color: kPrimaryColor,width: 1, style: BorderStyle.solid),borderRadius: BorderRadius.circular(5)),
+                //   ),
+                // ),
                 ],
             ),           
       ),

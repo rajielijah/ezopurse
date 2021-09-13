@@ -58,7 +58,7 @@ class CoinPage extends StatelessWidget {
                       ),
                       Icon(Icons.star_border_outlined),
                       SizedBox(
-                        width: width / 7,
+                        width: width / 5,
                       ),
                       GestureDetector(
                           onTap: () {
@@ -116,7 +116,7 @@ class CoinPage extends StatelessWidget {
                                           ),
                                         ),
                                         FlatButton(
-                                          minWidth: 330,
+                                          minWidth: width,
                                           height: height / 10,
                                           onPressed: () {
                                             Navigator.push(

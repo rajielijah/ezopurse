@@ -102,7 +102,7 @@ class Market extends StatelessWidget {
                                         child: Text('No new market'),
                                       ),
                                       FlatButton(
-                                        minWidth: 330,
+                                        minWidth: width,
                                         height: height / 10,
                                         onPressed: () {
                                           Navigator.push(

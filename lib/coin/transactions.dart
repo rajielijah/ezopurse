@@ -50,6 +50,7 @@ class Transaction extends StatelessWidget {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8)),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       // SvgPicture.asset('images/btc.svg'),
                       Image.asset('images/me.png'),
@@ -81,6 +82,7 @@ class Transaction extends StatelessWidget {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8)),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       // SvgPicture.asset('images/btc.svg'),
                       Image.asset('images/me.png'),
