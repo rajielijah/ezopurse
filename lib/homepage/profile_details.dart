@@ -10,189 +10,228 @@ class ProfileDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final EmailField = TextFormField(
+    final nameField = TextFormField(
       autofocus: false,
-      decoration: buildInputDecoration("Email",),
+      maxLines: 1,
+      minLines: 1,
+      decoration: InputDecoration(
+          contentPadding: new EdgeInsets.symmetric(),
+          enabledBorder: OutlineInputBorder(
+              borderSide: new BorderSide(color: Colors.grey[200])),
+          hintText: 'Ben Tom'),
     );
 
-    final fullNameField = TextFormField(
+    final emailField = TextFormField(
       autofocus: false,
-      decoration: buildInputDecoration("Full Name",),
+      maxLines: 1,
+      minLines: 1,
+      decoration: InputDecoration(
+          contentPadding: new EdgeInsets.symmetric(),
+          enabledBorder: OutlineInputBorder(
+              borderSide: new BorderSide(color: Colors.grey[200])),
+          hintText: 'Bentom@gmail.com'),
     );
-
     final genderField = TextFormField(
       autofocus: false,
-      decoration: buildInputDecoration("Gender",),
+      maxLines: 1,
+      minLines: 1,
+      decoration: InputDecoration(
+          contentPadding: new EdgeInsets.symmetric(),
+          enabledBorder: OutlineInputBorder(
+              borderSide: new BorderSide(color: Colors.grey[200])),
+          hintText: 'Male'),
     );
-       final dobNumber = TextFormField(
+    final dobNumber = TextFormField(
       autofocus: false,
       // obscureText: true,
       // validator: (value) =>
       //     value.isEmpty ? "Please enter a Valid Phone Number" : null,
-     decoration: buildInputDecoration("D.O.B",),
+      maxLines: 1,
+      minLines: 1,
+      decoration: InputDecoration(
+          contentPadding: new EdgeInsets.symmetric(),
+          enabledBorder: OutlineInputBorder(
+              borderSide: new BorderSide(color: Colors.grey[200])),
+          hintText: '11/12/1987'),
     );
 
-      final countryField = TextFormField(
+    final countryField = TextFormField(
       autofocus: false,
-      decoration: buildInputDecoration("Country",),
+      maxLines: 1,
+      minLines: 1,
+      decoration: InputDecoration(
+          contentPadding: new EdgeInsets.symmetric(),
+          enabledBorder: OutlineInputBorder(
+              borderSide: new BorderSide(color: Colors.grey[200])),
+          hintText: 'Nigeria'),
     );
 
-      final passwordField = TextFormField(
-      autofocus: false,
-      obscureText: true,
-      validator: (value) => value.isEmpty ? "Please enter password" : null,
-      decoration: buildInputDecoration("Password", ),
-    );
-
-     var height = MediaQuery.of(context).size.height;
+    var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
           child: Container(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(28.0),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       GestureDetector(
-                    onTap: (){
-                      Navigator.pop(context);
-                    },
-                    child: GestureDetector(
-                      onTap: (){
-                        Navigator.pop(context);
-                      },
-                      child: Icon(Icons.arrow_back, ))),
-                      SizedBox(width: 20,),
-                      Text('Profile details', style: TextStyle(color: kPrimaryColor,  fontWeight: FontWeight.bold, fontSize: 23),)
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Icon(
+                            Icons.arrow_back,
+                          )),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text(
+                        'Profile details',
+                        style: TextStyle(
+                            color: kPrimaryColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 23),
+                      )
                     ],
                   ),
-                  SizedBox(
-                    height: height/15,
-                  ),
-                  Container(
-                    color: Colors.white,
-                    padding: EdgeInsets.all(10),
+                ),
+                // SizedBox(
+                //   height: height/15,
+                // ),
+
+                Container(
+                  width: width,
+                  color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        fullNameField,
-                        Padding(
-                        padding: const EdgeInsets.only(left:20.0, right:20),
-                        child: Divider(color: Colors.black),
-                      )
+                        Text('Full name',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18)),
+                        Container(
+                          color: Colors.white,
+                          padding: EdgeInsets.only(top: 10),
+                          child: Column(
+                            children: [
+                              nameField,
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: height / 40,
+                        ),
+                        Text('Email',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18)),
+                        Container(
+                          color: Colors.white,
+                          padding: EdgeInsets.only(top: 10),
+                          child: Column(
+                            children: [
+                              emailField,
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: height / 40,
+                        ),
+                        Text('Gender',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18)),
+                        Container(
+                          color: Colors.white,
+                          padding: EdgeInsets.only(top: 10),
+                          child: Column(
+                            children: [
+                              genderField,
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: height / 40,
+                        ),
+                        Text('D.O.B',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18)),
+                        Container(
+                          color: Colors.white,
+                          padding: EdgeInsets.only(top: 10),
+                          child: Column(
+                            children: [
+                              dobNumber,
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: height / 40,
+                        ),
+                        Text('Country',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18)),
+                        Container(
+                          color: Colors.white,
+                          padding: EdgeInsets.only(top: 10),
+                          child: Column(
+                            children: [
+                              countryField,
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: height / 40,
+                        ),
                       ],
                     ),
                   ),
-                   SizedBox(
-                    height: height/40,
-                  ),
-                   Container(
-                    color: Colors.white,
-                    padding: EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        EmailField,
-                         Padding(
-                        padding: const EdgeInsets.only(left:20.0, right:20),
-                        child: Divider(color: Colors.black),
-                      )
-                      ],
+                ),
+
+                // Container(
+                //   color: Colors.white,
+                //   padding: EdgeInsets.only(top:10),
+                //   child: repeatPasswordField,
+                // ),
+                // SizedBox(height: 20,),
+                //  SizedBox(
+                //   height: height/10,
+                // ),
+                Padding(
+                  padding: const EdgeInsets.all(28.0),
+                  child: FlatButton(
+                    minWidth: 330,
+                    height: 50,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => Login()));
+                    },
+                    child: Text(
+                      'Save',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
+                    color: kPrimaryColor,
                   ),
-SizedBox(
-                    height: height/40,
-                  ),
-                  
-                   Container(
-                    color: Colors.white,
-                    padding: EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        genderField,
-                         Padding(
-                        padding: const EdgeInsets.only(left:20.0, right:20),
-                        child: Divider(color: Colors.black),
-                      )
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: height/40,
-                  ),
-                  Container(
-                    color: Colors.white,
-                    padding: EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        dobNumber,
-                         Padding(
-                        padding: const EdgeInsets.only(left:20.0, right:20),
-                        child: Divider(color: Colors.black),
-                      )
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: height/40,
-                  ),
-                   Container(
-                    color: Colors.white,
-                    padding: EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        countryField,
-                         Padding(
-                        padding: const EdgeInsets.only(left:20.0, right:20),
-                        child: Divider(color: Colors.black),
-                      )
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: height/40,
-                  ),
-                  Container(
-                    color: Colors.white,
-                    padding: EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        passwordField,
-                         Padding(
-                        padding: const EdgeInsets.only(left:20.0, right:20),
-                        child: Divider(color: Colors.black),
-                      )
-                      ],
-                    ),
-                  ),
-                  // Container(
-                  //   color: Colors.white,
-                  //   padding: EdgeInsets.all(10),
-                  //   child: repeatPasswordField,
-                  // ),
-                  // SizedBox(height: 20,),
-                   SizedBox(
-                    height: height/10,
-                  ),
-                     FlatButton(minWidth: 330, height: 50, onPressed: (){
-                       Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Login()));
-                    }, 
-                    child: Text('Save', style: TextStyle(color: Colors.white, fontSize: 20),), color: kPrimaryColor,),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.start,
-                    //   children: [
-                    //   Text('Have an Account?', style: TextStyle(color: kPrimaryColor),),
-                    //   SizedBox(width: 10,),
-                    //   GestureDetector(child: Text('Sign in'), onTap: (){
-                    //     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Login()));
-                    //   })
-                    // ],)
-                ],
-              ),
+                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.start,
+                //   children: [
+                //   Text('Have an Account?', style: TextStyle(color: kPrimaryColor),),
+                //   SizedBox(width: 10,),
+                //   GestureDetector(child: Text('Sign in'), onTap: (){
+                //     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Login()));
+                //   })
+                // ],)
+              ],
             ),
           ),
         ),

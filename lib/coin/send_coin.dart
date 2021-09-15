@@ -22,21 +22,10 @@ class SendCoin extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: Icon(Icons.arrow_back_ios))),
-                      SizedBox(
-                        width: 20,
-                      ),
+                     
                       Text(
                         'Send Bitcoin',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                       )
                     ],
                   ),
@@ -85,33 +74,73 @@ class SendCoin extends StatelessWidget {
                       padding: const EdgeInsets.all(18.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        // mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Text(
                             'Enter Address',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
+                           SizedBox(
+                    height: 10,
+                  ),
                           TextFormField(
+                             maxLines: 1,
+                              minLines: 1,
                             decoration:
-                                InputDecoration(border: OutlineInputBorder()),
+                                InputDecoration( 
+                                   contentPadding: new EdgeInsets.symmetric(),
+                                  enabledBorder: OutlineInputBorder(
+       borderSide: new BorderSide(color: Colors.grey[200])
+    ),),
                           ),
+                           SizedBox(
+                    height: height/20,
+                  ),
                           Text(
                             'Amount',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
+                           SizedBox(
+                    height: 10,
+                  ),
                           TextFormField(
+                           maxLines: 1,
+                              minLines: 1,
                             decoration:
-                                InputDecoration(border: OutlineInputBorder()),
+                                InputDecoration( 
+                                   contentPadding: new EdgeInsets.symmetric(),
+                                   enabledBorder: OutlineInputBorder(
+       borderSide: new BorderSide(color: Colors.grey[200])
+    ),),
                           ),
+                           SizedBox(
+                    height: height/20,
+                  ),
                           Text(
                             'Note',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
+                           SizedBox(
+                    height: 10,
+                  ),
                           TextFormField(
+                            maxLines: 1,
+                              minLines: 1,
                             decoration:
-                                InputDecoration(border: OutlineInputBorder()),
+                                InputDecoration( 
+                                   contentPadding: new EdgeInsets.symmetric(),
+                                  
+                                  enabledBorder: OutlineInputBorder(
+       borderSide: new BorderSide(color: Colors.grey[200])
+    ),),
                           ),
+                           SizedBox(
+                    height: height/20,
+                  ),
                           Text('Transaction fees: 0.0006 BTC'),
+                           SizedBox(
+                    height:10,
+                  ),
                           Text('Min: 0.00061 BTC - Max: 2.0006 BTC')
                         ],
                       ),
@@ -130,6 +159,9 @@ class SendCoin extends StatelessWidget {
                   FlatButton(
                     minWidth: width,
                     height: height / 15,
+                     shape: RoundedRectangleBorder(
+                       borderRadius: BorderRadius.circular(30)
+                     ),
                     onPressed: () {
                       Navigator.push(
                           context,
@@ -142,6 +174,7 @@ class SendCoin extends StatelessWidget {
                     ),
                     color: kPrimaryColor,
                   ),
+                   
                 ],
               ),
             ),

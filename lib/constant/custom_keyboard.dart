@@ -133,13 +133,24 @@ class CustomKeyboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 160,
+   decoration: BoxDecoration(
+      boxShadow: [
+      BoxShadow(
+        color: Colors.transparent,
+        offset: Offset.zero
+      ),
+    ],
+   ),
+      height: 200,
       // color: Colors.grey[200],
       child: Column(
         children: [
           buildRowOne(),
+          SizedBox(height: 10,),
           buildRowTwo(),
+          SizedBox(height: 10,),
           buildRowThree(),
+           SizedBox(height: 10,),         
           buildRowFour()
         ],
       ),
@@ -279,14 +290,14 @@ class TextKey extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(1.0),
         child: Material(
-          color: Colors.blue.shade300,
+          // color: Colors.blue.shade300,
           child: InkWell(
             onTap: () {
               onTextInput?.call(text);
             },
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.grey[100],
+                color: Colors.white,
                 // border: Border.all(color: Colors.red)
                 ),
               child: Center(child: Text(text, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 33),)),
@@ -315,14 +326,14 @@ class BackspaceKey extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(1.0),
         child: Material(
-          color: Colors.grey[100],
+          color: Colors.white,
           child: InkWell(
             onTap: () {
               onBackspace?.call();
             },
             child: Container(
               child: Center(
-                child: Icon(Icons.backspace),
+                child: Icon(Icons.backspace_outlined),
               ),
             ),
           ),

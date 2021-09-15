@@ -1,6 +1,8 @@
 
+import 'package:ezopurse/constant/color.dart';
 import 'package:ezopurse/homepage/bank_details.dart';
 import 'package:ezopurse/homepage/profile_details.dart';
+import 'package:ezopurse/views/authentication/login.dart';
 import 'package:ezopurse/widget/profile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -23,42 +25,57 @@ class Profile extends StatelessWidget {
               children: [
                 Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        gradient: LinearGradient(
-                          colors: [
-                            const Color(0xFF5DD35D),
-                            const Color(0xFF5DD35D)
+                child: Stack(
+                  alignment: Alignment.bottomRight,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: LinearGradient(
+                              colors: [
+                                const Color(0xFF5DD35D),
+                                const Color(0xFF5DD35D)
+                              ],
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                              // stops: [0.0, 0.1],
+                            ),
+                          ),
+                      height: MediaQuery.of(context).size.height / 3.5,
+                          width: MediaQuery.of(context).size.width,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                           Stack(
+                             alignment: Alignment.bottomRight,
+                             children: [
+                               CircleAvatar(
+                                 backgroundColor: kPrimaryColor,
+                                 child: Image.asset('images/ellips6.png'), radius: 40,),
+                               Positioned(
+                                //  top: 22,
+                                 child: Icon(Icons.camera_alt_outlined, color: Colors.white,))
+                             ],
+                           ),
+                           Text('Ben Tom', style: TextStyle(color: Colors.white, fontWeight:FontWeight.w500, fontSize: 20),),
+                           Text('Bentom@gmail.com', style: TextStyle(color: Colors.white),),
+                           Text('+2341 9977118', style: TextStyle(color: Colors.white,),)
                           ],
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                          // stops: [0.0, 0.1],
                         ),
                       ),
-                  height: MediaQuery.of(context).size.height / 3,
-                      width: MediaQuery.of(context).size.width,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                       Stack(
-                         alignment: Alignment.bottomRight,
-                         children: [
-                           CircleAvatar(child: Image.asset('images/ellips6.png'), radius: 40,),
-                           Positioned(
-                            //  top: 22,
-                             child: Icon(Icons.camera_alt_outlined, color: Colors.white,))
-                         ],
-                       ),
-                       Text('Ben Tom', style: TextStyle(color: Colors.white, fontWeight:FontWeight.w500, fontSize: 20),),
-                       Text('Bentom@gmail.com', style: TextStyle(color: Colors.white),),
-                       Text('+2341 9977118', style: TextStyle(color: Colors.white,),)
-                      ],
                     ),
-                  ),
+                    Positioned(
+                      bottom: 20,
+                      left: 10,
+                      child: Image.asset('images/l.png')),
+                    Positioned(
+                      left: 10,
+                      bottom: 70,
+                      child: Image.asset('images/ls.png'))
+                  ],
                 ),
               ),
               GestureDetector(
@@ -75,7 +92,24 @@ class Profile extends StatelessWidget {
               profile(context, SvgPicture.asset('images/vector16.svg'), Text('Security', style: TextStyle(fontSize:19, fontWeight: FontWeight.w500),), Icon(Icons.arrow_forward_ios_sharp)),
               profile(context, SvgPicture.asset('images/vector14.svg'), Text('Help and Support', style: TextStyle(fontSize:19, fontWeight: FontWeight.w500),), Icon(Icons.arrow_forward_ios_sharp)),
               profile(context, SvgPicture.asset('images/Group.svg'), Text('Terms and Conditions', style: TextStyle(fontSize:19, fontWeight: FontWeight.w500),), Icon(Icons.arrow_forward_ios_sharp)),
-
+               Padding(
+    padding: const EdgeInsets.only(left:20.0, right: 20),
+    child: Column(
+      children: [
+        GestureDetector(
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Login()));
+          },
+          child: ListTile(
+            leading: SvgPicture.asset('images/or.svg'),
+            title: Text('Logout', style: TextStyle(fontSize:19, fontWeight: FontWeight.w500),)),
+        ),
+         
+        
+        
+      ],
+    ),
+  )
               ],
             ),
           ),

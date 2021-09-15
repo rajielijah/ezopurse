@@ -23,32 +23,19 @@ class ReceiveCoin extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: Icon(
-                                Icons.arrow_back_ios
-                              ))),
-                      SizedBox(
-                        width: 20,
-                      ),
+                     
                       Text(
                         'Receive Bitcoin',
                         style: TextStyle(
                             fontWeight: FontWeight.w400,
-                            fontSize: 21
+                            fontSize: 20
                             ),
                       )
                     ],
                   ),
                   SizedBox(height: height/22,),
                   Container(
-                    height: height /1.25,
+                    height: height /1.12,
                     width: width,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -131,6 +118,9 @@ class ReceiveCoin extends StatelessWidget {
                   FlatButton(
                     minWidth: width,
                     height: height / 15,
+                     shape: RoundedRectangleBorder(
+                       borderRadius: BorderRadius.circular(30)
+                     ),
                     onPressed: () {
                       Navigator.push(
                           context,
@@ -138,7 +128,7 @@ class ReceiveCoin extends StatelessWidget {
                               builder: (BuildContext context) => HomePage()));
                     },
                     child: Text(
-                      'SHARE ADDRESS',
+                      'RECEIVE BTC',
                       style: TextStyle(color: Colors.white, fontSize: 17),
                     ),
                     color: kPrimaryColor,

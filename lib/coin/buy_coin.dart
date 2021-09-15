@@ -2,6 +2,7 @@ import 'package:ezopurse/coin/sell_coin.dart';
 import 'package:ezopurse/constant/color.dart';
 import 'package:ezopurse/constant/custom_keyboard.dart';
 import 'package:ezopurse/homepage/home.dart';
+import 'package:ezopurse/homepage/proof.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -25,48 +26,12 @@ class _BuyCoinState extends State<BuyCoin> {
         resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
           child: Container(
+            color: Colors.white,
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 // mainAxisAlignment: MainAxisAlignment.spaceEv,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Icon(Icons.arrow_back_ios_new)),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Text(
-                        'Buy Bitcoin  (BTC)',
-                        style: TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.w500),
-                      ),
-                                            SizedBox(width: width/6),
-                      GestureDetector(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> SellCoin()));
-                        },
-                        child: Container(
-                          height: height / 17,
-                          width: width / 4,
-                          decoration: BoxDecoration(
-                              color: Colors.pink[100],
-                              borderRadius: BorderRadius.circular(19)),
-                          child: Center(
-                              child: Text(
-                            'SELL BTC',
-                            style: TextStyle(color: Colors.red[600]),
-                          )),
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: height / 17),
                   Text('Enter Amount in BTC'),
                   SizedBox(height: height / 27),
                   Center(
@@ -86,30 +51,36 @@ class _BuyCoinState extends State<BuyCoin> {
                       readOnly: _readOnly,
                     ),
                   ),
-                  SizedBox(
-                    height: height / 17,
+                  // SizedBox(
+                  //   height: height / 17,
+                  // ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Min \$100 - Max \$10,00000'),
+                      Text('Value (N):  N10,000')
+                    ],
                   ),
-                  Text('Min \$100 - Max \$10,00000'),
                   // SizedBox(
                   //   height: height / 12,
                   // ),
                   Padding(
-                    padding: const EdgeInsets.all(40),
+                    padding: const EdgeInsets.all(20),
                     child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Current Balance: ',
+                          'Rate: ',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                              fontWeight: FontWeight.bold, fontSize: 15),
                         ),
                         Text(
-                          ' \$10,000',
+                          ' 530',
                           style: TextStyle(
-                              color: kPrimaryColor,
+                              color: Colors.blue,
                               fontWeight: FontWeight.bold,
-                              fontSize: 20),
+                              fontSize: 15),
                         )
                       ],
                     ),
@@ -117,62 +88,62 @@ class _BuyCoinState extends State<BuyCoin> {
                   // SizedBox(
                   //   height: height / 20,
                   // ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        width: width / 8,
-                        height: height / 20,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(color: Colors.grey[400])),
-                        child: Center(child: Text('0 %')),
-                      ),
-                      Container(
-                        width: width / 8,
-                        height: height / 20,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(color: Colors.grey[400])),
-                        child: Center(child: Text('10 %')),
-                      ),
-                      Container(
-                        width: width / 8,
-                        height: height / 20,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(color: Colors.grey[400])),
-                        child: Center(child: Text('25 %')),
-                      ),
-                      Container(
-                        width: width / 8,
-                        height: height / 20,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(color: Colors.grey[400])),
-                        child: Center(child: Text('50 %')),
-                      ),
-                      Container(
-                        width: width / 8,
-                        height: height / 20,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(color: Colors.grey[400])),
-                        child: Center(child: Text('75 %')),
-                      ),
-                      Container(
-                        width: width / 8,
-                        height: height / 20,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(color: Colors.grey[400])),
-                        child: Center(child: Text('100 %')),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: height / 12,
-                  ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  //   children: [
+                  //     Container(
+                  //       width: width / 8,
+                  //       height: height / 20,
+                  //       decoration: BoxDecoration(
+                  //           borderRadius: BorderRadius.circular(14),
+                  //           border: Border.all(color: Colors.grey[400])),
+                  //       child: Center(child: Text('0 %')),
+                  //     ),
+                  //     Container(
+                  //       width: width / 8,
+                  //       height: height / 20,
+                  //       decoration: BoxDecoration(
+                  //           borderRadius: BorderRadius.circular(14),
+                  //           border: Border.all(color: Colors.grey[400])),
+                  //       child: Center(child: Text('10 %')),
+                  //     ),
+                  //     Container(
+                  //       width: width / 8,
+                  //       height: height / 20,
+                  //       decoration: BoxDecoration(
+                  //           borderRadius: BorderRadius.circular(14),
+                  //           border: Border.all(color: Colors.grey[400])),
+                  //       child: Center(child: Text('25 %')),
+                  //     ),
+                  //     Container(
+                  //       width: width / 8,
+                  //       height: height / 20,
+                  //       decoration: BoxDecoration(
+                  //           borderRadius: BorderRadius.circular(14),
+                  //           border: Border.all(color: Colors.grey[400])),
+                  //       child: Center(child: Text('50 %')),
+                  //     ),
+                  //     Container(
+                  //       width: width / 8,
+                  //       height: height / 20,
+                  //       decoration: BoxDecoration(
+                  //           borderRadius: BorderRadius.circular(14),
+                  //           border: Border.all(color: Colors.grey[400])),
+                  //       child: Center(child: Text('75 %')),
+                  //     ),
+                  //     Container(
+                  //       width: width / 8,
+                  //       height: height / 20,
+                  //       decoration: BoxDecoration(
+                  //           borderRadius: BorderRadius.circular(14),
+                  //           border: Border.all(color: Colors.grey[400])),
+                  //       child: Center(child: Text('100 %')),
+                  //     )
+                  //   ],
+                  // ),
+                  // SizedBox(
+                  //   height: height / 12,
+                  // ),
                   CustomKeyboard(
                     onTextInput: (myText) {
                       _insertText(myText);
@@ -186,12 +157,14 @@ class _BuyCoinState extends State<BuyCoin> {
                   ),
                   FlatButton(
                     minWidth: 330,
-                    height: height / 10,
+                    height: height / 15,
+                    shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
                     onPressed: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (BuildContext context) => HomePage()));
+                              builder: (BuildContext context) => Proof()));
                     },
                     child: Text(
                       'BUY',

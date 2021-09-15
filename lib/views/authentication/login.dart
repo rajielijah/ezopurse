@@ -10,103 +10,179 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final EmailField = TextFormField(
+    final EmailField = TextFormField(
+      
       autofocus: false,
-      decoration: buildInputDecoration("Email",),
+       maxLines: 1,
+      minLines: 1,
+      decoration: InputDecoration(
+       
+      contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
+     enabledBorder: OutlineInputBorder(
+       borderSide: new BorderSide(color: Colors.grey[200])
+    ),
+    
+  ),
     );
 
-  final passwordField = TextFormField(
+    final passwordField = TextFormField(
       autofocus: false,
       obscureText: true,
       validator: (value) => value.isEmpty ? "Please enter password" : null,
-      decoration: buildInputDecoration("Password", ),
+       maxLines: 1,
+      minLines: 1,
+      decoration: InputDecoration(
+      contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
+   enabledBorder: OutlineInputBorder(
+       borderSide: new BorderSide(color: Colors.grey[200])
+    ),
+  ),
     );
-     var height = MediaQuery.of(context).size.height;
+    var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-                resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: false,
         body: Container(
           height: height,
           width: width,
-          child: Padding(
-            padding: const EdgeInsets.all(14.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                GestureDetector(
-                  onTap: (){
-                    Navigator.pop(context);
-                  },
-                  child: Icon(Icons.arrow_back_ios, )), 
-                SizedBox(width: 10,),
-                Text('Let me sign you in', style: TextStyle(color: kPrimaryColor, fontSize: 18),)
-              ],),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Icon(
+                          Icons.arrow_back_ios,
+                        )),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Kindly login to your account',
+                      style: TextStyle(color: kPrimaryColor, fontSize: 18),
+                    )
+                  ],
+                ),
+              ),
               Container(
                 height: 220,
                 width: 343,
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8)
+                    // color: Colors.white,
+                    borderRadius: BorderRadius.circular(8)),
+                child: Image(
+                  image: AssetImage('images/61.png'),
                 ),
-                child: Image(image: AssetImage('images/61.png'),),
               ),
-               Container(
-                  color: Colors.white,
-                  padding: EdgeInsets.all(10),
+              Container(
+                width: width,
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(18.0),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      EmailField,
-                      Padding(
-                        padding: const EdgeInsets.only(left:20.0, right:20),
-                        child: Divider(color: Colors.black),
-                      )
+                      Text('Email',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15)),
+                      Container(
+                        color: Colors.white,
+                        padding: EdgeInsets.only(top: 10),
+                        child: Column(
+                          children: [
+                            EmailField,
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: height / 40,
+                      ),
+                      Text('Password',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15)),
+                      Container(
+                        color: Colors.white,
+                        padding: EdgeInsets.only(top: 10),
+                        child: Column(
+                          children: [
+                            passwordField,
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
-                  Container(
-                  color: Colors.white,
-                  padding: EdgeInsets.all(10),
-                  child: Column(
-                    children: [
-                      passwordField,
-                      Padding(
-                        padding: const EdgeInsets.only(left:20.0, right:20),
-                        child: Divider(color: Colors.black),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+              ),
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Row(
+                  // mainAxisAlignment: MainAxisAlignment.start,
+
+                  children: [
                     GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => ForgotPassword()));
-                      },
-                      child: Text('Forget Password?', style: TextStyle(color: kPrimaryColor),)),
-                      SizedBox(width: width/20,),
-                    Text("Don't Have an account?", style: TextStyle(color: kPrimaryColor),),
-                    SizedBox(width: width/100,),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      ForgotPassword()));
+                        },
+                        child: Text(
+                          'Forget Password?',
+                          style: TextStyle(color: Colors.black),
+                        )),
+                    SizedBox(
+                      width: width / 20,
+                    ),
+                    Text(
+                      "Don't Have an account?",
+                      style: TextStyle(color: kPrimaryColor),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
                     GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => SignUp()));
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) => SignUp()));
                       },
                       child: Text('Sign Up'),
                     )
-                  ],),
+                  ],
                 ),
-              FlatButton(minWidth: 330, height: 50, onPressed: (){
-                     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => MyStatefulWidget()));
-                  }, 
-                  child: Text('Login', style: TextStyle(color: Colors.white),), color: kPrimaryColor,),
-            ],),
-          ),      
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FlatButton(
+                  minWidth: 330,
+                  height: 50,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30)),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                MyStatefulWidget()));
+                  },
+                  child: Text(
+                    'Login',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  color: kPrimaryColor,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
