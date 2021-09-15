@@ -16,7 +16,7 @@ class SignUp extends StatelessWidget {
       decoration: InputDecoration(
       contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
     enabledBorder: OutlineInputBorder(
-       borderSide: new BorderSide(color: Colors.grey[200])
+       borderSide: new BorderSide(color: Colors.black)
     ),
     
   ),
@@ -29,7 +29,7 @@ class SignUp extends StatelessWidget {
       decoration: InputDecoration(
       contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
    enabledBorder: OutlineInputBorder(
-       borderSide: new BorderSide(color: Colors.grey[200])
+       borderSide: new BorderSide(color: Colors.black)
     ),
     
   ),
@@ -42,7 +42,7 @@ class SignUp extends StatelessWidget {
       decoration: InputDecoration(
       contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
     enabledBorder: OutlineInputBorder(
-       borderSide: new BorderSide(color: Colors.grey[200])
+       borderSide: new BorderSide(color: Colors.black)
     ),
     
   ),);
@@ -56,7 +56,7 @@ class SignUp extends StatelessWidget {
       decoration: InputDecoration(
       contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
    enabledBorder: OutlineInputBorder(
-       borderSide: new BorderSide(color: Colors.grey[200])
+       borderSide: new BorderSide(color: Colors.black)
     ),
   ),
     );
@@ -70,7 +70,7 @@ class SignUp extends StatelessWidget {
       decoration: InputDecoration(
       contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
    enabledBorder: OutlineInputBorder(
-       borderSide: new BorderSide(color: Colors.grey[200])
+       borderSide: new BorderSide(color: Colors.black)
     ),
     
   ),
@@ -85,7 +85,7 @@ class SignUp extends StatelessWidget {
       decoration: InputDecoration(
       contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
    enabledBorder: OutlineInputBorder(
-       borderSide: new BorderSide(color: Colors.grey[200])
+       borderSide: new BorderSide(color: Colors.black)
     ),
     
   ),

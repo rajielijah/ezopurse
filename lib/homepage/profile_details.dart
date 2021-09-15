@@ -17,7 +17,7 @@ class ProfileDetails extends StatelessWidget {
       decoration: InputDecoration(
           contentPadding: new EdgeInsets.symmetric(),
           enabledBorder: OutlineInputBorder(
-              borderSide: new BorderSide(color: Colors.grey[200])),
+              borderSide: new BorderSide(color: Colors.black)),
           hintText: 'Ben Tom'),
     );
 
@@ -28,7 +28,7 @@ class ProfileDetails extends StatelessWidget {
       decoration: InputDecoration(
           contentPadding: new EdgeInsets.symmetric(),
           enabledBorder: OutlineInputBorder(
-              borderSide: new BorderSide(color: Colors.grey[200])),
+              borderSide: new BorderSide(color: Colors.black)),
           hintText: 'Bentom@gmail.com'),
     );
     final genderField = TextFormField(
@@ -38,7 +38,7 @@ class ProfileDetails extends StatelessWidget {
       decoration: InputDecoration(
           contentPadding: new EdgeInsets.symmetric(),
           enabledBorder: OutlineInputBorder(
-              borderSide: new BorderSide(color: Colors.grey[200])),
+              borderSide: new BorderSide(color: Colors.black)),
           hintText: 'Male'),
     );
     final dobNumber = TextFormField(
@@ -51,7 +51,7 @@ class ProfileDetails extends StatelessWidget {
       decoration: InputDecoration(
           contentPadding: new EdgeInsets.symmetric(),
           enabledBorder: OutlineInputBorder(
-              borderSide: new BorderSide(color: Colors.grey[200])),
+              borderSide: new BorderSide(color: Colors.black)),
           hintText: '11/12/1987'),
     );
 
@@ -62,7 +62,7 @@ class ProfileDetails extends StatelessWidget {
       decoration: InputDecoration(
           contentPadding: new EdgeInsets.symmetric(),
           enabledBorder: OutlineInputBorder(
-              borderSide: new BorderSide(color: Colors.grey[200])),
+              borderSide: new BorderSide(color: Colors.black)),
           hintText: 'Nigeria'),
     );
 
