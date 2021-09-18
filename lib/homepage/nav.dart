@@ -48,7 +48,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items:  <BottomNavigationBarItem>[
            BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             label: 'Home',
@@ -57,8 +57,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           BottomNavigationBarItem(
             label: 'Trade',
             backgroundColor: color,
-            // icon: SvgPicture.asset('images/vector1.svg'),
-            icon: ImageIcon(AssetImage('images/trade.png'))
+            icon: SvgPicture.asset('images/vector1.svg'),
+            // icon: ImageIcon(AssetImage('images/trade.png'))
           ),
           BottomNavigationBarItem(
            icon: ImageIcon(AssetImage('images/ve.png')),
