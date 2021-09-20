@@ -7,5 +7,7 @@ class BaseService{
 
   static final String forgotPassword = rootEndpoint + '/api/auth/forgot-password';
   static final String viewAllTransaction = rootEndpoint + '/api/btc/transactions/lists' ;
-  static final String sendBTC = rootEndpoint + '/api/btc/send/btc'
+  static final String sendBTC = rootEndpoint + '/api/btc/send/btc';
+  static final String addBank = rootEndpoint + '/api/add/account/60417a267999dd000435b98a';
+
 }

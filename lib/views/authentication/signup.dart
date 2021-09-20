@@ -219,7 +219,7 @@ class _SignUpState extends State<SignUp> {
                               SizedBox(
                                 height: height / 40,
                               ),
-                              Text('Full Name',
+                              Text('First Name',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold, fontSize: 15)),
                               Container(
@@ -237,7 +237,7 @@ class _SignUpState extends State<SignUp> {
                               SizedBox(
                                 height: height / 40,
                               ),
-                              Text('Gender',
+                              Text('Last Name',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold, fontSize: 15)),
                               Container(
@@ -255,24 +255,24 @@ class _SignUpState extends State<SignUp> {
                               SizedBox(
                                 height: height / 40,
                               ),
-                              Text('Phone Number',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 15)),
-                              Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Colors.white,
-                                ),
-                                padding: EdgeInsets.only(top: 10),
-                                child: Column(
-                                  children: [
-                                    phoneNumber,
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                height: height / 40,
-                              ),
+                              // Text('Phone Number',
+                              //     style: TextStyle(
+                              //         fontWeight: FontWeight.bold, fontSize: 15)),
+                              // Container(
+                              //   decoration: BoxDecoration(
+                              //     borderRadius: BorderRadius.circular(10),
+                              //     color: Colors.white,
+                              //   ),
+                              //   padding: EdgeInsets.only(top: 10),
+                              //   child: Column(
+                              //     children: [
+                              //       phoneNumber,
+                              //     ],
+                              //   ),
+                              // ),
+                              // SizedBox(
+                              //   height: height / 40,
+                              // ),
                               Text('Password',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold, fontSize: 15)),

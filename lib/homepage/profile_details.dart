@@ -13,9 +13,9 @@ class ProfileDetails extends StatefulWidget {
 }
 
 class _ProfileDetailsState extends State<ProfileDetails> {
-  
-
-
+  TextEditingController emailController = TextEditingController();
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final nameField = TextFormField(

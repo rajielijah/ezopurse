@@ -1,35 +1,31 @@
 import 'dart:convert';
 
-AddBankModel addBankModelFromJson(String str) => AddBankModel.fromJson(json.decode(str));
+ProfileModel profileModelFromJson(String str) => ProfileModel.fromJson(json.decode(str));
 
-String addBankModelToJson(AddBankModel data) => json.encode(data.toJson());
+String profileModelToJson(ProfileModel data) => json.encode(data.toJson());
 
-class AddBankModel {
-    AddBankModel({
-        this.status,
-        this.message,
-        this.user,
+class ProfileModel {
+    ProfileModel({
+        this.success,
+        this.data,
     });
 
-    int status;
-    String message;
-    User user;
+    bool success;
+    Data data;
 
-    factory AddBankModel.fromJson(Map<String, dynamic> json) => AddBankModel(
-        status: json["status"],
-        message: json["message"],
-        user: User.fromJson(json["user"]),
+    factory ProfileModel.fromJson(Map<String, dynamic> json) => ProfileModel(
+        success: json["success"],
+        data: Data.fromJson(json["data"]),
     );
 
     Map<String, dynamic> toJson() => {
-        "status": status,
-        "message": message,
-        "user": user.toJson(),
+        "success": success,
+        "data": data.toJson(),
     };
 }
 
-class User {
-    User({
+class Data {
+    Data({
         this.accountInfo,
         this.referralCode,
         this.btcWalletAmount,
@@ -55,7 +51,7 @@ class User {
     DateTime createdAt;
     DateTime updatedAt;
 
-    factory User.fromJson(Map<String, dynamic> json) => User(
+    factory Data.fromJson(Map<String, dynamic> json) => Data(
         accountInfo: AccountInfo.fromJson(json["accountInfo"]),
         referralCode: json["referralCode"],
         btcWalletAmount: json["btc_wallet_amount"],

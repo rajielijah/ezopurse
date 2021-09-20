@@ -1,11 +1,23 @@
 import 'package:ezopurse/constant/color.dart';
+import 'package:ezopurse/model/core/user_model.dart';
+import 'package:ezopurse/model/services/get_user.dart';
 import 'package:ezopurse/widget/coin_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomePage extends StatelessWidget {
-  // const HomePage({ Key? key }) : super(key: key);
+var clientName;
 
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+class _HomePageState extends State<HomePage> {
+  Future<ProfileModel> user;
+  @override
+  void initState() {
+    user = UserApi.instance.getUser();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -45,13 +57,19 @@ class HomePage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
+                              clientName != null ?
                               Text(
-                                'Welcome Ben',
+                                'Welcome + $clientName',
+                                overflow: TextOverflow.fade,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
                                     letterSpacing: 0.7),
-                              ),
+                              ): FutureBuilder(
+                                future: user,
+                                builder: (context, snapshot) {
+                                  clientName = snapshot.data;
+                                  return Text('Welcome + $clientName');}),
                               Text('BTC Value', style: TextStyle(color: Colors.white),),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.end,

@@ -32,7 +32,7 @@ Future<Map<String, dynamic>> login(String email, String password)  async {
       'password': password
   };
   print(loginData);
-   _loggedInStatus = Status.Authenticating;
+  //  _loggedInStatus = Status.Authenticating;
   notifyListeners();
   Response response = await post(
     Uri.parse(BaseService.loginRoot),
