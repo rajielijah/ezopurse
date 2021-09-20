@@ -25,13 +25,14 @@ class RegisterProvider with ChangeNotifier{
   Status get registeredInStatus => _registeredInStatus;
 
   Future<Map<String, dynamic>> register(String firstName, String lastName,
-      String email, String password, String passwordConfirmation) async{
+      String email, String password, String passwordConfirmation, bool terms) async{
         final Map<String, dynamic> registerData = {
           'firstName': firstName,
       'lastName': lastName,
       'email': email,
       'password': password,
       'password_confirmation': passwordConfirmation,
+      'terms': true
         };
       return await post(Uri.parse(BaseService.regiserRoot),
           body: json.encode(registerData),

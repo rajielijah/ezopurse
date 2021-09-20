@@ -14,7 +14,7 @@ class AddBankProvider with ChangeNotifier {
     };
     print(addBankData);
     notifyListeners();
-    Response response = await post(Uri.parse(BaseService.loginRoot),
+    Response response = await post(Uri.parse(BaseService.addBank),
     body: json.encode(addBankData), headers: {
        'Content-Type': 'application/json',
     }).catchError((e){
@@ -32,7 +32,6 @@ class AddBankProvider with ChangeNotifier {
         };
       }
       else {
-        
         result = {
           'status': false,
           'message': 'Failed'

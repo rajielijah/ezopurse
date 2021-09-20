@@ -23,10 +23,9 @@ class _SignUpState extends State<SignUp> {
   String _firstName,
       _lastName,
       _email,
-      _phoneNumber,
       _password,
       _confirmPassword;
-
+bool  _terms;
   @override
   Widget build(BuildContext context) {
     final EmailField = TextFormField(
@@ -65,20 +64,20 @@ class _SignUpState extends State<SignUp> {
             OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
       ),
     );
-    final phoneNumber = TextFormField(
-      autofocus: false,
-      // obscureText: true,
-      validator: (value) =>
-          value.isEmpty ? "Please enter a Valid Phone Number" : null,
-      maxLines: 1,
-      minLines: 1,
-      onSaved: (value) => _phoneNumber = value,
-      decoration: InputDecoration(
-        contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
-        enabledBorder:
-            OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
-      ),
-    );
+    // final phoneNumber = TextFormField(
+    //   autofocus: false,
+    //   // obscureText: true,
+    //   validator: (value) =>
+    //       value.isEmpty ? "Please enter a Valid Phone Number" : null,
+    //   maxLines: 1,
+    //   minLines: 1,
+    //   onSaved: (value) => _phoneNumber = value,
+    //   decoration: InputDecoration(
+    //     contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
+    //     enabledBorder:
+    //         OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
+    //   ),
+    // );
 
     final passwordField = TextFormField(
       autofocus: false,
@@ -121,7 +120,7 @@ class _SignUpState extends State<SignUp> {
         form.save();
         RegisterProvider()
             .register(
-                _firstName, _lastName, _email, _password, _confirmPassword)
+                _firstName, _lastName, _email, _password, _confirmPassword, _terms)
             .then((response) {
           print('we want to know $response');
           if (response['status']) {
