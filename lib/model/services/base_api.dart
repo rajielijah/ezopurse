@@ -3,4 +3,9 @@ class BaseService{
 
   static final String loginRoot = rootEndpoint + "/api/auth/login";
   static final String regiserRoot = rootEndpoint + "/api/register";
+  // static final String profileRoot = root 
+
+  static final String forgotPassword = rootEndpoint + '/api/auth/forgot-password';
+  static final String viewAllTransaction = rootEndpoint + '/api/btc/transactions/lists' ;
+  static final String sendBTC = rootEndpoint + '/api/btc/send/btc'
 }

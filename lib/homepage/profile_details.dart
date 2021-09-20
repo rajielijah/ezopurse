@@ -5,8 +5,16 @@ import 'package:ezopurse/views/authentication/login.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
-class ProfileDetails extends StatelessWidget {
+class ProfileDetails extends StatefulWidget {
   // const ({ Key? key }) : super(key: key);
+
+  @override
+  _ProfileDetailsState createState() => _ProfileDetailsState();
+}
+
+class _ProfileDetailsState extends State<ProfileDetails> {
+  
+
 
   @override
   Widget build(BuildContext context) {

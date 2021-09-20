@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 
 class UserPreferences {
-  Future<bool> saveUser(Login logins) async {
+  Future<bool> saveUser(LoginModel logins) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
     prefs.setString("email", logins.email);
@@ -12,10 +12,10 @@ class UserPreferences {
     return prefs.commit();
   }
 
-  Future<Login> getUser() async {
+  Future<LoginModel> getUser() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     String email = prefs.getString("email");
-    return Login(
+    return LoginModel(
       email: email,
     );
   }

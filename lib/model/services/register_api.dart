@@ -33,7 +33,7 @@ class RegisterProvider with ChangeNotifier{
       'password': password,
       'password_confirmation': passwordConfirmation,
         };
-      return await post(Uri.parse(BaseService.regiserRoot,),
+      return await post(Uri.parse("https://ihsapi.herokuapp.com/api/authenticate/register_user"),
           body: json.encode(registerData),
           headers: {'Content-Type': 'application/json'}
       ).then(onValue).catchError(onError);

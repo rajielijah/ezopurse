@@ -17,7 +17,7 @@ enum Status {
 class LoginProvider with ChangeNotifier {
    Status _loggedInStatus = Status.NotLoggedIn;
    Status get loggedInStatus => _loggedInStatus;
-   Login logins;
+   LoginModel logins;
    bool logining = false;
   void checkloginactivity(bool loginings) {
     logining = loginings;
@@ -35,42 +35,59 @@ Future<Map<String, dynamic>> login(String email, String password)  async {
    _loggedInStatus = Status.Authenticating;
   notifyListeners();
   Response response = await post(
-    Uri.parse("https://ihsapi.herokuapp.com/api/authenticate/login"),
+    Uri.parse(BaseService.loginRoot),
   body: json.encode(loginData),
     headers: {
         'Content-Type': 'application/json',
       },
-  );
- if (response.statusCode == 200) {
+  ).catchError((e){
+    print('na you dey give us $e');
+  });
+   if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = json.decode(response.body);
-  print('this is $responseData');
-      var userData = responseData['user'];
-      Login authUser = Login.fromJson(userData);
-      var thisData = authUser.toJson();
-      print(thisData);
-      print('authUser ${authUser.toJson()}');
-      if (authUser.isLoggedIn  == true) {
-        print('weewe wewe');
-        print('userData ${authUser.toJson()}');
-        UserPreferences().saveUser(Login.fromJson(userData));
-        var currentUser = Login.fromJson(responseData);
-        _loggedInStatus = Status.LoggedIn;
-        notifyListeners();
-        result = {
-          'status': true,
-          'message': 'Successfuls',
-          'user': Login.fromJson(userData)
-        };
-      } else {
-        _loggedInStatus = Status.NotLoggedIn;
-        notifyListeners();
-        result = {
-          'status': false,
-          'message': json.decode(response.body)['message']
-        };
-      }
-}
+    LoginModel authUser = LoginModel.fromJson(responseData);
+    print('pastor $responseData');
+print('know as e dey go ${authUser.toJson()}');
+      _loggedInStatus = Status.LoggedIn;
+      notifyListeners();
+    result = {'status': true, 'message': 'Successful', 'user': LoginModel.fromJson(responseData)};
+   }
+   else{
+      _loggedInStatus = Status.NotLoggedIn;
+      notifyListeners();
+      result = {
+        'status': false,
+        'message': json.decode(response.body)['error']
+      };
+   }
+
   return result;
-}
 
 }
+}
+// if (response.statusCode == 200) {
+//       final Map<String, dynamic> responseData = json.decode(response.body);
+
+//       var userData = responseData;
+//       LoginModel authUser = LoginModel.fromJson(userData);
+//       // var thisData = authUser.toJson();
+//       print('authUser ${authUser.toJson()}');
+//       if (responseData['isLoggedIn']  == true) {
+//         // print('userData ${authUser.toJson()}');
+//         // var currentUser = Login.fromJson(responseData);
+//         _loggedInStatus = Status.LoggedIn;
+//         notifyListeners();
+//         result = {
+//           'status': true,
+//           'message': 'Successfuls',
+//           'user': LoginModel.fromJson(responseData)
+//         };
+//       } else {
+//         _loggedInStatus = Status.NotLoggedIn;
+//         notifyListeners();
+//         result = {
+//           'status': false,
+//           'message': json.decode(response.body)['message']
+//         };
+//       }
+// }}}
