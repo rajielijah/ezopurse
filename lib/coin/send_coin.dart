@@ -28,7 +28,7 @@ class _SendCoinState extends State<SendCoin> {
        Provider.of<SendProvider>(context, listen: false).sendBtc
        (_address, _amount).then((responseData){
          print('responseData');
-          if(responseData['status']){
+          if(responseData['success'] == true ){
             print('done');
           }else{
             Flushbar(

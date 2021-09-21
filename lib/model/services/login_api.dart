@@ -6,6 +6,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 enum Status {
   NotLoggedIn,
@@ -45,6 +46,12 @@ Future<Map<String, dynamic>> login(String email, String password)  async {
   });
    if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = json.decode(response.body);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString('token', responseData['token']);
+      print('Just want to knoe ${responseData["token"]}');
+         SharedPreferences pref = await SharedPreferences.getInstance();
+      await pref.setString('id', responseData["user"]["_id"]);
+      print('Just want to knoe ${responseData["user"]["_id"]}');
     LoginModel authUser = LoginModel.fromJson(responseData);
     print('pastor $responseData');
 print('know as e dey go ${authUser.toJson()}');
@@ -62,9 +69,7 @@ print('know as e dey go ${authUser.toJson()}');
    }
 
   return result;
-
-}
-}
+}}
 // if (response.statusCode == 200) {
 //       final Map<String, dynamic> responseData = json.decode(response.body);
 

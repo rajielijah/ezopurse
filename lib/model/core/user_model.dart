@@ -26,7 +26,6 @@ class ProfileModel {
 
 class Data {
     Data({
-        this.accountInfo,
         this.referralCode,
         this.btcWalletAmount,
         this.id,
@@ -39,7 +38,6 @@ class Data {
         this.updatedAt,
     });
 
-    AccountInfo accountInfo;
     String referralCode;
     String btcWalletAmount;
     String id;
@@ -52,7 +50,6 @@ class Data {
     DateTime updatedAt;
 
     factory Data.fromJson(Map<String, dynamic> json) => Data(
-        accountInfo: AccountInfo.fromJson(json["accountInfo"]),
         referralCode: json["referralCode"],
         btcWalletAmount: json["btc_wallet_amount"],
         id: json["_id"],
@@ -66,7 +63,6 @@ class Data {
     );
 
     Map<String, dynamic> toJson() => {
-        "accountInfo": accountInfo.toJson(),
         "referralCode": referralCode,
         "btc_wallet_amount": btcWalletAmount,
         "_id": id,
@@ -77,33 +73,5 @@ class Data {
         "user": user,
         "createdAt": createdAt.toIso8601String(),
         "updatedAt": updatedAt.toIso8601String(),
-    };
-}
-
-class AccountInfo {
-    AccountInfo({
-        this.accountNumber,
-        this.bankName,
-        this.accountName,
-        this.bvn,
-    });
-
-    String accountNumber;
-    String bankName;
-    String accountName;
-    String bvn;
-
-    factory AccountInfo.fromJson(Map<String, dynamic> json) => AccountInfo(
-        accountNumber: json["accountNumber"],
-        bankName: json["bankName"],
-        accountName: json["accountName"],
-        bvn: json["bvn"],
-    );
-
-    Map<String, dynamic> toJson() => {
-        "accountNumber": accountNumber,
-        "bankName": bankName,
-        "accountName": accountName,
-        "bvn": bvn,
     };
 }

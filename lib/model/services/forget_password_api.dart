@@ -14,7 +14,7 @@ Future<Map<String, dynamic>> forgotPassword(String email) async {
       'email': email,
     };
     print(forgotPasswordData);
-    Response response = await post(
+    Response response = await patch(
      Uri.parse( BaseService.forgotPassword),
       body: json.encode(forgotPasswordData),
       headers: {'Content-Type': 'application/json'},

@@ -5,7 +5,7 @@ import 'package:ezopurse/model/services/faq_api.dart';
 import 'package:flutter/foundation.dart';
 
 class FaqProvider with ChangeNotifier {
-  List<FaqModel> faq = [];
+  FaqModel faq;
   String message = '';
 
   FaqProvider() {

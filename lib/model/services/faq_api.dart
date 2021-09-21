@@ -15,8 +15,7 @@ class FaqApi {
     }
     return _instance;
   }
-
-  Future<List<FaqModel>> getAllFaq() async {
+  Future<FaqModel> getAllFaq() async {
     // SharedPreferences prefs = await SharedPreferences.getInstance();
   // String token = prefs.getString('token');
     final response = await http.get(Uri.parse(BaseService.getFaq), headers: {
@@ -26,11 +25,10 @@ class FaqApi {
 
     if (response.statusCode == 200) {
       print(response.body);
-
-      List<dynamic> decoded = jsonDecode(response.body);
+      final decoded = jsonDecode(response.body);
       print('This is it $decoded');
-      List<FaqModel> result = convertJsonToFaqModelList(response.body);
-      print("This is the $result");
+    FaqModel result = FaqModel.fromJson(decoded);
+      print("This is the ${result.faqs[1].question}");
       return result;
     } else {
       throw Exception('Failed to load post');

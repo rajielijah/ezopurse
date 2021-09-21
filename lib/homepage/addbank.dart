@@ -1,5 +1,6 @@
 import 'package:ezopurse/constant/color.dart';
 import 'package:ezopurse/constant/textfield.dart';
+import 'package:ezopurse/homepage/bank_details.dart';
 import 'package:ezopurse/homepage/home.dart';
 import 'package:ezopurse/homepage/nav.dart';
 import 'package:ezopurse/model/services/add_bank_details.dart';
@@ -16,7 +17,7 @@ class AddBank extends StatefulWidget {
 class _AddBankState extends State<AddBank> {
    final formKey = new GlobalKey<FormState>();
 
-  String _accountNumber, _accountName, _bankName;
+  String _accountNumber, _accountName, _bankName, _bvn;
 
   @override
   Widget build(BuildContext context) {
@@ -72,11 +73,11 @@ class _AddBankState extends State<AddBank> {
         if(form.validate()){
           form.save();
           Provider.of<AddBankProvider>(context, listen: false).addBank
-          (_accountNumber, _bankName, _accountName).then((responseData){
+          (_accountNumber, _bankName, _accountName, _bvn).then((responseData){
            print(responseData);
             if(responseData['status']){
               Navigator.pushReplacement(context, MaterialPageRoute(
-                builder: (_) => HomePage()));
+                builder: (_) => BankDetails()));
             }
             else{
                Flushbar(

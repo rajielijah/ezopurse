@@ -1,18 +1,38 @@
 
 import 'package:ezopurse/constant/color.dart';
 import 'package:ezopurse/homepage/bank_details.dart';
+import 'package:ezopurse/homepage/faqs.dart';
+import 'package:ezopurse/homepage/home.dart';
 import 'package:ezopurse/homepage/notifications.dart';
 import 'package:ezopurse/homepage/profile_details.dart';
 import 'package:ezopurse/homepage/security.dart';
 import 'package:ezopurse/homepage/terms.dart';
+import 'package:ezopurse/model/core/user_model.dart';
+import 'package:ezopurse/model/services/get_user.dart';
 import 'package:ezopurse/views/authentication/login.dart';
 import 'package:ezopurse/widget/profile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Profile extends StatelessWidget {
+var name;
+var email;
+
+class Profile extends StatefulWidget {
   // const Profile({ Key? key }) : super(key: key);
 // 
+  @override
+  _ProfileState createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  Future<ProfileModel> profileModel;
+
+  @override
+  void initState(){
+    super.initState();
+    profileModel =  UserApi.instance.getUser();
+  }
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -46,29 +66,36 @@ class Profile extends StatelessWidget {
                           ),
                       height: MediaQuery.of(context).size.height / 3.5,
                           width: MediaQuery.of(context).size.width,
-                      child: Padding(
+                      child: 
+                      name != null ?
+                              Text('')
+                      :Padding(
                         padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                           Stack(
-                             alignment: Alignment.bottomRight,
-                             children: [
-                               CircleAvatar(
-                                 backgroundColor: kPrimaryColor,
-                                 child: Image.asset('images/ellips6.png'), radius: 40,),
-                               Positioned(
-                                //  top: 22,
-                                 child: Icon(Icons.camera_alt_outlined, color: Colors.white,))
-                             ],
-                           ),
-                           Text('Ben Tom', style: TextStyle(color: Colors.white, fontWeight:FontWeight.w500, fontSize: 20),),
-                           Text('Bentom@gmail.com', style: TextStyle(color: Colors.white),),
-                           Text('+2341 9977118', style: TextStyle(color: Colors.white,),)
-                          ],
-                        ),
-                      ),
+                        child: FutureBuilder<ProfileModel>(
+                          future: profileModel,
+                          builder: (context, snapshot){
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                             Stack(
+                               alignment: Alignment.bottomRight,
+                               children: [
+                                 CircleAvatar(
+                                   backgroundColor: kPrimaryColor,
+                                   child: Image.asset('images/ellips6.png'), radius: 40,),
+                                 Positioned(
+                                  //  top: 22,
+                                   child: Icon(Icons.camera_alt_outlined, color: Colors.white,))
+                               ],
+                             ),
+                             Text("${snapshot.data.data.firstName} ${snapshot.data.data.lastName}", style: TextStyle(color: Colors.white, fontWeight:FontWeight.w500, fontSize: 20),),
+                             Text(snapshot.data.data.email, style: TextStyle(color: Colors.white),),
+                            //  Text('+2341 9977118', style: TextStyle(color: Colors.white,),)
+                            ],
+                          );
+                          }),
+                      )
                     ),
                     Positioned(
                       bottom: 20,
@@ -101,7 +128,11 @@ class Profile extends StatelessWidget {
                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Security()));
                 },
                 child: profile(context, SvgPicture.asset('images/vector16.svg'), Text('Security', style: TextStyle(fontSize:19, fontWeight: FontWeight.w500),), Icon(Icons.arrow_forward_ios_sharp))),
-              // profile(context, SvgPicture.asset('images/vector14.svg'), Text('Help and Support', style: TextStyle(fontSize:19, fontWeight: FontWeight.w500),), Icon(Icons.arrow_forward_ios_sharp)),
+              GestureDetector(
+                  onTap: (){
+                   Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => FAQs()));
+                },
+                child: profile(context, SvgPicture.asset('images/vector14.svg'), Text('FAQs', style: TextStyle(fontSize:19, fontWeight: FontWeight.w500),), Icon(Icons.arrow_forward_ios_sharp))),
               GestureDetector(
                 onTap: (){
                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Terms()));
@@ -125,6 +156,7 @@ class Profile extends StatelessWidget {
       ),
     );
   }
+
   showAlertDialog(BuildContext context) {
   // set up the buttons
   Widget logoutButton = FlatButton(

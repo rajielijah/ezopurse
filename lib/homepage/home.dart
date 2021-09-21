@@ -12,10 +12,10 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 class _HomePageState extends State<HomePage> {
-  Future<ProfileModel> user;
+  Future<String> user;
   @override
   void initState() {
-    user = UserApi.instance.getUser();
+    user = UserApi.instance.getFirstName();
     super.initState();
   }
   @override
@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               clientName != null ?
                               Text(
-                                'Welcome + $clientName',
+                                'Welcome $clientName',
                                 overflow: TextOverflow.fade,
                                 style: TextStyle(
                                     color: Colors.white,
@@ -69,7 +69,11 @@ class _HomePageState extends State<HomePage> {
                                 future: user,
                                 builder: (context, snapshot) {
                                   clientName = snapshot.data;
-                                  return Text('Welcome + $clientName');}),
+                                  return Text('Welcome ${snapshot.data}', style: TextStyle(
+                                     color: Colors.white,
+                                    fontSize: 18,
+                                    letterSpacing: 0.7
+                                  ),);}),
                               Text('BTC Value', style: TextStyle(color: Colors.white),),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.end,
