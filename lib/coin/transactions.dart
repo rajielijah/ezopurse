@@ -25,172 +25,179 @@ class _TransactionState extends State<Transaction> {
     var width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        body: Container(
-          child: Column(
-
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(18.0),
-                child: Text(
-                  'Transactions',
-                  style:
-                      TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
-                ),
-              ),
-              // SizedBox(
-              //   height: height / 20,
-              // ),
-              FutureBuilder(
-                future: transactionModel,
-                builder: (context, snapshot){
-                return ListView.builder(
-                  itemCount: snapshot.data,
-                  itemBuilder: (context, index){
-                  return Container(
-                    height: height / 7,
-                    width: width ,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(18.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          // SvgPicture.asset('images/btc.svg'),
-                          Image.asset('images/me.png', height: height,),
-                          // SvgPicture.asset('images/cb.svg'),
-                          SizedBox(width: 10,),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Bitcoin', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),), Text('Amount: 5.485 BTC'), Text('Price: \$ 24.39 ')
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Text('Total:\$133.316', style: TextStyle(fontSize: 20,)), Text('27 May, 09:28 AM'), Text('Successfully Completed', style: TextStyle(color: kPrimaryColor),)
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  );
-                  });
-                }),
-               SizedBox(
-                height: height / 40,
-              ),
-             Container(
-                height: height / 7,
-                width: width ,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8)),
-                child: Padding(
+        body: SingleChildScrollView(
+          child: Container(
+            child: Column(
+        
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
                   padding: const EdgeInsets.all(18.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      // SvgPicture.asset('images/btc.svg'),
-                      Image.asset('images/me.png', height: height,),
-                      SizedBox(width: 10,),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Bitcoin', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),), Text('Amount: 5.485 BTC'), Text('Price: \$ 24.39 ')
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text('Total:\$133.316', style: TextStyle(fontSize: 20,)), Text('27 May, 09:28 AM'), Text('Successfully Completed', style: TextStyle(color: kPrimaryColor),)
-                        ],
-                      )
-                    ],
+                  child: Text(
+                    'Transactions',
+                    style:
+                        TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
                   ),
                 ),
-              ),
-               
-              SizedBox(height: height/40,),
-              Container(
-                height: height / 7,
-                width: width ,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8)),
-                child: Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      // SvgPicture.asset('images/btc.svg'),
-                      Image.asset('images/me.png', height: height,),
-                      SizedBox(width: 10,),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Bitcoin', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),), Text('Amount: 5.485 BTC'), Text('Price: \$ 24.39 ')
-                        ],
+                // SizedBox(
+                //   height: height / 20,
+                // ),
+                FutureBuilder<TransactionModel>(
+                  future: transactionModel,
+                  builder: (context, snapshot){
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: snapshot.data.result.length,
+                    itemBuilder: (context, index){
+                    return Container(
+                      height: height / 7,
+                      width: width ,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(18.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            // SvgPicture.asset('images/btc.svg'),
+                            Image.asset('images/me.png', height: height,),
+                            // SvgPicture.asset('images/cb.svg'),
+                            SizedBox(width: 10,),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('Bitcoin', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),), 
+                                Text("${snapshot.data.result[index].txList[index].amount}"), 
+                                Text('Price: \$ 24.39 ')
+                              ],
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text('Total:\$133.316', style: TextStyle(fontSize: 20,)), 
+                                Text("${snapshot.data.result[index].txList[index].time}"), 
+                                Text(snapshot.data.result[index].txList[index].type, style: TextStyle(color: kPrimaryColor),)
+                              ],
+                            )
+                          ],
+                        ),
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text('Total:\$133.316', style: TextStyle(fontSize: 20,)), Text('27 May, 09:28 AM'), Text('Successfully Completed', style: TextStyle(color: kPrimaryColor),)
-                        ],
-                      )
-                    ],
-                  ),
+                    );
+                    });
+                  }),
+                 SizedBox(
+                  height: height / 40,
                 ),
-              ),
-               SizedBox(
-                height: height / 40,
-              ),
-              Container(
-                height: height / 7,
-                width: width ,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8)),
-                child: Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      // SvgPicture.asset('images/btc.svg'),
-                      Image.asset('images/me.png', height: height,),
-                      SizedBox(width: 10,),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Bitcoin', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),), Text('Amount: 5.485 BTC'), Text('Price: \$ 24.39 ')
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text('Total:\$133.316', style: TextStyle(fontSize: 20,)), Text('27 May, 09:28 AM'), Text('Successfully Completed', style: TextStyle(color: kPrimaryColor),)
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
-               SizedBox(
-                height: height / 40,
-              ),
-              
-            ],
+              //  Container(
+              //     height: height / 7,
+              //     width: width ,
+              //     decoration: BoxDecoration(
+              //         color: Colors.white,
+              //         borderRadius: BorderRadius.circular(8)),
+              //     child: Padding(
+              //       padding: const EdgeInsets.all(18.0),
+              //       child: Row(
+              //         mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //         children: [
+              //           // SvgPicture.asset('images/btc.svg'),
+              //           Image.asset('images/me.png', height: height,),
+              //           SizedBox(width: 10,),
+              //           Column(
+              //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //             crossAxisAlignment: CrossAxisAlignment.start,
+              //             children: [
+              //               Text('Bitcoin', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),), Text('Amount: 5.485 BTC'), Text('Price: \$ 24.39 ')
+              //             ],
+              //           ),
+              //           Column(
+              //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //             crossAxisAlignment: CrossAxisAlignment.end,
+              //             children: [
+              //               Text('Total:\$133.316', style: TextStyle(fontSize: 20,)), Text('27 May, 09:28 AM'), Text('Successfully Completed', style: TextStyle(color: kPrimaryColor),)
+              //             ],
+              //           )
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+                 
+              //   SizedBox(height: height/40,),
+              //   Container(
+              //     height: height / 7,
+              //     width: width ,
+              //     decoration: BoxDecoration(
+              //         color: Colors.white,
+              //         borderRadius: BorderRadius.circular(8)),
+              //     child: Padding(
+              //       padding: const EdgeInsets.all(18.0),
+              //       child: Row(
+              //         mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //         children: [
+              //           // SvgPicture.asset('images/btc.svg'),
+              //           Image.asset('images/me.png', height: height,),
+              //           SizedBox(width: 10,),
+              //           Column(
+              //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //             crossAxisAlignment: CrossAxisAlignment.start,
+              //             children: [
+              //               Text('Bitcoin', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),), Text('Amount: 5.485 BTC'), Text('Price: \$ 24.39 ')
+              //             ],
+              //           ),
+              //           Column(
+              //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //             crossAxisAlignment: CrossAxisAlignment.end,
+              //             children: [
+              //               Text('Total:\$133.316', style: TextStyle(fontSize: 20,)), Text('27 May, 09:28 AM'), Text('Successfully Completed', style: TextStyle(color: kPrimaryColor),)
+              //             ],
+              //           )
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              //    SizedBox(
+              //     height: height / 40,
+              //   ),
+              //   Container(
+              //     height: height / 7,
+              //     width: width ,
+              //     decoration: BoxDecoration(
+              //         color: Colors.white,
+              //         borderRadius: BorderRadius.circular(8)),
+              //     child: Padding(
+              //       padding: const EdgeInsets.all(18.0),
+              //       child: Row(
+              //         mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //         children: [
+              //           // SvgPicture.asset('images/btc.svg'),
+              //           Image.asset('images/me.png', height: height,),
+              //           SizedBox(width: 10,),
+              //           Column(
+              //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //             crossAxisAlignment: CrossAxisAlignment.start,
+              //             children: [
+              //               Text('Bitcoin', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),), Text('Amount: 5.485 BTC'), Text('Price: \$ 24.39 ')
+              //             ],
+              //           ),
+              //           Column(
+              //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //             crossAxisAlignment: CrossAxisAlignment.end,
+              //             children: [
+              //               Text('Total:\$133.316', style: TextStyle(fontSize: 20,)), Text('27 May, 09:28 AM'), Text('Successfully Completed', style: TextStyle(color: kPrimaryColor),)
+              //             ],
+              //           )
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              //    SizedBox(
+              //     height: height / 40,
+              //   ),
+                
+              ],
+            ),
           ),
         ),
       ),

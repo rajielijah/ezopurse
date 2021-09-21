@@ -1,11 +1,14 @@
 import 'package:ezopurse/constant/color.dart';
 import 'package:ezopurse/constant/textfield.dart';
 import 'package:ezopurse/homepage/bank_details.dart';
+import 'package:ezopurse/model/core/user_model.dart';
 import 'package:ezopurse/views/authentication/login.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
 class ProfileDetails extends StatefulWidget {
+  final ProfileModel profileModel;
+  ProfileDetails({Key key, @required this.profileModel}): super(key: key);
   // const ({ Key? key }) : super(key: key);
 
   @override
@@ -16,38 +19,51 @@ class _ProfileDetailsState extends State<ProfileDetails> {
   TextEditingController emailController = TextEditingController();
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
+
+  
   @override
   Widget build(BuildContext context) {
+    emailController = TextEditingController(text: widget.profileModel.data.email);
+    firstNameController = TextEditingController(text: widget.profileModel.data.firstName);
+    lastNameController = TextEditingController(text: widget.profileModel.data.lastName);
     final nameField = TextFormField(
       autofocus: false,
       maxLines: 1,
       minLines: 1,
+      controller: firstNameController,
       decoration: InputDecoration(
           contentPadding: new EdgeInsets.symmetric(),
           enabledBorder: OutlineInputBorder(
               borderSide: new BorderSide(color: Colors.black)),
-          hintText: 'Ben Tom'),
+          // hintText: widget.profileModel.data.firstName
+          ),
     );
 
     final emailField = TextFormField(
       autofocus: false,
       maxLines: 1,
+      textAlign: TextAlign.start,
+      scrollPadding: EdgeInsets.all(10),
       minLines: 1,
+      controller: emailController,
       decoration: InputDecoration(
           contentPadding: new EdgeInsets.symmetric(),
           enabledBorder: OutlineInputBorder(
               borderSide: new BorderSide(color: Colors.black)),
-          hintText: 'Bentom@gmail.com'),
+          // hintText: 'Bentom@gmail.com'
+          ),
     );
-    final genderField = TextFormField(
+    final lastNameField = TextFormField(
       autofocus: false,
       maxLines: 1,
+      controller: lastNameController,
       minLines: 1,
       decoration: InputDecoration(
           contentPadding: new EdgeInsets.symmetric(),
           enabledBorder: OutlineInputBorder(
               borderSide: new BorderSide(color: Colors.black)),
-          hintText: 'Male'),
+          // hintText: widget.profileModel.data.lastName 
+          ),
     );
     final dobNumber = TextFormField(
       autofocus: false,
@@ -102,7 +118,7 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                       Text(
                         'Profile details',
                         style: TextStyle(
-                            color: kPrimaryColor,
+                            // color: kPrimaryColor,
                             fontWeight: FontWeight.bold,
                             fontSize: 23),
                       )
@@ -121,7 +137,7 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Full name',
+                        Text('First name',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 18)),
                         Container(
@@ -136,7 +152,23 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                         SizedBox(
                           height: height / 40,
                         ),
-                        Text('Email',
+                      
+                        Text('Last Name',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18)),
+                        Container(
+                          color: Colors.white,
+                          padding: EdgeInsets.only(top: 10),
+                          child: Column(
+                            children: [
+                              lastNameField,
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: height / 40,
+                        ),
+                          Text('Email',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 18)),
                         Container(
@@ -151,48 +183,33 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                         SizedBox(
                           height: height / 40,
                         ),
-                        Text('Gender',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18)),
-                        Container(
-                          color: Colors.white,
-                          padding: EdgeInsets.only(top: 10),
-                          child: Column(
-                            children: [
-                              genderField,
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: height / 40,
-                        ),
-                        Text('D.O.B',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18)),
-                        Container(
-                          color: Colors.white,
-                          padding: EdgeInsets.only(top: 10),
-                          child: Column(
-                            children: [
-                              dobNumber,
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: height / 40,
-                        ),
-                        Text('Country',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18)),
-                        Container(
-                          color: Colors.white,
-                          padding: EdgeInsets.only(top: 10),
-                          child: Column(
-                            children: [
-                              countryField,
-                            ],
-                          ),
-                        ),
+                        // Text('D.O.B',
+                        //     style: TextStyle(
+                        //         fontWeight: FontWeight.bold, fontSize: 18)),
+                        // Container(
+                        //   color: Colors.white,
+                        //   padding: EdgeInsets.only(top: 10),
+                        //   child: Column(
+                        //     children: [
+                        //       dobNumber,
+                        //     ],
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   height: height / 40,
+                        // ),
+                        // Text('Country',
+                        //     style: TextStyle(
+                        //         fontWeight: FontWeight.bold, fontSize: 18)),
+                        // Container(
+                        //   color: Colors.white,
+                        //   padding: EdgeInsets.only(top: 10),
+                        //   child: Column(
+                        //     children: [
+                        //       countryField,
+                        //     ],
+                        //   ),
+                        // ),
                         SizedBox(
                           height: height / 40,
                         ),

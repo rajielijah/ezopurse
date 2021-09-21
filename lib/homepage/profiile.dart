@@ -16,6 +16,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 var name;
 var email;
+var clientPage;
 var clientData;
 class Profile extends StatefulWidget {
   // const Profile({ Key? key }) : super(key: key);
@@ -97,6 +98,7 @@ class _ProfileState extends State<Profile> {
                           future: profileModel,
                           builder: (context, snapshot){
                             clientData = snapshot.data;
+                            clientPage = snapshot.data;
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -133,7 +135,7 @@ class _ProfileState extends State<Profile> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => ProfileDetails()));
+                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => ProfileDetails(profileModel: clientPage,)));
                 },
                 child: profile(context, SvgPicture.asset('images/vector18.svg'), Text('Profile details', style: TextStyle(fontSize:19, fontWeight: FontWeight.w500),), Icon(Icons.arrow_forward_ios_sharp))),
               GestureDetector(
