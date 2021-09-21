@@ -1,10 +1,24 @@
 import 'package:ezopurse/constant/color.dart';
+import 'package:ezopurse/model/core/transaction_model.dart';
+import 'package:ezopurse/model/services/transaction_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Transaction extends StatelessWidget {
-  // const Transaction({ Key? key }) : super(key: key);
-//
+class Transaction extends StatefulWidget {
+
+  @override
+  _TransactionState createState() => _TransactionState();
+}
+
+class _TransactionState extends State<Transaction> {
+  Future<TransactionModel> transactionModel;
+
+  @override
+  void initState(){
+    super.initState();
+    transactionModel = TransactionApi.instance.getTransaction();
+  }
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -27,39 +41,47 @@ class Transaction extends StatelessWidget {
               // SizedBox(
               //   height: height / 20,
               // ),
-              Container(
-                height: height / 7,
-                width: width ,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8)),
-                child: Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      // SvgPicture.asset('images/btc.svg'),
-                      Image.asset('images/me.png', height: height,),
-                      // SvgPicture.asset('images/cb.svg'),
-                      SizedBox(width: 10,),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+              FutureBuilder(
+                future: transactionModel,
+                builder: (context, snapshot){
+                return ListView.builder(
+                  itemCount: snapshot.data,
+                  itemBuilder: (context, index){
+                  return Container(
+                    height: height / 7,
+                    width: width ,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(18.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text('Bitcoin', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),), Text('Amount: 5.485 BTC'), Text('Price: \$ 24.39 ')
+                          // SvgPicture.asset('images/btc.svg'),
+                          Image.asset('images/me.png', height: height,),
+                          // SvgPicture.asset('images/cb.svg'),
+                          SizedBox(width: 10,),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Bitcoin', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),), Text('Amount: 5.485 BTC'), Text('Price: \$ 24.39 ')
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text('Total:\$133.316', style: TextStyle(fontSize: 20,)), Text('27 May, 09:28 AM'), Text('Successfully Completed', style: TextStyle(color: kPrimaryColor),)
+                            ],
+                          )
                         ],
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text('Total:\$133.316', style: TextStyle(fontSize: 20,)), Text('27 May, 09:28 AM'), Text('Successfully Completed', style: TextStyle(color: kPrimaryColor),)
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
+                    ),
+                  );
+                  });
+                }),
                SizedBox(
                 height: height / 40,
               ),

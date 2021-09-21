@@ -50,33 +50,34 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       bottomNavigationBar: BottomNavigationBar(
         items:  <BottomNavigationBarItem>[
            BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
+           icon: SvgPicture.asset('images/user5.svg'),
             label: 'Home',
             backgroundColor: Colors.black,
           ),
           BottomNavigationBarItem(
             label: 'Trade',
             backgroundColor: color,
-            icon: SvgPicture.asset('images/vector1.svg'),
+           icon: SvgPicture.asset('images/user4.svg'),
             // icon: ImageIcon(AssetImage('images/trade.png'))
           ),
           BottomNavigationBarItem(
-           icon: ImageIcon(AssetImage('images/ve.png')),
+          icon: SvgPicture.asset('images/user3.svg'),
            label: 'Transaction',
            backgroundColor: color,
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('images/up.png')),
+           icon: SvgPicture.asset('images/user1.svg'),
             label: 'Send',
             backgroundColor: color,
           ),
            BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('images/down.png')),
+            icon: SvgPicture.asset('images/user2.svg'),
             label: 'Receive',
             backgroundColor: color,
           ),
            BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('images/vector8.png')),
+            icon: SvgPicture.asset('images/User.svg'),
+            // icon: ImageIcon(AssetImage('images/vector8.png')),
             label: 'Profile',
             backgroundColor: color,
           ),
@@ -84,7 +85,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         type: BottomNavigationBarType.fixed,
         backgroundColor: kPColor,
         currentIndex: _selectedIndex,
-        selectedItemColor: color,
+        selectedItemColor: kPrimaryColor,
+        selectedIconTheme: IconThemeData(color: kPrimaryColor),
         unselectedItemColor: Colors.black,
         onTap: _onItemTapped,
         iconSize: 30,

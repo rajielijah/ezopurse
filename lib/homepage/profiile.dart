@@ -16,7 +16,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 var name;
 var email;
-
+var clientData;
 class Profile extends StatefulWidget {
   // const Profile({ Key? key }) : super(key: key);
 // 
@@ -67,13 +67,36 @@ class _ProfileState extends State<Profile> {
                       height: MediaQuery.of(context).size.height / 3.5,
                           width: MediaQuery.of(context).size.width,
                       child: 
-                      name != null ?
-                              Text('')
+                      clientData != null ?
+                             Padding(
+                               padding: const EdgeInsets.all(20.0),
+                               child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                               Stack(
+                                 alignment: Alignment.bottomRight,
+                                 children: [
+                                   CircleAvatar(
+                                     backgroundColor: kPrimaryColor,
+                                     child: Image.asset('images/ellips6.png'), radius: 40,),
+                                   Positioned(
+                                    //  top: 22,
+                                     child: Icon(Icons.camera_alt_outlined, color: Colors.white,))
+                                 ],
+                               ),
+                               Text("${clientData.data.firstName} ${clientData.data.lastName}", style: TextStyle(color: Colors.white, fontWeight:FontWeight.w500, fontSize: 20),),
+                               Text(clientData.data.email, style: TextStyle(color: Colors.white),),
+                            //  Text('+2341 9977118', style: TextStyle(color: Colors.white,),)
+                            ],
+                          ),
+                             )
                       :Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: FutureBuilder<ProfileModel>(
                           future: profileModel,
                           builder: (context, snapshot){
+                            clientData = snapshot.data;
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
