@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'EzoPurse',
       debugShowCheckedModeBanner:false,
-      // theme: ThemeData(primarySwatch: Colors.white, buttonColor: Colors.amber),
+      // theme: ThemeData(primarySwatch: kPrimaryColor, buttonColor: kPrimaryColor),
       home: Splash(),
     );
   }

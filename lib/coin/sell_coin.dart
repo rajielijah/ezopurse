@@ -21,7 +21,7 @@ class _SellCoinState extends State<SellCoin> {
     var width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.grey[100],
+        backgroundColor: Colors.white,
         resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
           child: Container(
@@ -30,43 +30,43 @@ class _SellCoinState extends State<SellCoin> {
               child: Column(
                 // mainAxisAlignment: MainAxisAlignment.spaceEv,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Icon(Icons.arrow_back_ios_new)),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Text(
-                        'Sell Bitcoin  (BTC)',
-                        style: TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.w500),
-                      ),
-                      SizedBox(width: width/6),
-                      GestureDetector(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => BuyCoin()));
-                        },
-                        child: Container(
-                          height: height / 17,
-                          width: width / 4,
-                          decoration: BoxDecoration(
-                              color: Colors.greenAccent,
-                              borderRadius: BorderRadius.circular(19)),
-                          child: Center(
-                              child: Text(
-                            'BULL BTC',
-                            style: TextStyle(color: kPrimaryColor),
-                          )),
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: height / 17),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.start,
+                  //   children: [
+                  //     GestureDetector(
+                  //         onTap: () {
+                  //           Navigator.pop(context);
+                  //         },
+                  //         child: Icon(Icons.arrow_back_ios_new)),
+                  //     SizedBox(
+                  //       width: 20,
+                  //     ),
+                  //     Text(
+                  //       'Sell Bitcoin  (BTC)',
+                  //       style: TextStyle(
+                  //           fontSize: 17, fontWeight: FontWeight.w500),
+                  //     ),
+                  //     SizedBox(width: width/6),
+                  //     GestureDetector(
+                  //       onTap: (){
+                          // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => BuyCoin()));
+                  //       },
+                  //       child: Container(
+                  //         height: height / 17,
+                  //         width: width / 4,
+                  //         decoration: BoxDecoration(
+                  //             color: Colors.greenAccent,
+                  //             borderRadius: BorderRadius.circular(19)),
+                  //         child: Center(
+                  //             child: Text(
+                  //           'BULL BTC',
+                  //           style: TextStyle(color: kPrimaryColor),
+                  //         )),
+                  //       ),
+                  //     )
+                  //   ],
+                  // ),
+                  // SizedBox(height: height / 17),
                   Text('Enter Amount in BTC'),
                   SizedBox(height: height / 27),
                   Center(
@@ -86,30 +86,36 @@ class _SellCoinState extends State<SellCoin> {
                       readOnly: _readOnly,
                     ),
                   ),
-                  SizedBox(
-                    height: height / 17,
+                  // SizedBox(
+                  //   height: height / 17,
+                  // ),
+                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Min \$100 - Max \$10,00000'),
+                      Text('Value (N):  N10,000')
+                    ],
                   ),
-                  Text('Min \$100 - Max \$10,00000'),
                   // SizedBox(
                   //   height: height / 12,
                   // ),
-                  Padding(
-                    padding: const EdgeInsets.all(40),
+                    Padding(
+                    padding: const EdgeInsets.all(20),
                     child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Current Balance: ',
+                          'Rate: ',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                              fontWeight: FontWeight.bold, fontSize: 15),
                         ),
                         Text(
-                          ' \$10,000',
+                          ' 530',
                           style: TextStyle(
-                              color: kPrimaryColor,
+                              color: Colors.blue,
                               fontWeight: FontWeight.bold,
-                              fontSize: 20),
+                              fontSize: 15),
                         )
                       ],
                     ),
@@ -117,62 +123,62 @@ class _SellCoinState extends State<SellCoin> {
                   // SizedBox(
                   //   height: height / 20,
                   // ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        width: width / 8,
-                        height: height / 20,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(color: Colors.grey[400])),
-                        child: Center(child: Text('0 %')),
-                      ),
-                      Container(
-                        width: width / 8,
-                        height: height / 20,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(color: Colors.grey[400])),
-                        child: Center(child: Text('10 %')),
-                      ),
-                      Container(
-                        width: width / 8,
-                        height: height / 20,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(color: Colors.grey[400])),
-                        child: Center(child: Text('25 %')),
-                      ),
-                      Container(
-                        width: width / 8,
-                        height: height / 20,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(color: Colors.grey[400])),
-                        child: Center(child: Text('50 %')),
-                      ),
-                      Container(
-                        width: width / 8,
-                        height: height / 20,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(color: Colors.grey[400])),
-                        child: Center(child: Text('75 %')),
-                      ),
-                      Container(
-                        width: width / 8,
-                        height: height / 20,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(color: Colors.grey[400])),
-                        child: Center(child: Text('100 %')),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: height / 12,
-                  ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  //   children: [
+                  //     Container(
+                  //       width: width / 8,
+                  //       height: height / 20,
+                  //       decoration: BoxDecoration(
+                  //           borderRadius: BorderRadius.circular(14),
+                  //           border: Border.all(color: Colors.grey[400])),
+                  //       child: Center(child: Text('0 %')),
+                  //     ),
+                  //     Container(
+                  //       width: width / 8,
+                  //       height: height / 20,
+                  //       decoration: BoxDecoration(
+                  //           borderRadius: BorderRadius.circular(14),
+                  //           border: Border.all(color: Colors.grey[400])),
+                  //       child: Center(child: Text('10 %')),
+                  //     ),
+                  //     Container(
+                  //       width: width / 8,
+                  //       height: height / 20,
+                  //       decoration: BoxDecoration(
+                  //           borderRadius: BorderRadius.circular(14),
+                  //           border: Border.all(color: Colors.grey[400])),
+                  //       child: Center(child: Text('25 %')),
+                  //     ),
+                  //     Container(
+                  //       width: width / 8,
+                  //       height: height / 20,
+                  //       decoration: BoxDecoration(
+                  //           borderRadius: BorderRadius.circular(14),
+                  //           border: Border.all(color: Colors.grey[400])),
+                  //       child: Center(child: Text('50 %')),
+                  //     ),
+                  //     Container(
+                  //       width: width / 8,
+                  //       height: height / 20,
+                  //       decoration: BoxDecoration(
+                  //           borderRadius: BorderRadius.circular(14),
+                  //           border: Border.all(color: Colors.grey[400])),
+                  //       child: Center(child: Text('75 %')),
+                  //     ),
+                  //     Container(
+                  //       width: width / 8,
+                  //       height: height / 20,
+                  //       decoration: BoxDecoration(
+                  //           borderRadius: BorderRadius.circular(14),
+                  //           border: Border.all(color: Colors.grey[400])),
+                  //       child: Center(child: Text('100 %')),
+                  //     )
+                  //   ],
+                  // ),
+                  // SizedBox(
+                  //   height: height / 12,
+                  // ),
                   CustomKeyboard(
                     onTextInput: (myText) {
                       _insertText(myText);
@@ -186,7 +192,9 @@ class _SellCoinState extends State<SellCoin> {
                   ),
                   FlatButton(
                     minWidth: 330,
-                    height: height / 10,
+                    height: height / 15,
+                     shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
                     onPressed: () {
                       Navigator.push(
                           context,

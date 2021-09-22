@@ -7,13 +7,13 @@ Widget coin(BuildContext context, Widget image, Text title, Text subtitle, SvgPi
    var height = MediaQuery.of(context).size.height;
     var width  = MediaQuery.of(context).size.width;
   return Padding(
-    padding: const EdgeInsets.only(left:20.0, right: 20, bottom: 10),
+    padding: const EdgeInsets.only(left:0, right: 0, bottom: 10),
     child: GestureDetector(
       onTap: (){
         Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CoinPage()));
       },
       child: Container(
-        height: height/7,
+        height: height/9,
         width: width,
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.white ),
         padding: EdgeInsets.all(10),

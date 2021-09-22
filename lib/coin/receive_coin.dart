@@ -23,32 +23,19 @@ class ReceiveCoin extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: Icon(
-                                Icons.arrow_back_ios
-                              ))),
-                      SizedBox(
-                        width: 20,
-                      ),
+                     
                       Text(
                         'Receive Bitcoin',
                         style: TextStyle(
                             fontWeight: FontWeight.w400,
-                            fontSize: 21
+                            fontSize: 20
                             ),
                       )
                     ],
                   ),
                   SizedBox(height: height/22,),
                   Container(
-                    height: height ,
+                    height: height /1.12,
                     width: width,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -57,21 +44,29 @@ class ReceiveCoin extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(18.0),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        // mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Image.asset('images/me.png'),
+                          SizedBox(height: height/20,),
                           Text(
                             'Scan the QR code to get Receive address',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold),
+                                fontWeight: FontWeight.bold, letterSpacing: 0.7),
                           ),
+
+
+                          SizedBox(height: height/25,),
                           Image.asset('images/y.png'),
-                          Divider(),
+                          // SvgPicture.asset('images/V.png'),
+                          SizedBox(height: height/50,),
+                          Text('-or-'),
+                          SizedBox(height: height/25,),
                           Text(
                             'Your Bitcoin Address',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold),
+                                fontWeight: FontWeight.bold, fontSize: 18),
                           ),
+                          SizedBox(height: height/25,),
                           TextFormField(
                             readOnly: true,
                             decoration: InputDecoration(
@@ -81,7 +76,7 @@ class ReceiveCoin extends StatelessWidget {
                               
                             ),
                           ),
-                                
+                                SizedBox(height: height/25,),
                           FlatButton(
 
                             
@@ -119,10 +114,13 @@ class ReceiveCoin extends StatelessWidget {
                       style: TextStyle(),
                     ),
                   ),
-                  // SizedBox(height: height/22,),
+                  SizedBox(height: height/22,),
                   FlatButton(
-                    minWidth: 330,
-                    height: height / 10,
+                    minWidth: width,
+                    height: height / 15,
+                     shape: RoundedRectangleBorder(
+                       borderRadius: BorderRadius.circular(30)
+                     ),
                     onPressed: () {
                       Navigator.push(
                           context,
@@ -130,7 +128,7 @@ class ReceiveCoin extends StatelessWidget {
                               builder: (BuildContext context) => HomePage()));
                     },
                     child: Text(
-                      'SHARE ADDRESS',
+                      'RECEIVE BTC',
                       style: TextStyle(color: Colors.white, fontSize: 17),
                     ),
                     color: kPrimaryColor,

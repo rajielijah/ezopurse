@@ -158,7 +158,8 @@ class Market extends StatelessWidget {
                             Container(
                               // color: Colors.blue,
                               constraints: BoxConstraints.expand(height: 50),
-                              child: TabBar(indicatorColor: kPrimaryColor, tabs: [
+                              child: TabBar(
+                                indicatorColor: kPrimaryColor, tabs: [
                                 Tab(
                                   child: Text(
                                     'All',
