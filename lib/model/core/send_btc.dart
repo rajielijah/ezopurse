@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-SendBtc sendBtcFromJson(String str) => SendBtc.fromJson(json.decode(str));
+SendBtc sendBtcModelFromJson(String str) => SendBtc.fromJson(json.decode(str));
 
-String sendBtcToJson(SendBtc data) => json.encode(data.toJson());
+String sendBtcModelToJson(SendBtc data) => json.encode(data.toJson());
 
 class SendBtc {
     SendBtc({
@@ -30,52 +30,28 @@ class SendBtc {
 
 class Result {
     Result({
-        this.txList,
+        this.errorCode,
+        this.message,
+        this.details,
+        this.serverTime,
     });
 
-    List<TxList> txList;
+    int errorCode;
+    String message;
+    String details;
+    int serverTime;
 
     factory Result.fromJson(Map<String, dynamic> json) => Result(
-        txList: List<TxList>.from(json["tx_list"].map((x) => TxList.fromJson(x))),
+        errorCode: json["error_code"],
+        message: json["message"],
+        details: json["details"],
+        serverTime: json["server_time"],
     );
 
     Map<String, dynamic> toJson() => {
-        "tx_list": List<dynamic>.from(txList.map((x) => x.toJson())),
-    };
-}
-
-class TxList {
-    TxList({
-        this.txHash,
-        this.out,
-        this.amount,
-        this.address,
-        this.type,
-        this.commitment,
-    });
-
-    String txHash;
-    dynamic out;
-    int amount;
-    String address;
-    String type;
-    String commitment;
-
-    factory TxList.fromJson(Map<String, dynamic> json) => TxList(
-        txHash: json["tx_hash"],
-        out: json["out"],
-        amount: json["amount"],
-        address: json["address"],
-        type: json["type"],
-        commitment: json["commitment"],
-    );
-
-    Map<String, dynamic> toJson() => {
-        "tx_hash": txHash,
-        "out": out,
-        "amount": amount,
-        "address": address,
-        "type": type,
-        "commitment": commitment,
+        "error_code": errorCode,
+        "message": message,
+        "details": details,
+        "server_time": serverTime,
     };
 }

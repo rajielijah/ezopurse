@@ -28,8 +28,15 @@ class _SendCoinState extends State<SendCoin> {
        Provider.of<SendProvider>(context, listen: false).sendBtc
        (_address, _amount).then((responseData){
          print('responseData');
-          if(responseData['success'] == true ){
+          if(responseData.isNotEmpty){
             print('done');
+             Flushbar(
+               routeColor: kPrimaryColor,
+               backgroundColor: kPrimaryColor,
+              title: "Bitcoin send Successfully",
+              message: responseData['message'].toString(),
+              duration: Duration(seconds: 15),
+            ).show(context);
           }else{
             Flushbar(
               title: "Failed Login",
@@ -135,10 +142,12 @@ class _SendCoinState extends State<SendCoin> {
                         ),
                                 TextFormField(
                                    maxLines: 1,
+                                   
                                     minLines: 1,
                                     onSaved: (value) => _address = value,
                                   decoration:
                                       InputDecoration( 
+                                        // focusedBorder: InputBorder.none,
                                          contentPadding: new EdgeInsets.symmetric(),
                                         enabledBorder: OutlineInputBorder(
                            borderSide: new BorderSide(color: Colors.grey[200])
