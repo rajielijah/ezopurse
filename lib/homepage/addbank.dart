@@ -76,7 +76,7 @@ class _AddBankState extends State<AddBank> {
           (_accountNumber, _bankName, _accountName, _bvn).then((responseData){
            print(responseData);
             if(responseData['status']){
-              print('I want pust sometn ${responseData["add"]["user"]}');
+              print('I want pust sometn ${responseData["add"]}');
               Navigator.pushReplacement(context, MaterialPageRoute(
                 builder: (_) => BankDetails()));
             }
