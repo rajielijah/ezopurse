@@ -1,21 +1,26 @@
 import 'package:ezopurse/constant/color.dart';
 import 'package:ezopurse/model/core/user_model.dart';
+import 'package:ezopurse/model/core/wallet_state_model.dart';
 import 'package:ezopurse/model/services/get_user.dart';
+import 'package:ezopurse/model/services/wallet_state_api.dart';
 import 'package:ezopurse/widget/coin_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 var clientName;
-
+var clientBalance;
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 class _HomePageState extends State<HomePage> {
-  Future<String> user;
+  Future<ProfileModel> user;
+  Future<WalletStateModel> walletState;
+  
   @override
   void initState() {
-    user = UserApi.instance.getFirstName();
+    user = UserApi.instance.getUser();
+    walletState = WalletStateApi.instance.getWalletState();
     super.initState();
   }
   @override
@@ -65,11 +70,11 @@ class _HomePageState extends State<HomePage> {
                                     color: Colors.white,
                                     fontSize: 18,
                                     letterSpacing: 0.7),
-                              ): FutureBuilder(
-                                future: user,
+                              ): FutureBuilder<ProfileModel>(
+                                future: user, 
                                 builder: (context, snapshot) {
-                                  clientName = snapshot.data;
-                                  return Text('Welcome ${snapshot.data}', style: TextStyle(
+                                  clientName = snapshot.data.data.firstName;
+                                  return Text('Welcome ${snapshot.data.data.firstName}', style: TextStyle(
                                      color: Colors.white,
                                     fontSize: 18,
                                     letterSpacing: 0.7
@@ -96,10 +101,18 @@ class _HomePageState extends State<HomePage> {
                                     alignment: Alignment.bottomRight,
                                     child: Text('Available Bal.', style: TextStyle(color: Colors.white),),
                                   ),
-                                   Align(
-                                    alignment: Alignment.bottomRight,
-                                    child: Text('\$1589',  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),),
-                                  )
+
+                                  clientBalance != null?
+                                  Text(clientBalance, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),):
+                                   FutureBuilder<WalletStateModel>(
+                                     future: walletState,
+                                     builder: (context, snapshot){
+                                     clientBalance = snapshot.data.balance;
+                                     return Align(
+                                      alignment: Alignment.bottomRight,
+                                      child: Text("$clientBalance",  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),),
+                                                                     );
+                                      } )
                             ],
                           ),
                         ),

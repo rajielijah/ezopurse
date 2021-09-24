@@ -32,7 +32,11 @@ class _AddBankState extends State<AddBank> {
           contentPadding: new EdgeInsets.symmetric(),
           enabledBorder: OutlineInputBorder(
               borderSide: new BorderSide(color: Colors.grey[200])),
+           focusedBorder: OutlineInputBorder(
+            borderSide:
+                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
           hintText: ''),
+      
     );
 
     final pinField = TextFormField(
@@ -46,6 +50,9 @@ class _AddBankState extends State<AddBank> {
           contentPadding: new EdgeInsets.symmetric(),
           enabledBorder: OutlineInputBorder(
               borderSide: new BorderSide(color: Colors.grey[200])),
+           focusedBorder: OutlineInputBorder(
+            borderSide:
+                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
           hintText: ''),
     );
     final cvvField = TextFormField(
@@ -57,7 +64,10 @@ class _AddBankState extends State<AddBank> {
           contentPadding: new EdgeInsets.symmetric(),
           enabledBorder: OutlineInputBorder(
               borderSide: new BorderSide(color: Colors.grey[200])),
-          hintText: ' 489'),
+           focusedBorder: OutlineInputBorder(
+            borderSide:
+                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
+         ),
     );
 
       var loading = Row(
@@ -240,7 +250,7 @@ class _AddBankState extends State<AddBank> {
                     ),
                     Container(
                       width: width,
-                      height: 120,
+                      height: 100,
                       child: Padding(
                         padding: const EdgeInsets.all(28.0),
                         child: Container(

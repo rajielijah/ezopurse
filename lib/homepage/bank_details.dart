@@ -22,7 +22,11 @@ class BankDetails extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left:15.0, top: 15, bottom: 10),
-                  child: Icon(Icons.arrow_back),
+                  child: GestureDetector(
+                    onTap: (){
+                      Navigator.pop(context);
+                    },
+                    child: Icon(Icons.arrow_back)),
                 ),
                 Stack(
                   alignment: Alignment.center,

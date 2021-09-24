@@ -38,6 +38,9 @@ class _LoginState extends State<Login> {
         enabledBorder: OutlineInputBorder(
             borderSide:
                 new BorderSide(color: Colors.black, style: BorderStyle.solid)),
+        focusedBorder: OutlineInputBorder(
+            borderSide:
+                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
       ),
     );
     final passwordField = TextFormField(
@@ -51,6 +54,9 @@ class _LoginState extends State<Login> {
         contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
         enabledBorder:
             OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
+        focusedBorder: OutlineInputBorder(
+            borderSide:
+                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
       ),
     );
     var loading = Row(
@@ -60,6 +66,8 @@ class _LoginState extends State<Login> {
         Text(" Authenticating ... Please wait")
       ],
     );
+  
+
     bool isloginning = false;
     var doLogin = (BuildContext context, var provide) {
       final form = formKey.currentState;
@@ -99,6 +107,28 @@ class _LoginState extends State<Login> {
         provide.checkloginactivity(false);
       }
     };
+
+    void _onLoading() {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return Dialog(
+        child: new Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            new CircularProgressIndicator(),
+            new Text("Loading"),
+          ],
+        ),
+      );
+    },
+  );
+  new Future.delayed(new Duration(seconds: 3), () {
+    Navigator.pop(context); //pop dialog
+    doLogin(context, provideris);
+  });
+}
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return MultiProvider(
@@ -248,8 +278,7 @@ class _LoginState extends State<Login> {
                                 },
                                 textColor: kPrimaryColor,
                                 child: Provider.of<LoginProvider>(context,
-                                            listen: false)
-                                        .logining
+                                            listen: false).logining
                                     ? Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,

@@ -29,7 +29,6 @@ dependencies:
   provider: ^4.0.4
   shared_preferences: ^0.5.8
   flushbar: ^1.10.4
-  
 dev_dependencies:
   flutter_test:
     sdk: flutter
