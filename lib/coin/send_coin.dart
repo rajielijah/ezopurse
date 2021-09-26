@@ -14,30 +14,30 @@ class SendCoin extends StatefulWidget {
 }
 
 class _SendCoinState extends State<SendCoin> {
-   final formKey = new GlobalKey<FormState>();
+  final formKey = new GlobalKey<FormState>();
 
   String _address;
   String _amount;
   @override
   Widget build(BuildContext context) {
-
-    var sendBTC = (BuildContext context, var provide){
+    var sendBTC = (BuildContext context, var provide) {
       final form = formKey.currentState;
-      if(form.validate()){
+      if (form.validate()) {
         form.save();
-       Provider.of<SendProvider>(context, listen: false).sendBtc
-       (_address, _amount).then((responseData){
-         print('responseData');
-          if(responseData.isNotEmpty){
+        Provider.of<SendProvider>(context, listen: false)
+            .sendBtc(_address, _amount)
+            .then((responseData) {
+          print('responseData');
+          if (responseData.isNotEmpty) {
             print('done');
-             Flushbar(
-               routeColor: kPrimaryColor,
-               backgroundColor: kPrimaryColor,
+            Flushbar(
+              routeColor: kPrimaryColor,
+              backgroundColor: kPrimaryColor,
               title: "Bitcoin send Successfully",
               message: responseData['message'].toString(),
               duration: Duration(seconds: 15),
             ).show(context);
-          }else{
+          } else {
             Flushbar(
               title: "Failed Login",
               message: responseData['message'].toString(),
@@ -47,24 +47,21 @@ class _SendCoinState extends State<SendCoin> {
             provide.checkloginactivity(false);
           }
         });
-      }else{
+      } else {
         Flushbar(
-              title: "Form is Invalid",
-              duration: Duration(seconds: 5),
-            ).show(context);
-            print('error!');
+          title: "Form is Invalid",
+          duration: Duration(seconds: 5),
+        ).show(context);
+        print('error!');
       }
     };
 
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => SendProvider())
-      ],
-      child: Builder(
-        builder: (context){
-          provideris = Provider.of<SendProvider>(context, listen: false);
+      providers: [ChangeNotifierProvider(create: (context) => SendProvider())],
+      child: Builder(builder: (context) {
+        provideris = Provider.of<SendProvider>(context, listen: false);
         return SafeArea(
           child: Scaffold(
             body: SingleChildScrollView(
@@ -79,14 +76,16 @@ class _SendCoinState extends State<SendCoin> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                           
                             Text(
                               'Send Bitcoin',
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20),
                             )
                           ],
                         ),
-                        SizedBox(height: height/29,),
+                        SizedBox(
+                          height: height / 29,
+                        ),
                         Container(
                           width: width,
                           decoration: BoxDecoration(
@@ -111,7 +110,8 @@ class _SendCoinState extends State<SendCoin> {
                                   Text(
                                     '2.23464 BTC',
                                     style: TextStyle(
-                                        fontWeight: FontWeight.bold, fontSize: 20),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20),
                                   )
                                 ],
                               ),
@@ -119,7 +119,7 @@ class _SendCoinState extends State<SendCoin> {
                           ),
                         ),
                         SizedBox(
-                          height: height/39,
+                          height: height / 39,
                         ),
                         Container(
                           height: height / 1.5,
@@ -137,71 +137,81 @@ class _SendCoinState extends State<SendCoin> {
                                   'Enter Address',
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
-                                 SizedBox(
-                          height: 10,
-                        ),
-                                TextFormField(
-                                   maxLines: 1,
-                                   
-                                    minLines: 1,
-                                    onSaved: (value) => _address = value,
-                                  decoration:
-                                      InputDecoration( 
-                                        // focusedBorder: InputBorder.none,
-                                         contentPadding: new EdgeInsets.symmetric(),
-                                        enabledBorder: OutlineInputBorder(
-                           borderSide: new BorderSide(color: Colors.grey[200])
-                        ),),
+                                SizedBox(
+                                  height: 10,
                                 ),
-                                 SizedBox(
-                          height: height/20,
-                        ),
+                                TextFormField(
+                                  maxLines: 1,
+                                  minLines: 1,
+                                  onSaved: (value) => _address = value,
+                                  decoration: InputDecoration(
+                                    // focusedBorder: InputBorder.none,
+                                    contentPadding: new EdgeInsets.symmetric(),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: new BorderSide(
+                                            color: Colors.grey[200])),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: new BorderSide(
+                                            color: Colors.black,
+                                            style: BorderStyle.solid)),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: height / 20,
+                                ),
                                 Text(
                                   'Amount',
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
-                                 SizedBox(
-                          height: 10,
-                        ),
-                                TextFormField(
-                                 maxLines: 1,
-                                    minLines: 1,
-                                  onSaved: (value) => _amount = value,
-                                  decoration:
-                                      InputDecoration( 
-                                         contentPadding: new EdgeInsets.symmetric(),
-                                         enabledBorder: OutlineInputBorder(
-                           borderSide: new BorderSide(color: Colors.grey[200])
-                        ),),
+                                SizedBox(
+                                  height: 10,
                                 ),
-                                 SizedBox(
-                          height: height/20,
-                        ),
+                                TextFormField(
+                                  maxLines: 1,
+                                  minLines: 1,
+                                  onSaved: (value) => _amount = value,
+                                  decoration: InputDecoration(
+                                    contentPadding: new EdgeInsets.symmetric(),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: new BorderSide(
+                                            color: Colors.grey[200])),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: new BorderSide(
+                                            color: Colors.black,
+                                            style: BorderStyle.solid)),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: height / 20,
+                                ),
                                 Text(
                                   'Note',
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
-                                 SizedBox(
-                          height: 10,
-                        ),
+                                SizedBox(
+                                  height: 10,
+                                ),
                                 TextFormField(
                                   maxLines: 1,
-                                    minLines: 1,
-                                  decoration:
-                                      InputDecoration( 
-                                         contentPadding: new EdgeInsets.symmetric(),
-                                        
-                                        enabledBorder: OutlineInputBorder(
-                           borderSide: new BorderSide(color: Colors.grey[200])
-                        ),),
+                                  minLines: 1,
+                                  decoration: InputDecoration(
+                                    contentPadding: new EdgeInsets.symmetric(),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: new BorderSide(
+                                            color: Colors.grey[200])),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: new BorderSide(
+                                            color: Colors.black,
+                                            style: BorderStyle.solid)),
+                                  ),
                                 ),
-                                 SizedBox(
-                          height: height/20,
-                        ),
+                                SizedBox(
+                                  height: height / 20,
+                                ),
                                 Text('Transaction fees: 0.0006 BTC'),
-                                 SizedBox(
-                          height:10,
-                        ),
+                                SizedBox(
+                                  height: 10,
+                                ),
                                 Text('Min: 0.00061 BTC - Max: 2.0006 BTC')
                               ],
                             ),
@@ -216,28 +226,25 @@ class _SendCoinState extends State<SendCoin> {
                             ),
                           ),
                         ),
-                        SizedBox(height: height/22,),
+                        SizedBox(
+                          height: height / 22,
+                        ),
                         FlatButton(
                           minWidth: width,
                           height: height / 15,
-                           shape: RoundedRectangleBorder(
-                             borderRadius: BorderRadius.circular(30)
-                           ),
+                           color: kPrimaryColor,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30)),
                           onPressed: () {
-                           
+                             sendBTC(context, provideris);
                           },
-                          child: MaterialButton(
-                            onPressed: (){
-                              sendBTC(context, provideris);
-                            },    
-                            child: Text(
-                              'SEND BTC',
-                              style: TextStyle(color: Colors.white, fontSize: 17),
-                            ),
+                          child: Text(
+                            'SEND BTC',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 17),
                           ),
-                          color: kPrimaryColor,
-                        ),
                          
+                        ),
                       ],
                     ),
                   ),
@@ -246,7 +253,7 @@ class _SendCoinState extends State<SendCoin> {
             ),
           ),
         );
-        }),
+      }),
     );
   }
 }

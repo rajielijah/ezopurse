@@ -38,6 +38,9 @@ bool  _terms;
         contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
         enabledBorder:
             OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
+        focusedBorder: OutlineInputBorder(
+            borderSide:
+                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
       ),
     );
 
@@ -50,6 +53,9 @@ bool  _terms;
         contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
         enabledBorder:
             OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
+        focusedBorder: OutlineInputBorder(
+            borderSide:
+                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
       ),
     );
 
@@ -62,6 +68,9 @@ bool  _terms;
         contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
         enabledBorder:
             OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
+      focusedBorder: OutlineInputBorder(
+            borderSide:
+                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
       ),
     );
     // final phoneNumber = TextFormField(
@@ -90,6 +99,9 @@ bool  _terms;
         contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
         enabledBorder:
             OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
+        focusedBorder: OutlineInputBorder(
+            borderSide:
+                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
       ),
     );
 
@@ -104,6 +116,9 @@ bool  _terms;
         contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
         enabledBorder:
             OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
+      focusedBorder: OutlineInputBorder(
+            borderSide:
+                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
       ),
     );
 

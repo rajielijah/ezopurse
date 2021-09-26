@@ -69,7 +69,7 @@ class _TransactionState extends State<Transaction> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text('Bitcoin', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),), 
-                                Text("${snapshot.data.result[index].txList[index].amount}"), 
+                                Text("${snapshot.data.result[index].transactions.txList[index].amount}"), 
                                 Text('Price: \$ 24.39 ')
                               ],
                             ),
@@ -78,8 +78,8 @@ class _TransactionState extends State<Transaction> {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text('Total:\$133.316', style: TextStyle(fontSize: 20,)), 
-                                Text("${snapshot.data.result[index].txList[index].time}"), 
-                                Text(snapshot.data.result[index].txList[index].type, style: TextStyle(color: kPrimaryColor),)
+                                Text("${snapshot.data.result[index].transactions.txList[index].time}"), 
+                                Text(snapshot.data.result[index].transactions.txList[index].type, style: TextStyle(color: kPrimaryColor),)
                               ],
                             )
                           ],

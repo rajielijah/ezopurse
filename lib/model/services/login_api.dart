@@ -67,7 +67,6 @@ print('know as e dey go ${authUser.toJson()}');
         'message': json.decode(response.body)['error']
       };
    }
-
   return result;
 }}
 // if (response.statusCode == 200) {

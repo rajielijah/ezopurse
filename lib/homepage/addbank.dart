@@ -32,7 +32,11 @@ class _AddBankState extends State<AddBank> {
           contentPadding: new EdgeInsets.symmetric(),
           enabledBorder: OutlineInputBorder(
               borderSide: new BorderSide(color: Colors.grey[200])),
+           focusedBorder: OutlineInputBorder(
+            borderSide:
+                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
           hintText: ''),
+      
     );
 
     final pinField = TextFormField(
@@ -46,6 +50,9 @@ class _AddBankState extends State<AddBank> {
           contentPadding: new EdgeInsets.symmetric(),
           enabledBorder: OutlineInputBorder(
               borderSide: new BorderSide(color: Colors.grey[200])),
+           focusedBorder: OutlineInputBorder(
+            borderSide:
+                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
           hintText: ''),
     );
     final cvvField = TextFormField(
@@ -57,7 +64,10 @@ class _AddBankState extends State<AddBank> {
           contentPadding: new EdgeInsets.symmetric(),
           enabledBorder: OutlineInputBorder(
               borderSide: new BorderSide(color: Colors.grey[200])),
-          hintText: ' 489'),
+           focusedBorder: OutlineInputBorder(
+            borderSide:
+                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
+         ),
     );
 
       var loading = Row(
@@ -76,13 +86,12 @@ class _AddBankState extends State<AddBank> {
           (_accountNumber, _bankName, _accountName, _bvn).then((responseData){
            print(responseData);
             if(responseData['status']){
-              print('I want pust sometn ${responseData["add"]}');
               Navigator.pushReplacement(context, MaterialPageRoute(
                 builder: (_) => BankDetails()));
             }
             else{
                Flushbar(
-              title: "Failed Login",
+              title: "Failed, Try again",
               message: responseData['user'].toString(),
               duration: Duration(seconds: 5),
             ).show(context);
@@ -240,7 +249,7 @@ class _AddBankState extends State<AddBank> {
                     ),
                     Container(
                       width: width,
-                      height: 120,
+                      height: 100,
                       child: Padding(
                         padding: const EdgeInsets.all(28.0),
                         child: Container(
@@ -249,15 +258,12 @@ class _AddBankState extends State<AddBank> {
                             height: 50,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30)),
-                            onPressed:(){},
-                            child: MaterialButton(
-                              onPressed: (){
-                                doAddBank(context, provideris);
-                              },
-                             child: Text('SAVE & CONTINUE',
-                                  style: TextStyle(color: Colors.white, fontSize: 18)),
-                                              )),
-                            color: kPrimaryColor,
+                            onPressed:(){
+                               doAddBank(context, provideris);
+                            },
+                            child: Text('SAVE & CONTINUE',
+                                 style: TextStyle(color: Colors.white, fontSize: 18))),
+                           
                           ),
                         ),
                       ),
