@@ -232,20 +232,18 @@ class _SendCoinState extends State<SendCoin> {
                         FlatButton(
                           minWidth: width,
                           height: height / 15,
+                           color: kPrimaryColor,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30)),
-                          onPressed: () {},
-                          child: MaterialButton(
-                            onPressed: () {
-                              sendBTC(context, provideris);
-                            },
-                            child: Text(
-                              'SEND BTC',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 17),
-                            ),
+                          onPressed: () {
+                             sendBTC(context, provideris);
+                          },
+                          child: Text(
+                            'SEND BTC',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 17),
                           ),
-                          color: kPrimaryColor,
+                         
                         ),
                       ],
                     ),

@@ -99,6 +99,7 @@ class _ProfileState extends State<Profile> {
                           builder: (context, snapshot){
                             clientData = snapshot.data;
                             clientPage = snapshot.data;
+                            if(snapshot.data != null){
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -118,7 +119,10 @@ class _ProfileState extends State<Profile> {
                              Text(snapshot.data.data.email, style: TextStyle(color: Colors.white),),
                             //  Text('+2341 9977118', style: TextStyle(color: Colors.white,),)
                             ],
-                          );
+                          );}
+                          else{
+                            return Text('');
+                          }
                           }),
                       )
                     ),

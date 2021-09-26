@@ -26,6 +26,26 @@ class TransactionModel {
 
 class Result {
     Result({
+        this.transactions,
+        this.pendingTransactions,
+    });
+
+    Transactions transactions;
+    Transactions pendingTransactions;
+
+    factory Result.fromJson(Map<String, dynamic> json) => Result(
+        transactions: Transactions.fromJson(json["transactions"]),
+        pendingTransactions: Transactions.fromJson(json["pending_transactions"]),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "transactions": transactions.toJson(),
+        "pending_transactions": pendingTransactions.toJson(),
+    };
+}
+
+class Transactions {
+    Transactions({
         this.txList,
         this.nextPage,
     });
@@ -33,7 +53,7 @@ class Result {
     List<TxList> txList;
     bool nextPage;
 
-    factory Result.fromJson(Map<String, dynamic> json) => Result(
+    factory Transactions.fromJson(Map<String, dynamic> json) => Transactions(
         txList: List<TxList>.from(json["tx_list"].map((x) => TxList.fromJson(x))),
         nextPage: json["next_page"],
     );

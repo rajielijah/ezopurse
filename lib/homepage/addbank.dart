@@ -86,13 +86,12 @@ class _AddBankState extends State<AddBank> {
           (_accountNumber, _bankName, _accountName, _bvn).then((responseData){
            print(responseData);
             if(responseData['status']){
-              print('I want pust sometn ${responseData["add"]}');
               Navigator.pushReplacement(context, MaterialPageRoute(
                 builder: (_) => BankDetails()));
             }
             else{
                Flushbar(
-              title: "Failed Login",
+              title: "Failed, Try again",
               message: responseData['user'].toString(),
               duration: Duration(seconds: 5),
             ).show(context);
@@ -259,15 +258,12 @@ class _AddBankState extends State<AddBank> {
                             height: 50,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30)),
-                            onPressed:(){},
-                            child: MaterialButton(
-                              onPressed: (){
-                                doAddBank(context, provideris);
-                              },
-                             child: Text('SAVE & CONTINUE',
-                                  style: TextStyle(color: Colors.white, fontSize: 18)),
-                                              )),
-                            color: kPrimaryColor,
+                            onPressed:(){
+                               doAddBank(context, provideris);
+                            },
+                            child: Text('SAVE & CONTINUE',
+                                 style: TextStyle(color: Colors.white, fontSize: 18))),
+                           
                           ),
                         ),
                       ),
