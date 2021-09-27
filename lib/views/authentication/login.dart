@@ -91,7 +91,9 @@ class _LoginState extends State<Login> {
           } else {
             Flushbar(
               title: "Failed Login",
-              message: responseData['user'].toString(),
+               routeColor: kPrimaryColor,
+              backgroundColor: kPrimaryColor,
+              message: "Incorrect Email/Password",
               duration: Duration(seconds: 5),
             ).show(context);
             print('error!');
