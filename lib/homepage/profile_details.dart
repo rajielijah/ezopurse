@@ -60,6 +60,9 @@ class _ProfileDetailsState extends State<ProfileDetails> {
       minLines: 1,
       decoration: InputDecoration(
           contentPadding: new EdgeInsets.symmetric(),
+           focusedBorder: OutlineInputBorder(
+            borderSide:
+                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
           enabledBorder: OutlineInputBorder(
               borderSide: new BorderSide(color: Colors.black)),
           // hintText: widget.profileModel.data.lastName 
@@ -74,6 +77,9 @@ class _ProfileDetailsState extends State<ProfileDetails> {
       minLines: 1,
       decoration: InputDecoration(
           contentPadding: new EdgeInsets.symmetric(),
+           focusedBorder: OutlineInputBorder(
+            borderSide:
+                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
           enabledBorder: OutlineInputBorder(
               borderSide: new BorderSide(color: Colors.black)),
           hintText: '11/12/1987'),
@@ -85,6 +91,9 @@ class _ProfileDetailsState extends State<ProfileDetails> {
       minLines: 1,
       decoration: InputDecoration(
           contentPadding: new EdgeInsets.symmetric(),
+           focusedBorder: OutlineInputBorder(
+            borderSide:
+                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
           enabledBorder: OutlineInputBorder(
               borderSide: new BorderSide(color: Colors.black)),
           hintText: 'Nigeria'),

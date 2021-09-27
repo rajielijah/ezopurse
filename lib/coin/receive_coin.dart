@@ -19,10 +19,11 @@ class _ReceiveCoinState extends State<ReceiveCoin> {
     _scaffoldKey.currentState.showSnackBar(SnackBar(
       backgroundColor: kPrimaryColor,
       content: Text('Copied to clipboard'),
-    ));
-  }
+    ));}
   @override
+ 
   Widget build(BuildContext context) {
+     _textController = TextEditingController(text: '34HuwzDnSwxVRNCoySCpQnRBXV2vFFmBEE');
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return SafeArea(
@@ -40,7 +41,6 @@ class _ReceiveCoinState extends State<ReceiveCoin> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                     
                       Text(
                         'Receive Bitcoin',
                         style: TextStyle(
