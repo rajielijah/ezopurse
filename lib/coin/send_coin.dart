@@ -122,7 +122,7 @@ class _SendCoinState extends State<SendCoin> {
                           height: height / 39,
                         ),
                         Container(
-                          height: height / 1.7,
+                          height: height / 1.6,
                           width: width,
                           decoration: BoxDecoration(
                               color: Colors.white,

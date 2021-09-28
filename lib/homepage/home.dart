@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                                       builder: (context, snapshot) {
                                         clientName =
                                             snapshot.data.data.firstName;
-                                        if(snapshot.data != null){
+                                        if(snapshot.data.data.firstName != null){
                                         return Text(
                                           'Welcome ${snapshot.data.data.firstName}',
                                           style: TextStyle(
