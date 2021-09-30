@@ -23,8 +23,16 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final formKey = new GlobalKey<FormState>();
-
+  bool agree = false;
+  bool agre = false;
   String _email, _password;
+
+
+  @override 
+  void initState(){
+    agree;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     final EmailField = TextFormField(
@@ -35,6 +43,8 @@ class _LoginState extends State<Login> {
       minLines: 1,
       decoration: InputDecoration(
         contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
+        errorBorder:
+            OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
         focusedBorder: OutlineInputBorder(
             borderSide:
                 new BorderSide(color: Colors.black, style: BorderStyle.solid)),
@@ -51,6 +61,8 @@ class _LoginState extends State<Login> {
       maxLines: 1,
       minLines: 1,
       decoration: InputDecoration(
+        errorBorder:
+            OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
         focusedBorder: OutlineInputBorder(
             borderSide:
                 new BorderSide(color: Colors.black, style: BorderStyle.solid)),
@@ -91,7 +103,9 @@ class _LoginState extends State<Login> {
           } else {
             Flushbar(
               title: "Failed Login",
-              message: responseData['user'].toString(),
+              routeColor: kPrimaryColor,
+              backgroundColor: kPrimaryColor,
+              message: "Incorrect Email/Password",
               duration: Duration(seconds: 5),
             ).show(context);
             print('error!');
@@ -140,11 +154,11 @@ class _LoginState extends State<Login> {
                             SizedBox(
                               width: 10,
                             ),
-                            Text(
-                              'Kindly login to your account',
-                              style:
-                                  TextStyle(color: kPrimaryColor, fontSize: 16, fontWeight: FontWeight.w500)
-                            )
+                            Text('Kindly login to your account',
+                                style: TextStyle(
+                                    color: kPrimaryColor,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500))
                           ],
                         ),
                         Container(
@@ -200,48 +214,52 @@ class _LoginState extends State<Login> {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 10,),
-                              Row(
-                          // mainAxisAlignment: MainAxisAlignment.start,
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              // mainAxisAlignment: MainAxisAlignment.start,
 
-                          children: [
-                            GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (BuildContext context) =>
-                                              ForgotPassword()));
-                                },
-                                child: Text(
-                                  'Forget Password?',
-                                  style: TextStyle(color: kPrimaryColor),
-                                )),
-                            SizedBox(
-                              width: width / 10,
+                              children: [
+                                GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (BuildContext context) =>
+                                                  ForgotPassword()));
+                                    },
+                                    child: Text(
+                                      'Forget Password?',
+                                      style: TextStyle(color: kPrimaryColor),
+                                    )),
+                                SizedBox(
+                                  width: width / 10,
+                                ),
+                                Text(
+                                  "Don't Have an account?",
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                SignUp()));
+                                  },
+                                  child: Text(
+                                    'Sign Up',
+                                    style: TextStyle(color: kPrimaryColor),
+                                  ),
+                                )
+                              ],
                             ),
-                            Text(
-                              "Don't Have an account?",
-                              style: TextStyle(color: Colors.black),
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (BuildContext context) =>
-                                            SignUp()));
-                              },
-                              child: Text('Sign Up', style: TextStyle(color: kPrimaryColor),),
-                            )
                           ],
                         ),
-                          ],
-                        ),
-                      
                         LoginProvider().loggedInStatus == Status.Authenticating
                             ? loading
                             : FlatButton(
@@ -252,11 +270,12 @@ class _LoginState extends State<Login> {
                                     borderRadius: BorderRadius.circular(30)),
                                 onPressed: () {
                                   doLogin(context, provideris);
+                                  setState(() {
+                                    agree = agree ?  false: true;
+                                  });
                                 },
                                 textColor: kPrimaryColor,
-                                child: Provider.of<LoginProvider>(context,
-                                            listen: false)
-                                        .logining
+                                child: agree
                                     ? Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
@@ -265,14 +284,16 @@ class _LoginState extends State<Login> {
                                               "Please Wait",
                                               style: TextStyle(
                                                   fontFamily: 'Helvetica',
-                                                  fontSize: 20),
+                                                  fontSize: 20,
+                                                  color: Colors.white),
                                               textAlign: TextAlign.center,
                                             ),
                                             SizedBox(
                                               width: 5.0,
                                             ),
                                             SizedBox(
-                                              child: CircularProgressIndicator(),
+                                              child:
+                                                  CircularProgressIndicator(color: Colors.white),
                                               height: 30.0,
                                               width: 25.0,
                                             ),
@@ -282,6 +303,73 @@ class _LoginState extends State<Login> {
                                         style: TextStyle(color: Colors.white),
                                       ),
                               ),
+                      // Container(
+                      //               height: 50,
+                      //               width: 400,
+                      //               padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      //               child: RaisedButton(
+                      //                 textColor: Colors.white,
+                      //                 color: kPrimaryColor,
+                      //                 child: LoginProvider().loggedInStatus ==
+                      //                         Status.Authenticating
+                      //                     ? loading
+                      //                     : MaterialButton(
+                      //                         onPressed: () {
+                      //                            setState(() {
+                      //              agree ? false: true;
+                      //            });
+                      //                           doLogin(context, provideris);
+                                                
+                      //                         },
+                      //                         textColor:
+                      //                             const Color(0xfff063057),
+                      //                         // color: color,
+                      //                         child: SizedBox(
+                      //                           width: double.infinity,
+                      //                           child: agree
+                      //                               ? Row(
+                      //                                   mainAxisAlignment:
+                      //                                       MainAxisAlignment
+                      //                                           .center,
+                      //                                   children: [
+                      //                                       Text(
+                      //                                         "Please Wait",
+                      //                                         style: TextStyle(
+                      //                                             fontFamily:
+                      //                                                 'Helvetica',
+                      //                                             fontSize: 20),
+                      //                                         textAlign:
+                      //                                             TextAlign
+                      //                                                 .center,
+                      //                                       ),
+                      //                                       SizedBox(
+                      //                                         width: 5.0,
+                      //                                       ),
+                      //                                       SizedBox(
+                      //                                         child:
+                      //                                             CircularProgressIndicator(),
+                      //                                         height: 30.0,
+                      //                                         width: 25.0,
+                      //                                       ),
+                      //                                     ])
+                      //                               : Text(
+                      //                                   "Login",
+                      //                                   style: TextStyle(
+                      //                                       fontFamily:
+                      //                                           'Helvetica',
+                      //                                       fontSize: 20),
+                      //                                   textAlign:
+                      //                                       TextAlign.center,
+                      //                                 ),
+                      //                         ),
+                      //                         height: 45,
+                      //                         minWidth: 600,
+                      //                         shape: RoundedRectangleBorder(
+                      //                             // borderRadius: BorderRadius.all(Radius.circular(10))
+                      //                             ),
+                      //                       ),
+                      //                 onPressed: () {},
+                      //               )),
                       ],
                     ),
                   ),

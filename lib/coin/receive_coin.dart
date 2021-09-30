@@ -2,15 +2,33 @@ import 'package:ezopurse/constant/color.dart';
 import 'package:ezopurse/homepage/home.dart';
 import 'package:ezopurse/transaction/withdraw.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ReceiveCoin extends StatelessWidget {
+class ReceiveCoin extends StatefulWidget {
   @override
+  _ReceiveCoinState createState() => _ReceiveCoinState();
+}
+
+class _ReceiveCoinState extends State<ReceiveCoin> {
+  TextEditingController _textController = TextEditingController();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
+   Future<void> _copyToClipboard() async {
+    await Clipboard.setData(ClipboardData(text: _textController.text));
+    _scaffoldKey.currentState.showSnackBar(SnackBar(
+      backgroundColor: kPrimaryColor,
+      content: Text('Copied to clipboard'),
+    ));}
+  @override
+ 
   Widget build(BuildContext context) {
+     _textController = TextEditingController(text: '34HuwzDnSwxVRNCoySCpQnRBXV2vFFmBEE');
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldKey,
         backgroundColor: Colors.grey[100],
         body: SingleChildScrollView(
           child: Container(
@@ -23,7 +41,6 @@ class ReceiveCoin extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                     
                       Text(
                         'Receive Bitcoin',
                         style: TextStyle(
@@ -68,6 +85,7 @@ class ReceiveCoin extends StatelessWidget {
                           ),
                           SizedBox(height: height/25,),
                           TextFormField(
+                            controller: _textController,
                             readOnly: true,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
@@ -78,18 +96,14 @@ class ReceiveCoin extends StatelessWidget {
                           ),
                                 SizedBox(height: height/25,),
                           FlatButton(
-
-                            
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          Withdraw()));
+                             setState(() {
+                                _copyToClipboard();
+                             });
                             },
                             height: 50,
                             child: Text(
-                              'Copy Address',
+                               'Copy Address',
                               style: TextStyle(fontSize: 18, letterSpacing: 0.7),
                             ),
                             textColor: kPrimaryColor,
@@ -121,12 +135,7 @@ class ReceiveCoin extends StatelessWidget {
                      shape: RoundedRectangleBorder(
                        borderRadius: BorderRadius.circular(30)
                      ),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => HomePage()));
-                    },
+                    onPressed: () {},
                     child: Text(
                       'RECEIVE BTC',
                       style: TextStyle(color: Colors.white, fontSize: 17),

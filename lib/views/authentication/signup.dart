@@ -18,6 +18,8 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  bool agree = false;
+  bool agre = false;
   final formKey = new GlobalKey<FormState>();
 
   String _firstName,
@@ -34,8 +36,10 @@ bool  _terms;
       minLines: 1,
       validator: validateEmail,
       onSaved: (value) => _email = value,
+      
       decoration: InputDecoration(
         contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
+      errorBorder:  OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
         enabledBorder:
             OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
         focusedBorder: OutlineInputBorder(
@@ -97,6 +101,7 @@ bool  _terms;
       onSaved: (value) => _password = value,
       decoration: InputDecoration(
         contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
+       errorBorder:  OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
         enabledBorder:
             OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
         focusedBorder: OutlineInputBorder(
@@ -116,12 +121,16 @@ bool  _terms;
         contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
         enabledBorder:
             OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
+      errorBorder:  OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
       focusedBorder: OutlineInputBorder(
             borderSide:
                 new BorderSide(color: Colors.black, style: BorderStyle.solid)),
       ),
     );
 
+    Widget loadings(){
+      return CircularProgressIndicator();
+    }
     var loading = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -331,12 +340,21 @@ bool  _terms;
                         padding: const EdgeInsets.all(18.0),
                         child: Row(
                           children: [
-                            Icon(
-                              Icons.check_box,
-                              color: kPrimaryColor,
-                            ),
+                           Material(
+                             child: Checkbox(
+                               activeColor: kPrimaryColor,
+                              //  checkColor: kPrimaryColor,
+                               value: agree,
+                               onChanged: (value){
+                                 setState(() {
+                                   agree = value ?? false;
+                                 });
+                               }
+                             ),
+                           ),
                             Text(
                               'I accept Terms & Conditions',
+                              overflow:TextOverflow.ellipsis,
                               style: TextStyle(color: kPrimaryColor),
                             ),
                           ],
@@ -345,28 +363,53 @@ bool  _terms;
                       SizedBox(
                         height: 15,
                       ),
-                      FlatButton(
-                        minWidth: 330,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                        onPressed: () {
-                          doRegister;
-                        },
-                        child:
-                            RegisterProvider().loggedInStatus == Status.Authenticating
-                                ? loading
-                                : MaterialButton(
-                                    onPressed: () {
-                                      // ignore: unnecessary_statements
-                                      doRegister(provide);
-                                    },
-                                    child: Text(
+                      RegisterProvider().loggedInStatus == Status.Authenticating
+                                ? loadings()
+                                : FlatButton(
+                                  minWidth: 330,
+                                  height: 45,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20)),
+                                  onPressed: () {
+                                    agree?  doRegister(provide): null;
+                                     setState(() {
+                                    agre = agre ?  false: true;
+                                  });
+                                },
+                                
+                                    child: 
+                                    agre
+                                    ?
+                                    Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                            Text(
+                                              "Please Wait",
+                                              style: TextStyle(
+                                                  fontFamily: 'Helvetica',
+                                                  fontSize: 20,
+                                                  color: Colors.white),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            SizedBox(
+                                              width: 5.0,
+                                            ),
+                                            SizedBox(
+                                              child:
+                                                  CircularProgressIndicator(color: Colors.white),
+                                              height: 30.0,
+                                              width: 25.0,
+                                            ),
+                                          ])
+                                    :Text(
                                       'Sign Up',
                                       style: TextStyle(color: Colors.white),
                                     ),
+                                  color: kPrimaryColor,
                                   ),
-                        color: kPrimaryColor,
-                      ),
+                        
+                  
                       // color: kPrimaryColor,
                 
                       // SizedBox(

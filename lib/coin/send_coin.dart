@@ -33,8 +33,8 @@ class _SendCoinState extends State<SendCoin> {
             Flushbar(
               routeColor: kPrimaryColor,
               backgroundColor: kPrimaryColor,
-              title: "Bitcoin send Successfully",
-              message: responseData['message'].toString(),
+              title: 'Initiated',
+              message: " Transaction has been initiated, You will be notified when   it is completed,",
               duration: Duration(seconds: 15),
             ).show(context);
           } else {
@@ -122,7 +122,7 @@ class _SendCoinState extends State<SendCoin> {
                           height: height / 39,
                         ),
                         Container(
-                          height: height / 1.5,
+                          height: height / 1.6,
                           width: width,
                           decoration: BoxDecoration(
                               color: Colors.white,

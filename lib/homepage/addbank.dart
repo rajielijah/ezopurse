@@ -253,9 +253,11 @@ class _AddBankState extends State<AddBank> {
                       child: Padding(
                         padding: const EdgeInsets.all(28.0),
                         child: Container(
+                          // color: kPrimaryColor,
                           child: FlatButton(
                             minWidth: 330,
                             height: 50,
+                            color:kPrimaryColor,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30)),
                             onPressed:(){
