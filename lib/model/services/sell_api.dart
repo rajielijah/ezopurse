@@ -7,24 +7,24 @@ import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SellApi with ChangeNotifier {
-  Future<Map<String, dynamic>> buyProof(
+  Future<Map<String, dynamic>> sellProof(
     int amount,
     String proof,
   ) async {
     var result;
-    final Map<String, dynamic> buyData = {
+    final Map<String, dynamic> sellData = {
       "amount": amount,
       "proof": proof,
       "transactionType": "SELL"
     };
-    print(buyData);
+    print(sellData);
     notifyListeners();
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String token = prefs.getString('token');
     SharedPreferences pref = await SharedPreferences.getInstance();
     String url = "https://onos-btc.herokuapp.com/api/buy-sell";
     Response response = await post(Uri.parse(url),
-        body: json.encode(buyData),
+        body: json.encode(sellData),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token'

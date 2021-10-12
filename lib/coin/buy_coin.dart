@@ -159,12 +159,12 @@ class _BuyCoinState extends State<BuyCoin> {
                     minWidth: 330,
                     height: height / 15,
                     shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
+                        borderRadius: BorderRadius.circular(30)),
                     onPressed: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (BuildContext context) => Proof()));
+                              builder: (BuildContext context) => BuyProof()));
                     },
                     child: Text(
                       'BUY',

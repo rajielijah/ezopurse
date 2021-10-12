@@ -3,6 +3,7 @@ import 'package:ezopurse/coin/send_coin.dart';
 import 'package:ezopurse/constant/color.dart';
 import 'package:ezopurse/homepage/nav.dart';
 import 'package:ezopurse/model/services/buy_api.dart';
+import 'package:ezopurse/model/services/sell_api.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,14 +13,14 @@ import 'package:dio/dio.dart';
 import 'package:loading/loading.dart';
 import 'package:loading/indicator/ball_pulse_indicator.dart';
 
-class BuyProof extends StatefulWidget {
-  // const BuyProof({ Key? key }) : super(key: key);
+class SellProof extends StatefulWidget {
+  // const SellProof({ Key? key }) : super(key: key);
 //
   @override
-  _BuyProofState createState() => _BuyProofState();
+  _SellProofState createState() => _SellProofState();
 }
 
-class _BuyProofState extends State<BuyProof> {
+class _SellProofState extends State<SellProof> {
   final formKey = GlobalKey<FormState>();
   int _amount;
   var _image;
@@ -45,11 +46,12 @@ class _BuyProofState extends State<BuyProof> {
       ),
     );
 
-    var doBuyProof = (BuildContext context, var provide) {
+    var doSellProof = (BuildContext context, var provide) {
       final form = formKey.currentState;
       if (form.validate()) {
         form.save();
-        Provider.of<Buy>(context, listen: false).buyProof(_amount, imageUrl);
+        Provider.of<SellApi>(context, listen: false)
+            .sellProof(_amount, imageUrl);
       }
     };
 
@@ -89,9 +91,9 @@ class _BuyProofState extends State<BuyProof> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (context) => Buy())],
+      providers: [ChangeNotifierProvider(create: (context) => SellApi())],
       child: Builder(builder: (context) {
-        provideris = Provider.of<Buy>(context, listen: false);
+        provideris = Provider.of<SellApi>(context, listen: false);
         return SafeArea(
           child: Scaffold(
             body: SingleChildScrollView(
@@ -117,7 +119,7 @@ class _BuyProofState extends State<BuyProof> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Upload proof of payment',
+                                  'Upload proof of BTC sent',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20),
@@ -148,9 +150,9 @@ class _BuyProofState extends State<BuyProof> {
                                 SizedBox(
                                   height: height / 40,
                                 ),
-                                SizedBox(
-                                  height: height / 40,
-                                ),
+                                // SizedBox(
+                                //   height: height / 40,
+                                // ),
                                 Text('Proof of payment',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
