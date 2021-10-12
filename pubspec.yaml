@@ -24,12 +24,15 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^0.22.0
-  
+  cloudinary_sdk: ^3.0.1+7
   cupertino_icons: ^1.0.2
   http: ^0.13.3
   provider: ^4.0.4
-  shared_preferences: ^0.5.8
+  shared_preferences: ^2.0.4
   flushbar: ^1.10.4
+  image_picker: ^0.8.1
+  dio: ^4.0.0
+  loading: ^1.0.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

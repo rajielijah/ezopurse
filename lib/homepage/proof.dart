@@ -1,147 +1,251 @@
+import 'package:cloudinary_sdk/cloudinary_sdk.dart';
+import 'package:ezopurse/coin/send_coin.dart';
 import 'package:ezopurse/constant/color.dart';
 import 'package:ezopurse/homepage/nav.dart';
+import 'package:ezopurse/model/services/buy_api.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:convert';
+import 'package:dio/dio.dart';
+import 'package:loading/loading.dart';
+import 'package:loading/indicator/ball_pulse_indicator.dart';
 
-class Proof extends StatelessWidget {
+class Proof extends StatefulWidget {
   // const Proof({ Key? key }) : super(key: key);
-// 
+//
+  @override
+  _ProofState createState() => _ProofState();
+}
+
+class _ProofState extends State<Proof> {
+  final formKey = GlobalKey<FormState>();
+  int _amount;
+  var _image;
+  String base64Image;
+  String _proof;
+  var imageUrl;
+  var postFiles;
+  var imagevalue;
+  int imageBytes;
+  bool isloading = false;
+
   @override
   Widget build(BuildContext context) {
-     final paymentField = TextFormField(
+    final paymentField = TextFormField(
       autofocus: false,
       maxLines: 1,
+      onSaved: (value) => _amount = value as int,
       minLines: 1,
       decoration: InputDecoration(
-         hintText: '  N 10,000',
-      contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
-    border: OutlineInputBorder(),
-    
-  ),
+        hintText: '  N 10,000',
+        contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
+        border: OutlineInputBorder(),
+      ),
     );
 
-    final receiptField = TextFormField(
-      autofocus: false,
-      maxLines: 1,
-      minLines: 1,
-      decoration: InputDecoration(
-         hintText: '  4567893456765544',
-      contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
-    border: OutlineInputBorder(),
-    
-  ),
-    );
-     var height = MediaQuery.of(context).size.height;
+    var doBuyProof = (BuildContext context, var provide) {
+      final form = formKey.currentState;
+      if (form.validate()) {
+        form.save();
+        Provider.of<Buy>(context, listen: false).buyProof(_amount, imageUrl);
+      }
+    };
+
+    Future getImage(ImageSource source) async {
+      var image = await ImagePicker().pickImage(
+        // context: context,
+        source: source,
+        maxHeight: 400,
+        maxWidth: 300,
+        imageQuality: 100,
+      );
+      final cloudinary = Cloudinary(
+          "579251194598375", "mURSzkqRNR8_JHjuPJKjMjX3wK0", "dasek9hic");
+      setState(() {
+        _image = image;
+        print(_image);
+        List<int> imageBytes = _image.readAsBytesSync();
+        base64Image = base64Encode(imageBytes);
+        imagevalue = base64Image;
+        print(base64Image);
+      });
+      final response = await cloudinary.uploadFile(
+        filePath: _image.path,
+        resourceType: CloudinaryResourceType.image,
+        folder: 'image',
+      );
+      if (response.isSuccessful ?? false)
+        setState(() {
+          final String imag1 = response.secureUrl;
+          print(imag1);
+
+          postFiles.add('$imag1');
+          print(postFiles.length);
+        });
+    }
+
+    var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Container(child: Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                GestureDetector(
-                  onTap: (){
-                    Navigator.pop(context);
-                  },
-                  child: Icon(Icons.arrow_back)),
-                Container(
-                  color: Colors.white,
-                  width: width,
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (context) => Buy())],
+      child: Builder(builder: (context) {
+        provideris = Provider.of<Buy>(context, listen: false);
+        return SafeArea(
+          child: Scaffold(
+            body: SingleChildScrollView(
+              child: Form(
+                key: formKey,
+                child: Container(
                   child: Padding(
                     padding: const EdgeInsets.all(18.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Upload proof of payment', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
-                         SizedBox(height: 10,),
-                        Text('Input information to confirm your transaction', style: TextStyle(color: kPrimaryColor),),
-                        SizedBox(height: height/35,),
-                        Text('Payment Amount', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                        
-                    Container(
-                        color: Colors.white,
-                        padding: EdgeInsets.only(top:10),
-                        child: Column(
-                          children: [
-                            paymentField,
-                            
-                          ],
-                        ),
-                    ),
-                    SizedBox(
-                        height: height/40,
-                    ),
-                    Text('Receipt No.', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                     Container(
-                        color: Colors.white,
-                        padding: EdgeInsets.only(top:10),
-                        child: Column(
-                          children: [
-                            receiptField,
-                           
-                          ],
-                        ),
-                    ),
-                     SizedBox(
-                        height: height/40,
-                    ),
-                     Text('Proof of payment', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                    SizedBox(height: 10,),
-                     Container(
-                       height: 40,
+                        GestureDetector(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Icon(Icons.arrow_back)),
+                        Container(
+                          color: Colors.white,
+                          width: width,
+                          child: Padding(
+                            padding: const EdgeInsets.all(18.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Upload proof of payment',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  'Input information to confirm your transaction',
+                                  style: TextStyle(color: kPrimaryColor),
+                                ),
+                                SizedBox(
+                                  height: height / 35,
+                                ),
+                                Text('Amount',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18)),
+                                Container(
+                                  color: Colors.white,
+                                  padding: EdgeInsets.only(top: 10),
+                                  child: Column(
+                                    children: [
+                                      paymentField,
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: height / 40,
+                                ),
+                                SizedBox(
+                                  height: height / 40,
+                                ),
+                                Text('Proof of payment',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18)),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    getImage(ImageSource.gallery);
+                                  },
+                                  child: Container(
+                                    height: 40,
+                                    width: width,
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey[400],
 
-                       width: width,
-                       decoration: BoxDecoration(
-                         color: Colors.grey[400],
-                         
-                        //  border: OutlineInputBorder()
-                       ),
-                       child: Align(
-                         alignment: Alignment.center
-                         
-                         ,
-                         child: Text('Choose File')),
-                     ),
-                     SizedBox(height: 10,),
-                     Align(
-                       alignment: Alignment.center,
-                       child: Text('(Max size 1MB)')),
-                       SizedBox(height: height/20),
-                     Text('How to send your proof of payment', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
-                     SizedBox(height: 20,),
-                     Text('* Enter a payment amount, this must match the amount \n   on the proof of payment', style: TextStyle(fontSize: 13),),
-                       SizedBox(height: 10,),
-                     Text('* The receipt number you inputed must match that on \n   the receipt issued by your bank', style: TextStyle(fontSize: 13)),
-                     SizedBox(height: 10,),
-                     Text('* Upload a clear image of your proof of payment', style: TextStyle(fontSize: 13))
+                                      //  border: OutlineInputBorder()
+                                    ),
+                                    child: Align(
+                                        alignment: Alignment.center,
+                                        child: Text('Choose File')),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Align(
+                                    alignment: Alignment.center,
+                                    child: Text('(Max size 1MB)')),
+                                SizedBox(height: height / 20),
+                                Text(
+                                  'How to send your proof of payment',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Text(
+                                  '* Enter a payment amount, this must match the amount \n   on the proof of payment',
+                                  style: TextStyle(fontSize: 13),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                    '* The receipt number you inputed must match that on \n   the receipt issued by your bank',
+                                    style: TextStyle(fontSize: 13)),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                    '* Upload a clear image of your proof of payment',
+                                    style: TextStyle(fontSize: 13))
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: width,
+                          height: 100,
+                          child: Padding(
+                            padding: const EdgeInsets.all(28.0),
+                            child: Container(
+                              child: FlatButton(
+                                minWidth: 330,
+                                height: 40,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30)),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              MyStatefulWidget()));
+                                },
+                                child: Text('SAVE & CONTINUE',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 18)),
+                                color: kPrimaryColor,
+                              ),
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),
                 ),
-                 Container(
-                    width: width,
-                    height: 100,
-                  child: Padding(
-                    padding: const EdgeInsets.all(28.0),
-                    child: Container(
-                                  child:   FlatButton(minWidth: 330, height: 40, 
-                           shape: RoundedRectangleBorder(
-                                   borderRadius: BorderRadius.circular(30)
-                                 ),
-                          onPressed: (){
-                                 Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => MyStatefulWidget()));
-                              }, 
-                              child: Text('SAVE & CONTINUE', style: TextStyle(color: Colors.white, fontSize: 18)), color: kPrimaryColor,),
-                                ),
-                  ),
-                )
-              ],
+              ),
             ),
-          ),),
-        ),
-      ),
+          ),
+        );
+      }),
     );
   }
 }
