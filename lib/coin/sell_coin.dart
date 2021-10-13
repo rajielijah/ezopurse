@@ -3,6 +3,7 @@ import 'package:ezopurse/constant/color.dart';
 import 'package:ezopurse/constant/custom_keyboard.dart';
 import 'package:ezopurse/homepage/home.dart';
 import 'package:ezopurse/homepage/sell_proof.dart';
+import 'package:ezopurse/homepage/sell_wallet_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -200,7 +201,8 @@ class _SellCoinState extends State<SellCoin> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (BuildContext context) => SellProof()));
+                              builder: (BuildContext context) =>
+                                  ReceiveWalletAddress()));
                     },
                     child: Text(
                       'Sell',
