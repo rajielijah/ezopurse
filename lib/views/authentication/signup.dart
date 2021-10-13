@@ -10,6 +10,7 @@ import 'dart:ui';
 import 'package:provider/provider.dart';
 
 var provide;
+
 class SignUp extends StatefulWidget {
   // const ({ Key? key }) : super(key: key);
 
@@ -22,12 +23,8 @@ class _SignUpState extends State<SignUp> {
   bool agre = false;
   final formKey = new GlobalKey<FormState>();
 
-  String _firstName,
-      _lastName,
-      _email,
-      _password,
-      _confirmPassword;
-bool  _terms;
+  String _firstName, _lastName, _email, _password, _confirmPassword;
+  bool _terms;
   @override
   Widget build(BuildContext context) {
     final EmailField = TextFormField(
@@ -36,10 +33,10 @@ bool  _terms;
       minLines: 1,
       validator: validateEmail,
       onSaved: (value) => _email = value,
-      
       decoration: InputDecoration(
         contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
-      errorBorder:  OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
+        errorBorder:
+            OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
         enabledBorder:
             OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
         focusedBorder: OutlineInputBorder(
@@ -72,7 +69,7 @@ bool  _terms;
         contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
         enabledBorder:
             OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
-      focusedBorder: OutlineInputBorder(
+        focusedBorder: OutlineInputBorder(
             borderSide:
                 new BorderSide(color: Colors.black, style: BorderStyle.solid)),
       ),
@@ -101,7 +98,8 @@ bool  _terms;
       onSaved: (value) => _password = value,
       decoration: InputDecoration(
         contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
-       errorBorder:  OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
+        errorBorder:
+            OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
         enabledBorder:
             OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
         focusedBorder: OutlineInputBorder(
@@ -121,16 +119,18 @@ bool  _terms;
         contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
         enabledBorder:
             OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
-      errorBorder:  OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
-      focusedBorder: OutlineInputBorder(
+        errorBorder:
+            OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
+        focusedBorder: OutlineInputBorder(
             borderSide:
                 new BorderSide(color: Colors.black, style: BorderStyle.solid)),
       ),
     );
 
-    Widget loadings(){
+    Widget loadings() {
       return CircularProgressIndicator();
     }
+
     var loading = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -143,21 +143,26 @@ bool  _terms;
       if (form.validate()) {
         form.save();
         RegisterProvider()
-            .register(
-                _firstName, _lastName, _email, _password, _confirmPassword, _terms)
+            .register(_firstName, _lastName, _email, _password,
+                _confirmPassword, _terms)
             .then((response) {
           print('we want to know $response');
           if (response['status']) {
+            setState(() {
+              agre = !agre;
+            });
             Register register = response['data'];
             print('we are the $register');
             // Provider.of<UserProvider>(context, listen: false).setUser(user);
             Navigator.push(context, MaterialPageRoute(builder: (_) => Login()));
             print(response['status']);
           } else {
+            setState(() {
+              agre = !agre;
+            });
             Flushbar(
               title: "Registration Failed",
-              message:
-                  response[1]['message'],
+              message: response[1]['message'],
               duration: Duration(seconds: 5),
             ).show(context);
           }
@@ -180,10 +185,9 @@ bool  _terms;
           providers: [
             ChangeNotifierProvider(create: (context) => RegisterProvider())
           ],
-          child: Builder(
-            builder: (context){
-              provide = Provider.of<RegisterProvider>(context);
-            return  SingleChildScrollView(
+          child: Builder(builder: (context) {
+            provide = Provider.of<RegisterProvider>(context);
+            return SingleChildScrollView(
               child: Container(
                 child: Form(
                   key: formKey,
@@ -207,7 +211,8 @@ bool  _terms;
                             ),
                             Text(
                               'Create an account',
-                              style: TextStyle(color: kPrimaryColor, fontSize: 15),
+                              style:
+                                  TextStyle(color: kPrimaryColor, fontSize: 15),
                             )
                           ],
                         ),
@@ -225,7 +230,8 @@ bool  _terms;
                             children: [
                               Text('Email Address',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 15)),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15)),
                               Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
@@ -244,7 +250,8 @@ bool  _terms;
                               ),
                               Text('First Name',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 15)),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15)),
                               Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
@@ -262,7 +269,8 @@ bool  _terms;
                               ),
                               Text('Last Name',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 15)),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15)),
                               Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
@@ -298,7 +306,8 @@ bool  _terms;
                               // ),
                               Text('Password',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 15)),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15)),
                               Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
@@ -316,7 +325,8 @@ bool  _terms;
                               ),
                               Text('Confirm Password',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 15)),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15)),
                               Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
@@ -340,21 +350,20 @@ bool  _terms;
                         padding: const EdgeInsets.all(18.0),
                         child: Row(
                           children: [
-                           Material(
-                             child: Checkbox(
-                               activeColor: kPrimaryColor,
-                              //  checkColor: kPrimaryColor,
-                               value: agree,
-                               onChanged: (value){
-                                 setState(() {
-                                   agree = value ?? false;
-                                 });
-                               }
-                             ),
-                           ),
+                            Material(
+                              child: Checkbox(
+                                  activeColor: kPrimaryColor,
+                                  //  checkColor: kPrimaryColor,
+                                  value: agree,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      agree = value ?? false;
+                                    });
+                                  }),
+                            ),
                             Text(
                               'I accept Terms & Conditions',
-                              overflow:TextOverflow.ellipsis,
+                              overflow: TextOverflow.ellipsis,
                               style: TextStyle(color: kPrimaryColor),
                             ),
                           ],
@@ -363,55 +372,51 @@ bool  _terms;
                       SizedBox(
                         height: 15,
                       ),
-                      RegisterProvider().loggedInStatus == Status.Authenticating
-                                ? loadings()
-                                : FlatButton(
-                                  minWidth: 330,
-                                  height: 45,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
-                                  onPressed: () {
-                                    agree?  doRegister(provide): null;
-                                     setState(() {
-                                    agre = agre ?  false: true;
-                                  });
-                                },
-                                
-                                    child: 
-                                    agre
-                                    ?
-                                    Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                            Text(
-                                              "Please Wait",
-                                              style: TextStyle(
-                                                  fontFamily: 'Helvetica',
-                                                  fontSize: 20,
-                                                  color: Colors.white),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                            SizedBox(
-                                              width: 5.0,
-                                            ),
-                                            SizedBox(
-                                              child:
-                                                  CircularProgressIndicator(color: Colors.white),
-                                              height: 30.0,
-                                              width: 25.0,
-                                            ),
-                                          ])
-                                    :Text(
-                                      'Sign Up',
-                                      style: TextStyle(color: Colors.white),
+                      // RegisterProvider().loggedInStatus == Status.Authenticating
+                      //           ? loadings()
+                      FlatButton(
+                        minWidth: 330,
+                        height: 45,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        onPressed: () {
+                          setState(() {
+                            agre = !agre;
+                          });
+
+                          doRegister(provide);
+                        },
+                        child: agre
+                            ? Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                    Text(
+                                      "Please Wait",
+                                      style: TextStyle(
+                                          fontFamily: 'Helvetica',
+                                          fontSize: 20,
+                                          color: Colors.white),
+                                      textAlign: TextAlign.center,
                                     ),
-                                  color: kPrimaryColor,
-                                  ),
-                        
-                  
+                                    SizedBox(
+                                      width: 5.0,
+                                    ),
+                                    SizedBox(
+                                      child: CircularProgressIndicator(
+                                          color: Colors.white),
+                                      height: 30.0,
+                                      width: 25.0,
+                                    ),
+                                  ])
+                            : Text(
+                                'Sign Up',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                        color: kPrimaryColor,
+                      ),
+
                       // color: kPrimaryColor,
-                
+
                       // SizedBox(
                       //   height: height/40,
                       // ),
@@ -444,7 +449,7 @@ bool  _terms;
                 ),
               ),
             );
-            }),
+          }),
         ),
       ),
     );

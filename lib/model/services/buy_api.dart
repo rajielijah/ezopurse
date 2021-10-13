@@ -21,8 +21,7 @@ class Buy with ChangeNotifier {
     notifyListeners();
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String token = prefs.getString('token');
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    String url = "https://ezopurze.herokuapp.com/api/buy-sell";
+    String url = "https://ezopurze.herokuapp.com/api/buy-sells";
     Response response = await post(Uri.parse(url),
         body: json.encode(buyData),
         headers: {

@@ -2,6 +2,7 @@ import 'package:ezopurse/coin/buy_coin.dart';
 import 'package:ezopurse/constant/color.dart';
 import 'package:ezopurse/constant/custom_keyboard.dart';
 import 'package:ezopurse/homepage/home.dart';
+import 'package:ezopurse/homepage/sell_proof.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -49,7 +50,7 @@ class _SellCoinState extends State<SellCoin> {
                   //     SizedBox(width: width/6),
                   //     GestureDetector(
                   //       onTap: (){
-                          // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => BuyCoin()));
+                  // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => BuyCoin()));
                   //       },
                   //       child: Container(
                   //         height: height / 17,
@@ -89,7 +90,7 @@ class _SellCoinState extends State<SellCoin> {
                   // SizedBox(
                   //   height: height / 17,
                   // ),
-                   Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Min \$100 - Max \$10,00000'),
@@ -99,7 +100,7 @@ class _SellCoinState extends State<SellCoin> {
                   // SizedBox(
                   //   height: height / 12,
                   // ),
-                    Padding(
+                  Padding(
                     padding: const EdgeInsets.all(20),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -193,13 +194,13 @@ class _SellCoinState extends State<SellCoin> {
                   FlatButton(
                     minWidth: 330,
                     height: height / 15,
-                     shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)),
                     onPressed: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (BuildContext context) => HomePage()));
+                              builder: (BuildContext context) => SellProof()));
                     },
                     child: Text(
                       'Sell',

@@ -3,8 +3,10 @@ import 'dart:io';
 import 'package:cloudinary_sdk/cloudinary_sdk.dart';
 import 'package:ezopurse/coin/send_coin.dart';
 import 'package:ezopurse/constant/color.dart';
+import 'package:ezopurse/homepage/confirm.dart';
 import 'package:ezopurse/homepage/nav.dart';
 import 'package:ezopurse/model/services/buy_api.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -33,9 +35,10 @@ class _BuyProofState extends State<BuyProof> {
   var imageUrl;
   var postFiles;
   var imagevalue;
+  String imageLink;
   File imageBytes;
   bool isloading = false;
-
+  bool imageCheck = false;
   @override
   Widget build(BuildContext context) {
     final paymentField = TextField(
@@ -47,7 +50,14 @@ class _BuyProofState extends State<BuyProof> {
       decoration: InputDecoration(
         hintText: '  N 10,000',
         contentPadding: new EdgeInsets.symmetric(vertical: 0, horizontal: 1.0),
-        border: OutlineInputBorder(),
+        errorBorder:
+            OutlineInputBorder(borderSide: new BorderSide(color: Colors.black)),
+        focusedBorder: OutlineInputBorder(
+            borderSide:
+                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
+        enabledBorder: OutlineInputBorder(
+            borderSide:
+                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
       ),
     );
 
@@ -56,7 +66,36 @@ class _BuyProofState extends State<BuyProof> {
       if (form.validate()) {
         form.save();
         Provider.of<Buy>(context, listen: false)
-            .buyProof(int.parse(_amountController.text), imageUrl);
+            .buyProof(int.parse(_amountController.text), imageLink)
+            .then((responseData) {
+          print("Knowing response $responseData");
+          if (responseData['status']) {
+            print("IT IS DONE");
+            setState(() {
+              isloading = !isloading;
+            });
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => ConfirmPage()));
+            // Navigator.push(context, route)
+          } else {
+            setState(() {
+              isloading = !isloading;
+            });
+            Flushbar(
+              title: "Failed, Try again",
+              message: responseData['user'].toString(),
+              duration: Duration(seconds: 5),
+            ).show(context);
+            print('error!');
+          }
+        }).catchError((e) {
+          print("what's the error $e");
+        });
+      } else {
+        setState(() {
+          isloading = !isloading;
+        });
+        print("Form is invalid");
       }
     };
 
@@ -87,9 +126,10 @@ class _BuyProofState extends State<BuyProof> {
         setState(() {
           final String imag1 = response.secureUrl;
           print("to get result $imag1");
+          imageLink = imag1;
 
-          postFiles.add('$imag1');
-          print(postFiles.length);
+          // postFiles.add('$imag1');
+          // print(postFiles.length);
         });
     }
 
@@ -127,6 +167,7 @@ class _BuyProofState extends State<BuyProof> {
                                   'Upload proof of payment',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
+                                      fontFamily: "Circular STD",
                                       fontSize: 20),
                                 ),
                                 SizedBox(
@@ -142,6 +183,7 @@ class _BuyProofState extends State<BuyProof> {
                                 Text('Amount',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
+                                        fontFamily: "Circular STD",
                                         fontSize: 18)),
                                 Container(
                                   color: Colors.white,
@@ -161,6 +203,7 @@ class _BuyProofState extends State<BuyProof> {
                                 Text('Proof of payment',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
+                                        fontFamily: "Circular Std",
                                         fontSize: 18)),
                                 SizedBox(
                                   height: 10,
@@ -168,19 +211,38 @@ class _BuyProofState extends State<BuyProof> {
                                 GestureDetector(
                                   onTap: () {
                                     getImage(ImageSource.gallery);
-                                  },
-                                  child: Container(
-                                    height: 40,
-                                    width: width,
-                                    decoration: BoxDecoration(
-                                      color: Colors.grey[400],
 
-                                      //  border: OutlineInputBorder()
-                                    ),
-                                    child: Align(
-                                        alignment: Alignment.center,
-                                        child: Text('Choose File')),
-                                  ),
+                                    imageCheck = !imageCheck;
+                                  },
+                                  child: imageCheck
+                                      ? Container(
+                                          height: 40,
+                                          width: width,
+                                          decoration: BoxDecoration(
+                                            color: Colors.grey[400],
+
+                                            //  border: OutlineInputBorder()
+                                          ),
+                                          child: Align(
+                                              alignment: Alignment.center,
+                                              child: Text(
+                                                'Image has been uploaded',
+                                                style: TextStyle(
+                                                    fontFamily: "Circular Std"),
+                                              )),
+                                        )
+                                      : Container(
+                                          height: 40,
+                                          width: width,
+                                          decoration: BoxDecoration(
+                                            color: Colors.grey[400],
+
+                                            //  border: OutlineInputBorder()
+                                          ),
+                                          child: Align(
+                                              alignment: Alignment.center,
+                                              child: Text('Choose File')),
+                                        ),
                                 ),
                                 SizedBox(
                                   height: 10,
@@ -193,6 +255,7 @@ class _BuyProofState extends State<BuyProof> {
                                   'How to send your proof of payment',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
+                                      fontFamily: "Circular STD",
                                       fontSize: 16),
                                 ),
                                 SizedBox(
@@ -200,20 +263,26 @@ class _BuyProofState extends State<BuyProof> {
                                 ),
                                 Text(
                                   '* Enter a payment amount, this must match the amount \n   on the proof of payment',
-                                  style: TextStyle(fontSize: 13),
+                                  style: TextStyle(
+                                      fontFamily: "Circular STD", fontSize: 13),
                                 ),
                                 SizedBox(
                                   height: 10,
                                 ),
                                 Text(
                                     '* The receipt number you inputed must match that on \n   the receipt issued by your bank',
-                                    style: TextStyle(fontSize: 13)),
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      fontFamily: "Circular STD",
+                                    )),
                                 SizedBox(
                                   height: 10,
                                 ),
                                 Text(
                                     '* Upload a clear image of your proof of payment',
-                                    style: TextStyle(fontSize: 13))
+                                    style: TextStyle(
+                                        fontSize: 13,
+                                        fontFamily: "Circular STD"))
                               ],
                             ),
                           ),
@@ -231,26 +300,54 @@ class _BuyProofState extends State<BuyProof> {
                                     borderRadius: BorderRadius.circular(30)),
                                 onPressed: () {
                                   setState(() {
-                                    _amount.toString().isEmpty
-                                        ? showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return AlertDialog(
-                                                title: Text(
-                                                    "Enter the amount you sent"),
-                                              );
-                                            })
-                                        : doBuyProof(context, buyProvider);
+                                    isloading = !isloading;
                                   });
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (BuildContext context) =>
-                                              MyStatefulWidget()));
+                                  _amountController.text.isEmpty
+                                      ? showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  "Enter the amount you sent"),
+                                            );
+                                          })
+                                      : doBuyProof(context, buyProvider);
+
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (BuildContext context) =>
+                                  //             MyStatefulWidget()));
                                 },
-                                child: Text('SAVE & CONTINUE',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 18)),
+                                child: isloading
+                                    ? Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                            Text(
+                                              "Confirming your payment",
+                                              style: TextStyle(
+                                                  // fontFamily: 'Helvetica',
+                                                  fontFamily: "Circular STD",
+                                                  fontSize: 20,
+                                                  color: Colors.white),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            SizedBox(
+                                              width: 5.0,
+                                            ),
+                                            SizedBox(
+                                              child: CircularProgressIndicator(
+                                                  color: Colors.white),
+                                              height: 30.0,
+                                              width: 25.0,
+                                            ),
+                                          ])
+                                    : Text('SAVE & CONTINUE',
+                                        style: TextStyle(
+                                            fontFamily: "Circular STD",
+                                            color: Colors.white,
+                                            fontSize: 18)),
                                 color: kPrimaryColor,
                               ),
                             ),

@@ -79,16 +79,16 @@ class _HomePageState extends State<HomePage> {
                                       builder: (context, snapshot) {
                                         clientName =
                                             snapshot.data.data.firstName;
-                                        if(snapshot.data.data.firstName != null){
-                                        return Text(
-                                          'Welcome ${snapshot.data.data.firstName}',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 18,
-                                              letterSpacing: 0.7),
-                                        );
-                                        }
-                                        else{
+                                        if (snapshot.connectionState ==
+                                            ConnectionState.done) {
+                                          return Text(
+                                            'Welcome ${snapshot.data.data.firstName}',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 18,
+                                                letterSpacing: 0.7),
+                                          );
+                                        } else {
                                           return Text('');
                                         }
                                       }),
@@ -127,42 +127,49 @@ class _HomePageState extends State<HomePage> {
                               ),
                               clientBalance != null
                                   ? Align(
-                                    alignment: Alignment.bottomRight,
-                                    child: Text(
+                                      alignment: Alignment.bottomRight,
+                                      child: Text(
                                         '\$$clientBalance',
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
                                             fontSize: 20),
                                       ),
-                                  )
+                                    )
                                   : FutureBuilder<WalletStateModel>(
                                       future: walletState,
                                       builder: (context, snapshot) {
-                                        
-                                        if(snapshot.data != null){
-                                        return Column(
-                                          children: [
-                                            ListView.builder(
-                                               shrinkWrap: true,
-                                                scrollDirection: Axis.vertical,
-                                                itemCount: snapshot.data.result.length,
-                                                itemBuilder: (context, index){
-                                                  clientBalance = snapshot.data.result[index].balanceAmount;
-                                              return Align(
-                                                alignment: Alignment.bottomRight,
-                                                child: Text(
-                                                  "\$$clientBalance",
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontWeight: FontWeight.bold,
-                                                      fontSize: 20),
-                                                ),
-                                              );
-                                                }),
-                                          ],
-                                        );}
-                                        else{
+                                        if (snapshot.data != null) {
+                                          return Column(
+                                            children: [
+                                              ListView.builder(
+                                                  shrinkWrap: true,
+                                                  scrollDirection:
+                                                      Axis.vertical,
+                                                  itemCount: snapshot
+                                                      .data.result.length,
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    clientBalance = snapshot
+                                                        .data
+                                                        .result[index]
+                                                        .balanceAmount;
+                                                    return Align(
+                                                      alignment:
+                                                          Alignment.bottomRight,
+                                                      child: Text(
+                                                        "\$$clientBalance",
+                                                        style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 20),
+                                                      ),
+                                                    );
+                                                  }),
+                                            ],
+                                          );
+                                        } else {
                                           return Text('');
                                         }
                                       })
