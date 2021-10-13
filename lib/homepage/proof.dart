@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloudinary_sdk/cloudinary_sdk.dart';
 import 'package:ezopurse/coin/send_coin.dart';
 import 'package:ezopurse/constant/color.dart';
@@ -12,6 +14,8 @@ import 'package:dio/dio.dart';
 import 'package:loading/loading.dart';
 import 'package:loading/indicator/ball_pulse_indicator.dart';
 
+var buyProvider;
+
 class BuyProof extends StatefulWidget {
   // const BuyProof({ Key? key }) : super(key: key);
 //
@@ -20,23 +24,25 @@ class BuyProof extends StatefulWidget {
 }
 
 class _BuyProofState extends State<BuyProof> {
+  final _amountController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   int _amount;
-  var _image;
+  XFile _image;
   String base64Image;
   String _proof;
   var imageUrl;
   var postFiles;
   var imagevalue;
-  int imageBytes;
+  File imageBytes;
   bool isloading = false;
 
   @override
   Widget build(BuildContext context) {
-    final paymentField = TextFormField(
+    final paymentField = TextField(
       autofocus: false,
       maxLines: 1,
-      onSaved: (value) => _amount = value as int,
+      keyboardType: TextInputType.number,
+      controller: _amountController,
       minLines: 1,
       decoration: InputDecoration(
         hintText: '  N 10,000',
@@ -49,12 +55,13 @@ class _BuyProofState extends State<BuyProof> {
       final form = formKey.currentState;
       if (form.validate()) {
         form.save();
-        Provider.of<Buy>(context, listen: false).buyProof(_amount, imageUrl);
+        Provider.of<Buy>(context, listen: false)
+            .buyProof(int.parse(_amountController.text), imageUrl);
       }
     };
 
     Future getImage(ImageSource source) async {
-      var image = await ImagePicker().pickImage(
+      XFile image = await ImagePicker().pickImage(
         // context: context,
         source: source,
         maxHeight: 400,
@@ -65,10 +72,10 @@ class _BuyProofState extends State<BuyProof> {
           "579251194598375", "mURSzkqRNR8_JHjuPJKjMjX3wK0", "dasek9hic");
       setState(() {
         _image = image;
-        print(_image);
-        List<int> imageBytes = _image.readAsBytesSync();
-        base64Image = base64Encode(imageBytes);
-        imagevalue = base64Image;
+        print(" just checking $_image");
+        // List<int> imageBytes = _image.path;
+        // base64Image = base64Encode(imageBytes);
+        // imagevalue = base64Image;
         print(base64Image);
       });
       final response = await cloudinary.uploadFile(
@@ -79,7 +86,7 @@ class _BuyProofState extends State<BuyProof> {
       if (response.isSuccessful ?? false)
         setState(() {
           final String imag1 = response.secureUrl;
-          print(imag1);
+          print("to get result $imag1");
 
           postFiles.add('$imag1');
           print(postFiles.length);
@@ -91,7 +98,7 @@ class _BuyProofState extends State<BuyProof> {
     return MultiProvider(
       providers: [ChangeNotifierProvider(create: (context) => Buy())],
       child: Builder(builder: (context) {
-        provideris = Provider.of<Buy>(context, listen: false);
+        buyProvider = Provider.of<Buy>(context, listen: false);
         return SafeArea(
           child: Scaffold(
             body: SingleChildScrollView(
@@ -223,6 +230,18 @@ class _BuyProofState extends State<BuyProof> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30)),
                                 onPressed: () {
+                                  setState(() {
+                                    _amount.toString().isEmpty
+                                        ? showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return AlertDialog(
+                                                title: Text(
+                                                    "Enter the amount you sent"),
+                                              );
+                                            })
+                                        : doBuyProof(context, buyProvider);
+                                  });
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(

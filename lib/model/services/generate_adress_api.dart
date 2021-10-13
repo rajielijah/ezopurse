@@ -16,28 +16,25 @@ class GenerateAddressApi {
     return _instance;
   }
 
-Future<GenerateAddressModel> generateAddress() async{
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-      String token = prefs.getString('token'); 
-      SharedPreferences pref = await SharedPreferences.getInstance();
-      String id = pref.getString('id');
-    String url = "https://onos-btc.herokuapp.com/api/payment/$id";
+  Future<GenerateAddressModel> generateAddress() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('token');
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    String id = pref.getString('id');
+    String url = "https://ezopurze.herokuapp.com/api/payment/$id";
     print(url);
-    final response = await http.post(Uri.parse(url),
-      headers: {
-           'Accept': 'application/json',
-          "Authorization": "Bearer $token"
-        }
-    ).catchError((e){
+    final response = await http.post(Uri.parse(url), headers: {
+      'Accept': 'application/json',
+      "Authorization": "Bearer $token"
+    }).catchError((e) {
       print(e);
     });
-    if(response.statusCode == 200){
+    if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = json.decode(response.body);
       GenerateAddressModel result = GenerateAddressModel.fromJson(responseData);
       return result;
-    }
-    else{
+    } else {
       throw Exception('Failed to load post');
     }
-}
+  }
 }

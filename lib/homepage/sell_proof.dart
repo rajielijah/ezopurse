@@ -13,6 +13,8 @@ import 'package:dio/dio.dart';
 import 'package:loading/loading.dart';
 import 'package:loading/indicator/ball_pulse_indicator.dart';
 
+var sellProvide;
+
 class SellProof extends StatefulWidget {
   // const SellProof({ Key? key }) : super(key: key);
 //
@@ -93,7 +95,7 @@ class _SellProofState extends State<SellProof> {
     return MultiProvider(
       providers: [ChangeNotifierProvider(create: (context) => SellApi())],
       child: Builder(builder: (context) {
-        provideris = Provider.of<SellApi>(context, listen: false);
+        sellProvide = Provider.of<SellApi>(context, listen: false);
         return SafeArea(
           child: Scaffold(
             body: SingleChildScrollView(

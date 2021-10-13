@@ -14,8 +14,9 @@ class AddBank extends StatefulWidget {
   @override
   _AddBankState createState() => _AddBankState();
 }
+
 class _AddBankState extends State<AddBank> {
-   final formKey = new GlobalKey<FormState>();
+  final formKey = new GlobalKey<FormState>();
 
   String _accountNumber, _accountName, _bankName, _bvn;
 
@@ -27,50 +28,49 @@ class _AddBankState extends State<AddBank> {
       autofocus: false,
       maxLines: 1,
       minLines: 1,
-       onSaved: (value) => _accountNumber = value,
+      onSaved: (value) => _accountNumber = value,
       decoration: InputDecoration(
           contentPadding: new EdgeInsets.symmetric(),
           enabledBorder: OutlineInputBorder(
               borderSide: new BorderSide(color: Colors.grey[200])),
-           focusedBorder: OutlineInputBorder(
-            borderSide:
-                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
+          focusedBorder: OutlineInputBorder(
+              borderSide: new BorderSide(
+                  color: Colors.black, style: BorderStyle.solid)),
           hintText: ''),
-      
     );
 
     final pinField = TextFormField(
       autofocus: false,
       // obscureText: true,
       maxLines: 1,
-       onSaved: (value) => _accountName = value,
+      onSaved: (value) => _accountName = value,
       minLines: 1,
       validator: (value) => value.isEmpty ? "Please enter pin" : null,
       decoration: InputDecoration(
           contentPadding: new EdgeInsets.symmetric(),
           enabledBorder: OutlineInputBorder(
               borderSide: new BorderSide(color: Colors.grey[200])),
-           focusedBorder: OutlineInputBorder(
-            borderSide:
-                new BorderSide(color: Colors.black, style: BorderStyle.solid)),
+          focusedBorder: OutlineInputBorder(
+              borderSide: new BorderSide(
+                  color: Colors.black, style: BorderStyle.solid)),
           hintText: ''),
     );
     final cvvField = TextFormField(
       autofocus: false,
       maxLines: 1,
-       onSaved: (value) => _bankName = value,
+      onSaved: (value) => _bankName = value,
       minLines: 1,
       decoration: InputDecoration(
-          contentPadding: new EdgeInsets.symmetric(),
-          enabledBorder: OutlineInputBorder(
-              borderSide: new BorderSide(color: Colors.grey[200])),
-           focusedBorder: OutlineInputBorder(
+        contentPadding: new EdgeInsets.symmetric(),
+        enabledBorder: OutlineInputBorder(
+            borderSide: new BorderSide(color: Colors.grey[200])),
+        focusedBorder: OutlineInputBorder(
             borderSide:
                 new BorderSide(color: Colors.black, style: BorderStyle.solid)),
-         ),
+      ),
     );
 
-      var loading = Row(
+    var loading = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         CircularProgressIndicator(),
@@ -78,40 +78,38 @@ class _AddBankState extends State<AddBank> {
       ],
     );
 
-    var doAddBank = (BuildContext context, var provide){
-        final form = formKey.currentState;
-        if(form.validate()){
-          form.save();
-          Provider.of<AddBankProvider>(context, listen: false).addBank
-          (_accountNumber, _bankName, _accountName, _bvn).then((responseData){
-           print(responseData);
-            if(responseData['status']){
-              Navigator.pushReplacement(context, MaterialPageRoute(
-                builder: (_) => BankDetails()));
-            }
-            else{
-               Flushbar(
+    var doAddBank = (BuildContext context, var provide) {
+      final form = formKey.currentState;
+      if (form.validate()) {
+        form.save();
+        Provider.of<AddBankProvider>(context, listen: false)
+            .addBank(_accountNumber, _bankName, _accountName, _bvn)
+            .then((responseData) {
+          print(responseData);
+          if (responseData['status']) {
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (_) => BankDetails()));
+          } else {
+            Flushbar(
               title: "Failed, Try again",
               message: responseData['user'].toString(),
               duration: Duration(seconds: 5),
             ).show(context);
             print('error!');
-            }
-          }).catchError((e){
-            print('we want to knw $e');
-          });
-        }
-        else{
-          print("Form is invalud");
-        }
-    };  
+          }
+        }).catchError((e) {
+          print('we want to knw $e');
+        });
+      } else {
+        print("Form is invalud");
+      }
+    };
 
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context)=> AddBankProvider())
+        ChangeNotifierProvider(create: (context) => AddBankProvider())
       ],
-      child: Builder(
-        builder: (context){
+      child: Builder(builder: (context) {
         provideris = Provider.of<AddBankProvider>(context, listen: false);
         return SafeArea(
           child: Scaffold(
@@ -255,28 +253,27 @@ class _AddBankState extends State<AddBank> {
                         child: Container(
                           // color: kPrimaryColor,
                           child: FlatButton(
-                            minWidth: 330,
-                            height: 50,
-                            color:kPrimaryColor,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30)),
-                            onPressed:(){
-                               doAddBank(context, provideris);
-                            },
-                            child: Text('SAVE & CONTINUE',
-                                 style: TextStyle(color: Colors.white, fontSize: 18))),
-                           
-                          ),
+                              minWidth: 330,
+                              height: 50,
+                              color: kPrimaryColor,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30)),
+                              onPressed: () {
+                                doAddBank(context, provideris);
+                              },
+                              child: Text('SAVE & CONTINUE',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 18))),
                         ),
                       ),
-                    
+                    ),
                   ],
                 ),
               ),
             ),
           ),
         );
-        }),
+      }),
     );
   }
 }

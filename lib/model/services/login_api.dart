@@ -16,59 +16,64 @@ enum Status {
 }
 
 class LoginProvider with ChangeNotifier {
-   Status _loggedInStatus = Status.NotLoggedIn;
-   Status get loggedInStatus => _loggedInStatus;
-   LoginModel logins;
-   bool logining = false;
+  Status _loggedInStatus = Status.NotLoggedIn;
+  Status get loggedInStatus => _loggedInStatus;
+  LoginModel logins;
+  bool logining = false;
   void checkloginactivity(bool loginings) {
     logining = loginings;
     notifyListeners();
   }
 
-
-Future<Map<String, dynamic>> login(String email, String password)  async {
-  var result;
-  final Map<String, dynamic> loginData = {
+  Future<Map<String, dynamic>> login(String email, String password) async {
+    var result;
+    final Map<String, dynamic> loginData = {
       'email': email,
       'password': password
-  };
-  print(loginData);
-  //  _loggedInStatus = Status.Authenticating;
-  notifyListeners();
-  Response response = await post(
-    Uri.parse(BaseService.loginRoot),
-  body: json.encode(loginData),
-    headers: {
-        'Content-Type': 'application/json',
+    };
+    print(loginData);
+    //  _loggedInStatus = Status.Authenticating;
+    notifyListeners();
+    Response response = await post(
+      Uri.parse(BaseService.loginRoot),
+      body: json.encode(loginData),
+      headers: {
+        // 'Content-Type': 'application/json',
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Charset': 'utf-8'
       },
-  ).catchError((e){
-    print('na you dey give us $e');
-  });
-   if (response.statusCode == 200) {
+    ).catchError((e) {
+      print('na you dey give us $e');
+    });
+    if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = json.decode(response.body);
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+      SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString('token', responseData['token']);
       print('Just want to knoe ${responseData["token"]}');
-         SharedPreferences pref = await SharedPreferences.getInstance();
+      SharedPreferences pref = await SharedPreferences.getInstance();
       await pref.setString('id', responseData["user"]["_id"]);
       print('Just want to knoe ${responseData["user"]["_id"]}');
-    LoginModel authUser = LoginModel.fromJson(responseData);
-    print('pastor $responseData');
-print('know as e dey go ${authUser.toJson()}');
+      LoginModel authUser = LoginModel.fromJson(responseData);
+      print('pastor $responseData');
+      print('know as e dey go ${authUser.toJson()}');
       _loggedInStatus = Status.LoggedIn;
       notifyListeners();
-    result = {'status': true, 'message': 'Successful', 'user': LoginModel.fromJson(responseData)};
-   }
-   else{
+      result = {
+        'status': true,
+        'message': 'Successful',
+        'user': LoginModel.fromJson(responseData)
+      };
+    } else {
       _loggedInStatus = Status.NotLoggedIn;
       notifyListeners();
       result = {
         'status': false,
         'message': json.decode(response.body)['error']
       };
-   }
-  return result;
-}}
+    }
+    return result;
+  }
+}
 // if (response.statusCode == 200) {
 //       final Map<String, dynamic> responseData = json.decode(response.body);
 
