@@ -1,5 +1,3 @@
-
-
 import 'dart:convert';
 
 import 'package:ezopurse/model/services/base_api.dart';
@@ -19,26 +17,23 @@ class TransactionApi {
     return _instance;
   }
 
-
-Future<TransactionModel> getTransaction() async {
+  Future<TransactionModel> getTransaction() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-      String token = prefs.getString('token');
-    final response = await http.get(Uri.parse(BaseService.getTransaction), 
+    String token = prefs.getString('token');
+    final response = await http.get(Uri.parse(BaseService.getTransaction),
         headers: {
-           'Accept': 'application/json',
+          'Accept': 'application/json',
           "Authorization": "Bearer $token"
-        }
-    ).catchError((e){
+        }).catchError((e) {
       print("Error $e");
     });
-    if(response.statusCode == 200 ){
+    if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = json.decode(response.body);
       TransactionModel result = TransactionModel.fromJson(responseData);
+      print("Let's see the result $result");
       return result;
+    } else {
+      throw Exception('Failed to load post');
     }
-    else {
-      
-        throw Exception('Failed to load post');
-    }
-}
+  }
 }
