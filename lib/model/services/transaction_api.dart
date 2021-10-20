@@ -29,6 +29,7 @@ class TransactionApi {
     });
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = json.decode(response.body);
+      print("ResponseData: $responseData");
       TransactionModel result = TransactionModel.fromJson(responseData);
       print("Let's see the result $result");
       return result;

@@ -52,16 +52,13 @@ class RegisterProvider with ChangeNotifier {
     if (response.statusCode == 200) {
       var userData = responseData;
       print(userData);
-      // ['data'];
       Register authUser = Register.fromJson(userData);
-      // UserPreferences().saveUser(authUser);
       result = {
         'status': true,
         'message': 'Successfully registered',
         'data': authUser
       };
     } else {
-//      if (response.statusCode == 401) Get.toNamed("/login");
       Register authUser = Register.fromJson(responseData);
       result = {
         'status': false,
@@ -69,7 +66,6 @@ class RegisterProvider with ChangeNotifier {
         'data': responseData
       };
     }
-
     return result;
   }
 

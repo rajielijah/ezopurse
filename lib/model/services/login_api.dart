@@ -49,13 +49,9 @@ class LoginProvider with ChangeNotifier {
       final Map<String, dynamic> responseData = json.decode(response.body);
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString('token', responseData['token']);
-      print('Just want to knoe ${responseData["token"]}');
       SharedPreferences pref = await SharedPreferences.getInstance();
       await pref.setString('id', responseData["user"]["_id"]);
-      print('Just want to knoe ${responseData["user"]["_id"]}');
       LoginModel authUser = LoginModel.fromJson(responseData);
-      print('pastor $responseData');
-      print('know as e dey go ${authUser.toJson()}');
       _loggedInStatus = Status.LoggedIn;
       notifyListeners();
       result = {

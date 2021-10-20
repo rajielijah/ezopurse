@@ -14,6 +14,6 @@ class BaseService {
       rootEndpoint + '/api/add/account/60417a267999dd000435b98a';
   static final String getFaq = rootEndpoint + '/api/faq';
   static final String getTransaction =
-      rootEndpoint + '/api/buy-sells/all/buy-sell';
+      rootEndpoint + '/api/buy-sells/user/buy-sell';
   static final String walletState = rootEndpoint + '/api/btc/wallet';
 }

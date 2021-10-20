@@ -83,12 +83,6 @@ class _LoginState extends State<Login> {
       final form = formKey.currentState;
       if (form.validate()) {
         form.save();
-        // provide.checkloginactivity(true);
-        // FocusScope.of(context).unfocus();
-
-        //  LoginProvider().login(_email, _password).then((responseData)
-        //  successfulMessage.then((responseData)
-        //
         Provider.of<LoginProvider>(context, listen: false)
             .login(_email, _password)
             .then((responseData) {

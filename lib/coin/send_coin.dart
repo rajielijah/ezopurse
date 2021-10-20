@@ -15,7 +15,7 @@ class SendCoin extends StatefulWidget {
 
 class _SendCoinState extends State<SendCoin> {
   final formKey = new GlobalKey<FormState>();
-
+  bool isLoading = false;
   String _address;
   String _amount;
   @override
@@ -29,15 +29,22 @@ class _SendCoinState extends State<SendCoin> {
             .then((responseData) {
           print('responseData');
           if (responseData.isNotEmpty) {
+            setState(() {
+              isLoading = !isLoading;
+            });
             print('done');
             Flushbar(
               routeColor: kPrimaryColor,
               backgroundColor: kPrimaryColor,
               title: 'Initiated',
-              message: " Transaction has been initiated, You will be notified when   it is completed,",
+              message:
+                  " Transaction has been initiated, You will be notified when   it is completed,",
               duration: Duration(seconds: 15),
             ).show(context);
           } else {
+            setState(() {
+              isLoading = !isLoading;
+            });
             Flushbar(
               title: "Failed Login",
               message: responseData['message'].toString(),
@@ -48,6 +55,9 @@ class _SendCoinState extends State<SendCoin> {
           }
         });
       } else {
+        setState(() {
+          isLoading = !isLoading;
+        });
         Flushbar(
           title: "Form is Invalid",
           duration: Duration(seconds: 5),
@@ -232,18 +242,42 @@ class _SendCoinState extends State<SendCoin> {
                         FlatButton(
                           minWidth: width,
                           height: height / 15,
-                           color: kPrimaryColor,
+                          color: kPrimaryColor,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30)),
                           onPressed: () {
-                             sendBTC(context, provideris);
+                            setState(() {
+                              isLoading = !isLoading;
+                            });
+                            sendBTC(context, provideris);
                           },
-                          child: Text(
-                            'SEND BTC',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 17),
-                          ),
-                         
+                          child: isLoading
+                              ? Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                      Text(
+                                        "Sending",
+                                        style: TextStyle(
+                                            fontFamily: 'Circular STD',
+                                            fontSize: 20,
+                                            color: Colors.white),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      SizedBox(
+                                        width: 5.0,
+                                      ),
+                                      SizedBox(
+                                        child: CircularProgressIndicator(
+                                            color: Colors.white),
+                                        height: 30.0,
+                                        width: 25.0,
+                                      ),
+                                    ])
+                              : Text(
+                                  'SEND BTC',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 17),
+                                ),
                         ),
                       ],
                     ),
